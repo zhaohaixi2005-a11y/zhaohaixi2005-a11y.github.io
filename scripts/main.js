@@ -6,9 +6,6 @@
     var canvas = document.getElementById("site-particles");
     if (!canvas) return;
 
-    var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduceMotion) return;
-
     var ctx = canvas.getContext("2d");
     if (!ctx) return;
 
@@ -20,7 +17,7 @@
     var raf = null;
 
     function getCount(w, h) {
-      return Math.max(48, Math.min(130, Math.floor((w * h) / 18000)));
+      return Math.max(72, Math.min(180, Math.floor((w * h) / 13000)));
     }
 
     function resize() {
@@ -37,7 +34,7 @@
           y: Math.random() * height,
           vx: (Math.random() - 0.5) * 0.22,
           vy: (Math.random() - 0.5) * 0.22,
-          r: 0.8 + Math.random() * 1.4
+          r: 0.8 + Math.random() * 1.8
         });
       }
     }
@@ -55,7 +52,7 @@
 
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = "rgba(186, 233, 255, 0.62)";
+        ctx.fillStyle = "rgba(186, 233, 255, 0.82)";
         ctx.fill();
 
         for (var j = i + 1; j < points.length; j += 1) {
@@ -63,13 +60,13 @@
           var dx = p.x - q.x;
           var dy = p.y - q.y;
           var dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 110) {
-            var alpha = (1 - dist / 110) * 0.18;
+          if (dist < 128) {
+            var alpha = (1 - dist / 128) * 0.28;
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(q.x, q.y);
             ctx.strokeStyle = "rgba(117, 204, 255," + alpha.toFixed(3) + ")";
-            ctx.lineWidth = 1;
+            ctx.lineWidth = 1.1;
             ctx.stroke();
           }
         }
