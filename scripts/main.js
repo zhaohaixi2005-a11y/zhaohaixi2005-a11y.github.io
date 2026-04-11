@@ -2,39 +2,6 @@
   var year = document.getElementById("year");
   if (year) year.textContent = String(new Date().getFullYear());
 
-  async function initMolstar() {
-    var mount = document.getElementById("molstar-viewer");
-    if (!mount) return;
-
-    var fallback = document.getElementById("molstar-fallback");
-    var hasMolstar = window.molstar && window.molstar.Viewer && typeof window.molstar.Viewer.create === "function";
-    if (!hasMolstar) {
-      if (fallback) fallback.textContent = "Mol* library unavailable";
-      return;
-    }
-
-    var pdbId = (mount.getAttribute("data-pdb-id") || "1CRN").toUpperCase();
-
-    try {
-      var viewer = await window.molstar.Viewer.create("molstar-viewer", {
-        layoutIsExpanded: false,
-        layoutShowControls: false,
-        layoutShowLeftPanel: false,
-        layoutShowSequence: false,
-        layoutShowLog: false,
-        viewportShowExpand: false,
-        viewportShowSelectionMode: false,
-        collapseLeftPanel: true
-      });
-
-      await viewer.loadPdb(pdbId);
-      mount.classList.add("molstar-ready");
-    } catch (err) {
-      if (fallback) fallback.textContent = "Model failed to load";
-      console.error("Mol* init failed:", err);
-    }
-  }
-
   function initQuantumField() {
     var canvas = document.getElementById("quantum-field");
     if (!canvas) return;
@@ -114,7 +81,6 @@
     });
   }
 
-  initMolstar();
   initQuantumField();
 
   var items = document.querySelectorAll(".reveal");
