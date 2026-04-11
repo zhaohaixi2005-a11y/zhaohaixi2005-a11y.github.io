@@ -151,85 +151,14 @@ a:hover {
   z-index: 2;
 }
 
-.hero-lab {
+.bio-canvas {
   position: absolute;
   inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.48;
   z-index: 1;
   pointer-events: none;
-}
-
-#quantum-field {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0.55;
-}
-
-.protein-scene {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0.7;
-}
-
-.ribbon-path {
-  stroke: rgba(109, 218, 255, 0.95);
-  stroke-width: 4;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  filter: drop-shadow(0 0 16px rgba(99, 201, 255, 0.58));
-  stroke-dasharray: 12 14;
-  animation: ribbon-flow 10s linear infinite;
-}
-
-.ribbon-path.secondary {
-  stroke: rgba(123, 251, 213, 0.75);
-  stroke-width: 3;
-  animation-duration: 12s;
-}
-
-.ai-graph {
-  fill: none;
-  stroke: rgba(185, 199, 255, 0.56);
-  stroke-width: 2;
-  stroke-dasharray: 6 10;
-  animation: dash-shift 7s linear infinite;
-}
-
-.q-core {
-  fill: rgba(123, 251, 213, 0.52);
-  filter: drop-shadow(0 0 12px rgba(86, 247, 212, 0.8));
-}
-
-.q-ring {
-  fill: none;
-  stroke: rgba(183, 167, 255, 0.75);
-  stroke-width: 1.5;
-}
-
-.q-ring.ring-a {
-  animation: spin 9s linear infinite;
-  transform-origin: 602px 232px;
-}
-
-.q-ring.ring-b {
-  animation: spin 6s linear reverse infinite;
-  transform-origin: 602px 232px;
-}
-
-.q-dot {
-  fill: #ffffff;
-  filter: drop-shadow(0 0 8px rgba(228, 236, 255, 0.9));
-}
-
-.q-dot.dot-a {
-  animation: pulse 2.1s ease-in-out infinite;
-}
-
-.q-dot.dot-b {
-  animation: pulse 1.8s ease-in-out infinite reverse;
 }
 
 .hero-side {
@@ -263,6 +192,8 @@ a:hover {
   inset: 12px 12px 36px 12px;
   width: calc(100% - 24px);
   height: calc(100% - 48px);
+  z-index: 2;
+  pointer-events: none;
 }
 
 .helix-front,
@@ -381,6 +312,8 @@ a:hover {
   text-transform: uppercase;
   color: #d0e7ff;
   opacity: 0.95;
+  z-index: 3;
+  pointer-events: none;
 }
 
 .chipline {
@@ -395,6 +328,8 @@ a:hover {
   font-size: 10px;
   color: #bfe0ff;
   background: rgba(5, 14, 26, 0.64);
+  z-index: 3;
+  pointer-events: none;
 }
 
 @keyframes spin {
@@ -776,10 +711,6 @@ a:hover {
   .hero-grid,
   .cols {
     grid-template-columns: 1fr;
-  }
-
-  .protein-scene {
-    opacity: 0.5;
   }
 
   .bio-viz {

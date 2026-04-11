@@ -23,28 +23,6 @@
       </header>
 
       <section class="hero reveal is-visible">
-        <div class="hero-lab" aria-hidden="true">
-          <canvas id="quantum-field"></canvas>
-          <svg class="protein-scene" viewBox="0 0 760 360" role="presentation">
-            <path
-              class="ribbon-path"
-              d="M64 245 C120 140, 190 112, 252 192 S380 288, 438 190 S560 88, 692 164"
-              fill="none"
-            />
-            <path
-              class="ribbon-path secondary"
-              d="M74 266 C132 162, 204 132, 266 214 S394 310, 452 210 S570 108, 702 184"
-              fill="none"
-            />
-            <polyline class="ai-graph" points="78,110 146,86 206,118 280,72 342,106 414,58 502,104 612,68" />
-            <circle class="q-core" cx="602" cy="232" r="14" />
-            <ellipse class="q-ring ring-a" cx="602" cy="232" rx="64" ry="26" />
-            <ellipse class="q-ring ring-b" cx="602" cy="232" rx="42" ry="74" />
-            <circle class="q-dot dot-a" cx="666" cy="232" r="4" />
-            <circle class="q-dot dot-b" cx="602" cy="158" r="4" />
-          </svg>
-        </div>
-
         <div class="hero-grid">
           <div>
             <p class="kicker">AI-guided Protein Design · Computational Biology</p>
@@ -76,6 +54,7 @@
             </div>
 
             <div class="hero-visual" aria-hidden="true">
+              <canvas id="quantum-field" class="bio-canvas"></canvas>
               <svg class="bio-viz" viewBox="0 0 420 250" role="presentation">
                 <defs>
                   <linearGradient id="helixGradA" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -89,8 +68,8 @@
                   </linearGradient>
                 </defs>
 
-                <path class="helix-front" d="M28 170 C90 80, 140 84, 194 170 S304 254, 374 156" />
-                <path class="helix-back" d="M28 196 C90 106, 140 110, 194 196 S304 280, 374 182" />
+                <path class="helix-front" fill="none" d="M28 170 C90 80, 140 84, 194 170 S304 254, 374 156" />
+                <path class="helix-back" fill="none" d="M28 196 C90 106, 140 110, 194 196 S304 280, 374 182" />
                 <line class="helix-link l1" x1="60" y1="148" x2="60" y2="173" />
                 <line class="helix-link l2" x1="104" y1="128" x2="104" y2="153" />
                 <line class="helix-link l3" x1="148" y1="138" x2="148" y2="163" />
@@ -99,10 +78,10 @@
                 <line class="helix-link l6" x1="286" y1="220" x2="286" y2="245" />
                 <line class="helix-link l7" x1="332" y1="200" x2="332" y2="225" />
 
-                <path class="ribbon-main" d="M34 78 C78 54, 138 64, 170 92 C210 128, 262 128, 326 104" />
+                <path class="ribbon-main" fill="none" d="M34 78 C78 54, 138 64, 170 92 C210 128, 262 128, 326 104" />
                 <polygon class="beta-arrow" points="324,95 362,102 328,116" />
 
-                <polyline class="ai-net" points="58,42 112,28 152,48 202,24 246,46 292,30 346,46" />
+                <polyline class="ai-net" fill="none" points="58,42 112,28 152,48 202,24 246,46 292,30 346,46" />
                 <circle class="ai-node n1" cx="58" cy="42" r="3.4" />
                 <circle class="ai-node n2" cx="112" cy="28" r="3.4" />
                 <circle class="ai-node n3" cx="152" cy="48" r="3.4" />
