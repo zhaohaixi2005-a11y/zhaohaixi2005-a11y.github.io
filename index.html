@@ -23,6 +23,28 @@
       </header>
 
       <section class="hero reveal is-visible">
+        <div class="hero-lab" aria-hidden="true">
+          <canvas id="quantum-field"></canvas>
+          <svg class="protein-scene" viewBox="0 0 760 360" role="presentation">
+            <path
+              class="ribbon-path"
+              d="M64 245 C120 140, 190 112, 252 192 S380 288, 438 190 S560 88, 692 164"
+              fill="none"
+            />
+            <path
+              class="ribbon-path secondary"
+              d="M74 266 C132 162, 204 132, 266 214 S394 310, 452 210 S570 108, 702 184"
+              fill="none"
+            />
+            <polyline class="ai-graph" points="78,110 146,86 206,118 280,72 342,106 414,58 502,104 612,68" />
+            <circle class="q-core" cx="602" cy="232" r="14" />
+            <ellipse class="q-ring ring-a" cx="602" cy="232" rx="64" ry="26" />
+            <ellipse class="q-ring ring-b" cx="602" cy="232" rx="42" ry="74" />
+            <circle class="q-dot dot-a" cx="666" cy="232" r="4" />
+            <circle class="q-dot dot-b" cx="602" cy="158" r="4" />
+          </svg>
+        </div>
+
         <div class="hero-grid">
           <div>
             <p class="kicker">AI-guided Protein Design · Computational Biology</p>
@@ -36,18 +58,21 @@
 
           <div class="hero-side">
             <div class="metrics">
-              <div class="metric">
+              <a class="metric metric-link" href="https://doi.org/10.1186/s11658-025-00781-z" target="_blank" rel="noreferrer">
                 <strong>SCI 1</strong>
                 <span>Cellular & Molecular Biology Letters (IF 10.2)</span>
-              </div>
-              <div class="metric">
+                <em class="metric-jump">Open publication ↗</em>
+              </a>
+              <a class="metric metric-link" href="#research">
                 <strong>6+</strong>
                 <span>Research and competition gateways</span>
-              </div>
-              <div class="metric">
+                <em class="metric-jump">Jump to gateways →</em>
+              </a>
+              <a class="metric metric-link" href="projects/membrane-protein-design.html">
                 <strong>Cross-domain</strong>
                 <span>AI design · structural biology · wet-lab validation</span>
-              </div>
+                <em class="metric-jump">View representative project →</em>
+              </a>
             </div>
 
             <div class="hero-visual" aria-hidden="true">
@@ -57,7 +82,7 @@
               <span class="node n1"></span>
               <span class="node n2"></span>
               <span class="node n3"></span>
-              <div class="chipline">protein topology / binder geometry / model-guided filtering / state control</div>
+              <div class="chipline">protein topology / AI network / quantum field / model-guided filtering</div>
             </div>
           </div>
         </div>

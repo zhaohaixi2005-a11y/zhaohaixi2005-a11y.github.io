@@ -128,6 +128,7 @@ a:hover {
   box-shadow: var(--shadow);
   overflow: hidden;
   position: relative;
+  isolation: isolate;
 }
 
 .hero::after {
@@ -146,6 +147,89 @@ a:hover {
   grid-template-columns: 1.25fr 0.95fr;
   gap: 22px;
   align-items: start;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-lab {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+#quantum-field {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.55;
+}
+
+.protein-scene {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.7;
+}
+
+.ribbon-path {
+  stroke: rgba(109, 218, 255, 0.95);
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 0 16px rgba(99, 201, 255, 0.58));
+  stroke-dasharray: 12 14;
+  animation: ribbon-flow 10s linear infinite;
+}
+
+.ribbon-path.secondary {
+  stroke: rgba(123, 251, 213, 0.75);
+  stroke-width: 3;
+  animation-duration: 12s;
+}
+
+.ai-graph {
+  fill: none;
+  stroke: rgba(185, 199, 255, 0.56);
+  stroke-width: 2;
+  stroke-dasharray: 6 10;
+  animation: dash-shift 7s linear infinite;
+}
+
+.q-core {
+  fill: rgba(123, 251, 213, 0.52);
+  filter: drop-shadow(0 0 12px rgba(86, 247, 212, 0.8));
+}
+
+.q-ring {
+  fill: none;
+  stroke: rgba(183, 167, 255, 0.75);
+  stroke-width: 1.5;
+}
+
+.q-ring.ring-a {
+  animation: spin 9s linear infinite;
+  transform-origin: 602px 232px;
+}
+
+.q-ring.ring-b {
+  animation: spin 6s linear reverse infinite;
+  transform-origin: 602px 232px;
+}
+
+.q-dot {
+  fill: #ffffff;
+  filter: drop-shadow(0 0 8px rgba(228, 236, 255, 0.9));
+}
+
+.q-dot.dot-a {
+  animation: pulse 2.1s ease-in-out infinite;
+}
+
+.q-dot.dot-b {
+  animation: pulse 1.8s ease-in-out infinite reverse;
 }
 
 .hero-side {
@@ -274,6 +358,36 @@ a:hover {
   }
 }
 
+@keyframes ribbon-flow {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -220;
+  }
+}
+
+@keyframes dash-shift {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -140;
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+}
+
 .kicker {
   display: inline-flex;
   align-items: center;
@@ -346,6 +460,25 @@ a:hover {
   padding: 12px;
 }
 
+.metric-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.metric-link:hover {
+  transform: translateY(-2px);
+  border-color: rgba(123, 251, 213, 0.58);
+  box-shadow: 0 14px 30px rgba(42, 140, 214, 0.28);
+  background: rgba(10, 22, 40, 0.78);
+}
+
+.metric-link:focus-visible {
+  outline: 2px solid rgba(123, 251, 213, 0.8);
+  outline-offset: 2px;
+}
+
 .metric strong {
   display: block;
   font-family: "Space Grotesk", "Noto Sans SC", sans-serif;
@@ -355,6 +488,15 @@ a:hover {
 .metric span {
   color: var(--muted);
   font-size: 13px;
+}
+
+.metric-jump {
+  display: inline-block;
+  margin-top: 6px;
+  font-style: normal;
+  color: #9ce8ff;
+  font-size: 12px;
+  letter-spacing: 0.01em;
 }
 
 .section {
@@ -567,6 +709,10 @@ a:hover {
   .hero-grid,
   .cols {
     grid-template-columns: 1fr;
+  }
+
+  .protein-scene {
+    opacity: 0.5;
   }
 
   .navlinks {
