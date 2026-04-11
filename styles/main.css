@@ -3,11 +3,11 @@
 :root {
   --bg: #041024;
   --bg-soft: #061833;
-  --panel: rgba(12, 24, 45, 0.68);
-  --panel-strong: rgba(9, 19, 39, 0.86);
+  --panel: rgba(14, 29, 55, 0.76);
+  --panel-strong: rgba(10, 23, 46, 0.9);
   --line: rgba(181, 217, 255, 0.2);
   --text: #eaf4ff;
-  --muted: #a8bed8;
+  --muted: #bfd2e8;
   --teal: #56f7d4;
   --cyan: #63c9ff;
   --violet: #b7a7ff;
@@ -33,9 +33,9 @@ body {
   color: var(--text);
   font-family: "Noto Sans SC", "Manrope", sans-serif;
   background:
-    radial-gradient(50rem 30rem at 90% -5%, rgba(83, 152, 252, 0.2), transparent 70%),
-    radial-gradient(36rem 26rem at 8% 0%, rgba(86, 247, 212, 0.11), transparent 70%),
-    linear-gradient(160deg, #020813 0%, #041024 44%, #061a39 100%);
+    radial-gradient(54rem 34rem at 90% -5%, rgba(101, 169, 255, 0.3), transparent 70%),
+    radial-gradient(40rem 28rem at 8% 0%, rgba(86, 247, 212, 0.16), transparent 70%),
+    linear-gradient(160deg, #031024 0%, #082043 48%, #0b2b57 100%);
   line-height: 1.7;
 }
 
@@ -45,7 +45,7 @@ body {
   width: 100%;
   height: 100%;
   pointer-events: none;
-  opacity: 0.42;
+  opacity: 0.62;
   z-index: 0;
 }
 
@@ -55,7 +55,7 @@ body {
   width: 100%;
   height: 100%;
   pointer-events: none;
-  opacity: 0.85;
+  opacity: 0.52;
   z-index: 1;
 }
 
@@ -67,7 +67,7 @@ body::before {
   background-image: linear-gradient(rgba(180, 220, 255, 0.04) 1px, transparent 1px),
     linear-gradient(90deg, rgba(180, 220, 255, 0.04) 1px, transparent 1px);
   background-size: 34px 34px;
-  opacity: 0.22;
+  opacity: 0.12;
   z-index: 0;
 }
 
@@ -78,7 +78,7 @@ body::after {
   pointer-events: none;
   background: radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.08) 0 1px, transparent 1px 100%);
   background-size: 6px 6px;
-  opacity: 0.07;
+  opacity: 0.03;
   z-index: 0;
 }
 
@@ -146,7 +146,7 @@ a:hover {
   border: 1px solid var(--line);
   border-radius: var(--radius-xl);
   padding: clamp(24px, 4.4vw, 44px);
-  background: linear-gradient(145deg, rgba(8, 19, 38, 0.9), rgba(8, 22, 41, 0.64));
+  background: linear-gradient(145deg, rgba(12, 28, 53, 0.92), rgba(10, 25, 47, 0.72));
   box-shadow: var(--shadow);
   overflow: hidden;
   position: relative;
@@ -182,7 +182,7 @@ a:hover {
   border: 1px solid rgba(181, 217, 255, 0.22);
   border-radius: 18px;
   min-height: 228px;
-  background: linear-gradient(155deg, rgba(10, 23, 46, 0.86), rgba(8, 18, 34, 0.56));
+  background: linear-gradient(155deg, rgba(13, 30, 56, 0.9), rgba(11, 24, 44, 0.68));
   position: relative;
   overflow: hidden;
   box-shadow: inset 0 0 0 1px rgba(96, 190, 255, 0.1), 0 12px 28px rgba(3, 10, 23, 0.4);
@@ -332,7 +332,7 @@ a:hover {
 
 .metric {
   border: 1px solid rgba(181, 217, 255, 0.18);
-  background: rgba(9, 18, 34, 0.67);
+  background: rgba(12, 26, 49, 0.74);
   border-radius: 14px;
   padding: 12px;
 }
@@ -391,7 +391,7 @@ a:hover {
   border-radius: var(--radius-lg);
   background: var(--panel);
   padding: 22px;
-  box-shadow: 0 12px 28px rgba(2, 8, 20, 0.3);
+  box-shadow: 0 14px 30px rgba(3, 10, 24, 0.36);
 }
 
 .reveal {
@@ -429,7 +429,7 @@ a:hover {
   grid-column: span 12;
   border: 1px solid rgba(181, 217, 255, 0.22);
   border-radius: 16px;
-  background: linear-gradient(145deg, rgba(8, 19, 40, 0.9), rgba(6, 18, 36, 0.65));
+  background: linear-gradient(145deg, rgba(11, 26, 49, 0.92), rgba(9, 23, 43, 0.72));
   padding: 16px;
   position: relative;
   overflow: hidden;
@@ -448,7 +448,7 @@ a:hover {
 .portal:hover {
   transform: translateY(-3px);
   border-color: rgba(86, 247, 212, 0.48);
-  box-shadow: 0 18px 28px rgba(37, 148, 220, 0.22);
+  box-shadow: 0 18px 28px rgba(53, 165, 238, 0.3);
 }
 
 .portal-top {
@@ -526,7 +526,7 @@ a:hover {
   border: 1px solid rgba(181, 217, 255, 0.2);
   border-radius: 14px;
   padding: 14px;
-  background: rgba(8, 19, 40, 0.74);
+  background: rgba(11, 26, 49, 0.76);
 }
 
 .award-card h3 {
@@ -551,7 +551,7 @@ a:hover {
   border: 1px solid rgba(181, 217, 255, 0.18);
   border-radius: 14px;
   padding: 14px;
-  background: rgba(7, 18, 36, 0.66);
+  background: rgba(10, 24, 45, 0.74);
 }
 
 .subcard h3 {

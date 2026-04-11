@@ -104,14 +104,14 @@
     s.canvas.height = Math.max(1, Math.floor(s.height * s.dpr));
     s.ctx.setTransform(s.dpr, 0, 0, s.dpr, 0, 0);
 
-    var particleCount = Math.max(55, Math.min(170, Math.floor((s.width * s.height) / 15500)));
+    var particleCount = Math.max(48, Math.min(150, Math.floor((s.width * s.height) / 16800)));
     s.particles = [];
     for (var i = 0; i < particleCount; i += 1) {
       s.particles.push({
         x: Math.random() * s.width,
         y: Math.random() * s.height,
-        vx: (Math.random() - 0.5) * 0.18,
-        vy: (Math.random() - 0.5) * 0.18,
+        vx: (Math.random() - 0.5) * 0.34,
+        vy: (Math.random() - 0.5) * 0.34,
         r: 0.8 + Math.random() * 1.6
       });
     }
@@ -134,7 +134,7 @@
 
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fillStyle = "rgba(182, 230, 255, 0.72)";
+      ctx.fillStyle = "rgba(198, 238, 255, 0.92)";
       ctx.fill();
 
       for (var j = i + 1; j < s.particles.length; j += 1) {
@@ -142,12 +142,12 @@
         var dx = p.x - q.x;
         var dy = p.y - q.y;
         var dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 118) {
-          var alpha = (1 - dist / 118) * 0.22;
+        if (dist < 132) {
+          var alpha = (1 - dist / 132) * 0.34;
           ctx.beginPath();
           ctx.moveTo(p.x, p.y);
           ctx.lineTo(q.x, q.y);
-          ctx.strokeStyle = "rgba(124, 199, 255," + alpha.toFixed(3) + ")";
+          ctx.strokeStyle = "rgba(148, 217, 255," + alpha.toFixed(3) + ")";
           ctx.lineWidth = 1;
           ctx.stroke();
         }
@@ -189,7 +189,7 @@
     height: 0,
     fragments: [],
     rafId: 0,
-    maxFragments: 120,
+    maxFragments: 68,
     lastSpawnAt: 0,
     chars: ["A", "T", "G", "C", "0", "1", "{", "}", "<", ">", "/", "\\", "[", "]", "(", ")", ";", ":", "+", "-", "*"]
   };
@@ -210,11 +210,11 @@
     var s = fragmentState;
     if (s.fragments.length >= s.maxFragments) return;
 
-    var burst = 2 + Math.floor(Math.random() * 3);
+    var burst = 1 + Math.floor(Math.random() * 2);
     for (var i = 0; i < burst; i += 1) {
       if (s.fragments.length >= s.maxFragments) break;
       var angle = Math.random() * Math.PI * 2;
-      var speed = 0.3 + Math.random() * 0.8;
+      var speed = 0.28 + Math.random() * 0.6;
       s.fragments.push({
         x: x + (Math.random() - 0.5) * 8,
         y: y + (Math.random() - 0.5) * 8,
@@ -223,8 +223,8 @@
         rot: Math.random() * Math.PI * 2,
         vr: (Math.random() - 0.5) * 0.08,
         life: 0,
-        ttl: 38 + Math.random() * 22,
-        size: 9 + Math.random() * 4,
+        ttl: 30 + Math.random() * 18,
+        size: 8 + Math.random() * 3,
         char: s.chars[Math.floor(Math.random() * s.chars.length)]
       });
     }
@@ -251,7 +251,7 @@
       f.vy += 0.003;
       f.vx *= 0.994;
 
-      var alpha = (1 - f.life / f.ttl) * 0.75;
+      var alpha = (1 - f.life / f.ttl) * 0.62;
       ctx.save();
       ctx.translate(f.x, f.y);
       ctx.rotate(f.rot);
@@ -278,7 +278,7 @@
     if (!reducedMotion) {
       var onMouseMove = function (ev) {
         var now = performance.now();
-        if (now - fragmentState.lastSpawnAt < 34) return;
+        if (now - fragmentState.lastSpawnAt < 54) return;
         fragmentState.lastSpawnAt = now;
         spawnCodeFragments(ev.clientX, ev.clientY);
       };
