@@ -2,6 +2,17 @@
   var year = document.getElementById("year");
   if (year) year.textContent = String(new Date().getFullYear());
 
+  function loadScript(src) {
+    return new Promise(function (resolve, reject) {
+      var s = document.createElement("script");
+      s.src = src;
+      s.async = true;
+      s.onload = resolve;
+      s.onerror = reject;
+      document.head.appendChild(s);
+    });
+  }
+
   function initSiteParticles() {
     var canvas = document.getElementById("site-particles");
     if (!canvas) return;
@@ -89,8 +100,12 @@
 
     var fallback = document.getElementById("protein-fallback");
     if (!window.NGL || !window.NGL.Stage) {
-      if (fallback) fallback.textContent = "3D engine unavailable";
-      return;
+      try {
+        await loadScript("https://unpkg.com/ngl@2.0.0-dev.37/dist/ngl.js");
+      } catch (e) {
+        if (fallback) fallback.textContent = "3D engine unavailable";
+        return;
+      }
     }
 
     var source = mount.getAttribute("data-pdb-source") || "rcsb://1crn";
