@@ -453,29 +453,32 @@ a:hover {
 }
 
 .portal-top {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 6px;
-  align-items: start;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
 }
 
 .project-meta {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 3px;
+  gap: 2px;
   margin-left: 0;
   flex-shrink: 0;
-  width: 100%;
+  width: min(42%, 295px);
 }
 
 .portal-title {
   margin: 0;
-  font-size: clamp(18px, 1.7vw, 22px);
-  line-height: 1.25;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  flex: 1 1 auto;
+  max-width: 100%;
+  min-width: 0;
+  font-size: clamp(16px, 1.35vw, 20px);
+  line-height: 1.2;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
   font-family: "Space Grotesk", "Noto Sans SC", sans-serif;
   color: var(--white);
 }
@@ -639,7 +642,10 @@ a:hover {
     font-size: 12px;
   }
 
-  .portal-top { gap: 4px; }
+  .portal-top {
+    flex-direction: column;
+    gap: 4px;
+  }
 
   .project-meta {
     align-items: flex-start;
@@ -647,7 +653,7 @@ a:hover {
   }
 
   .portal-title {
-    font-size: 18px;
+    font-size: 15px;
   }
 
   .project-affiliation {
