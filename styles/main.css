@@ -148,6 +148,126 @@ a:hover {
   align-items: start;
 }
 
+.hero-visual {
+  border: 1px solid rgba(181, 217, 255, 0.22);
+  border-radius: 18px;
+  min-height: 270px;
+  background: linear-gradient(155deg, rgba(10, 23, 46, 0.86), rgba(8, 18, 34, 0.56));
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-visual::before {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(181, 217, 255, 0.18);
+  background:
+    radial-gradient(circle at 80% 18%, rgba(99, 201, 255, 0.28), transparent 40%),
+    radial-gradient(circle at 15% 85%, rgba(86, 247, 212, 0.2), transparent 46%);
+}
+
+.orbit {
+  position: absolute;
+  border: 1px dashed rgba(181, 217, 255, 0.28);
+  border-radius: 999px;
+  animation: spin 20s linear infinite;
+}
+
+.orbit.one {
+  width: 220px;
+  height: 130px;
+  left: 28px;
+  top: 72px;
+}
+
+.orbit.two {
+  width: 160px;
+  height: 220px;
+  right: 28px;
+  top: 32px;
+  animation-direction: reverse;
+  animation-duration: 24s;
+}
+
+.helix {
+  position: absolute;
+  width: 190px;
+  height: 8px;
+  left: 72px;
+  top: 112px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(86, 247, 212, 0.1), rgba(99, 201, 255, 0.85), rgba(183, 167, 255, 0.14));
+  transform: rotate(-18deg);
+  box-shadow: 0 0 18px rgba(99, 201, 255, 0.4);
+}
+
+.helix::before,
+.helix::after {
+  content: "";
+  position: absolute;
+  width: 190px;
+  height: 8px;
+  border-radius: 999px;
+  background: inherit;
+}
+
+.helix::before {
+  transform: translateY(32px);
+}
+
+.helix::after {
+  transform: translateY(64px);
+}
+
+.node {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: #ccf4ff;
+  box-shadow: 0 0 20px rgba(156, 224, 255, 0.78);
+}
+
+.node.n1 {
+  top: 78px;
+  right: 72px;
+}
+
+.node.n2 {
+  top: 142px;
+  right: 128px;
+}
+
+.node.n3 {
+  top: 186px;
+  right: 84px;
+}
+
+.chipline {
+  position: absolute;
+  left: 20px;
+  bottom: 16px;
+  right: 20px;
+  border: 1px solid rgba(181, 217, 255, 0.24);
+  border-radius: 10px;
+  padding: 8px 10px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  color: #bfe0ff;
+  background: rgba(5, 14, 26, 0.64);
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .kicker {
   display: inline-flex;
   align-items: center;
@@ -349,6 +469,33 @@ a:hover {
   color: var(--teal);
 }
 
+.awards-grid {
+  margin-top: 12px;
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+}
+
+.award-card {
+  grid-column: span 12;
+  border: 1px solid rgba(181, 217, 255, 0.2);
+  border-radius: 14px;
+  padding: 14px;
+  background: rgba(8, 19, 40, 0.74);
+}
+
+.award-card h3 {
+  margin: 0;
+  font-size: 18px;
+  font-family: "Space Grotesk", "Noto Sans SC", sans-serif;
+}
+
+.award-card p {
+  margin: 5px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
 .cols {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -402,6 +549,10 @@ a:hover {
 
 @media (min-width: 900px) {
   .portal.span-6 {
+    grid-column: span 6;
+  }
+
+  .award-card.span-6 {
     grid-column: span 6;
   }
 }
