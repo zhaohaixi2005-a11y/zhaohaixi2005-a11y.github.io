@@ -1,0 +1,71 @@
+@import url("./main.css");
+
+.project-shell {
+  width: min(1040px, calc(100vw - 38px));
+  margin: 22px auto 42px;
+  position: relative;
+  z-index: 1;
+}
+
+.backlink {
+  color: var(--teal);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+}
+
+.project-header {
+  margin-top: 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-xl);
+  background: linear-gradient(145deg, rgba(8, 19, 40, 0.9), rgba(6, 18, 36, 0.65));
+  padding: clamp(22px, 4vw, 36px);
+}
+
+.project-title {
+  margin: 10px 0 4px;
+  font-size: clamp(30px, 5vw, 46px);
+  line-height: 1.1;
+  font-family: "Space Grotesk", "Noto Sans SC", sans-serif;
+}
+
+.project-meta {
+  color: var(--muted);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+}
+
+.project-layout {
+  margin-top: 14px;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 14px;
+}
+
+.block {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--panel);
+  padding: 18px;
+}
+
+.block h2 {
+  margin: 0 0 8px;
+  font-size: 22px;
+  font-family: "Space Grotesk", "Noto Sans SC", sans-serif;
+}
+
+.bullets {
+  margin: 0;
+  color: var(--muted);
+  padding-left: 18px;
+}
+
+.bullets li + li {
+  margin-top: 6px;
+}
+
+@media (max-width: 930px) {
+  .project-layout {
+    grid-template-columns: 1fr;
+  }
+}

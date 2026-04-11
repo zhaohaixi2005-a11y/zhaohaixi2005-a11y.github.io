@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PTM Capture Binders | Haixi Zhao</title>
+    <link rel="stylesheet" href="../styles/project.css" />
+  </head>
+  <body>
+    <main class="project-shell">
+      <header class="topbar">
+        <div class="logo"><span class="dot"></span>Research Portal</div>
+        <a class="backlink" href="../index.html#research">← Back to Gateways</a>
+      </header>
+
+      <section class="project-header">
+        <p class="kicker">Project Gateway 01</p>
+        <h1 class="project-title">De Novo Design of PTM Capture Binders</h1>
+        <p class="project-meta">Peking University · Dec 2025 - Present · Research Intern</p>
+        <div class="tags">
+          <span class="tag">Lys-LCA PTM</span>
+          <span class="tag">BoltzGen</span>
+          <span class="tag">RFdiffusion</span>
+          <span class="tag">LigandMPNN</span>
+        </div>
+      </section>
+
+      <section class="project-layout">
+        <article class="block">
+          <h2>Project Overview</h2>
+          <p class="section-lead">
+            This project aims to localize and characterize lysine-linked PTM states by designing de novo binders that enrich modified species with structural specificity.
+          </p>
+          <h2>Research Motivation</h2>
+          <p class="section-lead">
+            Existing PTM capture approaches often struggle with selectivity and spatial precision. A topology-constrained binder architecture can improve recognition fidelity.
+          </p>
+        </article>
+
+        <article class="block">
+          <h2>Methods / Pipeline</h2>
+          <ul class="bullets">
+            <li>Designed pure-helical pseudocycle backbones to enforce geometric constraints.</li>
+            <li>Integrated BoltzGen + RFdiffusion + LigandMPNN for generation and sequence design.</li>
+            <li>Applied geometry-aware filtering for helix packing, stability, and binding pocket quality.</li>
+            <li>Prioritized candidates using a fully computational PTM-specific screening workflow.</li>
+          </ul>
+        </article>
+
+        <article class="block" style="grid-column: 1 / -1">
+          <h2>My Contributions</h2>
+          <ul class="bullets">
+            <li>Constructed end-to-end computational workflow for PTM-focused binder generation and triage.</li>
+            <li>Defined structure-quality heuristics and thresholds for candidate ranking.</li>
+            <li>Built an iterative analysis loop linking topology design and docking-aware refinement.</li>
+          </ul>
+        </article>
+
+        <article class="block">
+          <h2>Key Outcomes</h2>
+          <ul class="bullets">
+            <li>Generated constrained binder families with improved structural coherence.</li>
+            <li>Reduced downstream search space through geometry-first candidate filtering.</li>
+            <li>Established reusable design protocol for future PTM classes.</li>
+          </ul>
+        </article>
+
+        <article class="block">
+          <h2>Related Tools / Skills</h2>
+          <ul class="bullets">
+            <li>BoltzGen, RFdiffusion, LigandMPNN, structural scoring scripts</li>
+            <li>Protein geometry evaluation and quality control workflow design</li>
+            <li>Computational prioritization for experimental handoff</li>
+          </ul>
+        </article>
+      </section>
+
+      <footer class="footer">© <span id="year"></span> Haixi Zhao</footer>
+    </main>
+    <script src="../scripts/main.js"></script>
+  </body>
+</html>

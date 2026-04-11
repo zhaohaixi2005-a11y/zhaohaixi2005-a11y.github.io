@@ -3,308 +3,254 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Haixi | Portfolio</title>
-    <meta name="description" content="Haixi's personal portfolio website." />
-    <style>
-      @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;600&family=Noto+Sans+SC:wght@400;500;700&display=swap");
-
-      :root {
-        --bg-0: #f4f8ff;
-        --bg-1: #dbeafe;
-        --bg-2: #bbf7d0;
-        --ink-0: #0f172a;
-        --ink-1: #334155;
-        --card: rgba(255, 255, 255, 0.78);
-        --line: rgba(15, 23, 42, 0.12);
-        --accent: #0f766e;
-        --accent-2: #0369a1;
-        --shadow: 0 20px 50px rgba(15, 23, 42, 0.12);
-      }
-
-      * {
-        box-sizing: border-box;
-      }
-
-      html,
-      body {
-        margin: 0;
-        min-height: 100%;
-      }
-
-      body {
-        font-family: "Noto Sans SC", "Space Grotesk", "Avenir Next", sans-serif;
-        color: var(--ink-0);
-        background: radial-gradient(90vmax 90vmax at 15% -10%, var(--bg-2), transparent 60%),
-          radial-gradient(80vmax 80vmax at 85% 0%, var(--bg-1), transparent 58%),
-          linear-gradient(155deg, #ffffff 0%, var(--bg-0) 55%, #ecfeff 100%);
-        line-height: 1.6;
-      }
-
-      .grain {
-        position: fixed;
-        inset: 0;
-        pointer-events: none;
-        opacity: 0.05;
-        background-image: radial-gradient(#0f172a 0.7px, transparent 0.7px);
-        background-size: 6px 6px;
-      }
-
-      .wrap {
-        width: min(1080px, calc(100vw - 40px));
-        margin: 26px auto 44px;
-      }
-
-      .nav {
-        position: sticky;
-        top: 16px;
-        z-index: 5;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 16px;
-        padding: 12px 16px;
-        border: 1px solid var(--line);
-        border-radius: 14px;
-        background: rgba(255, 255, 255, 0.72);
-        backdrop-filter: blur(8px);
-      }
-
-      .brand {
-        font-family: "Space Grotesk", "Noto Sans SC", sans-serif;
-        font-weight: 700;
-        letter-spacing: 0.4px;
-      }
-
-      .links {
-        display: flex;
-        gap: 14px;
-        flex-wrap: wrap;
-      }
-
-      .links a {
-        color: var(--ink-1);
-        text-decoration: none;
-        font-weight: 500;
-        font-size: 14px;
-      }
-
-      .links a:hover {
-        color: var(--accent);
-      }
-
-      .hero {
-        margin-top: 22px;
-        padding: 38px 28px;
-        border: 1px solid var(--line);
-        border-radius: 24px;
-        background: var(--card);
-        box-shadow: var(--shadow);
-        overflow: hidden;
-        position: relative;
-        animation: rise 0.75s ease both;
-      }
-
-      .hero::after {
-        content: "";
-        position: absolute;
-        width: 280px;
-        height: 280px;
-        right: -80px;
-        top: -80px;
-        border-radius: 999px;
-        background: linear-gradient(160deg, rgba(14, 116, 144, 0.26), rgba(15, 118, 110, 0.08));
-      }
-
-      .chip {
-        display: inline-block;
-        padding: 4px 10px;
-        border-radius: 999px;
-        border: 1px solid var(--line);
-        font-family: "JetBrains Mono", monospace;
-        font-size: 12px;
-        color: var(--ink-1);
-        background: rgba(255, 255, 255, 0.8);
-      }
-
-      h1 {
-        margin: 12px 0 10px;
-        font-family: "Space Grotesk", "Noto Sans SC", sans-serif;
-        font-size: clamp(30px, 6vw, 58px);
-        line-height: 1.08;
-        letter-spacing: -0.03em;
-      }
-
-      .lead {
-        max-width: 680px;
-        color: var(--ink-1);
-        font-size: clamp(16px, 2.6vw, 20px);
-      }
-
-      .actions {
-        margin-top: 22px;
-        display: flex;
-        gap: 12px;
-        flex-wrap: wrap;
-      }
-
-      .btn {
-        display: inline-block;
-        border-radius: 12px;
-        padding: 10px 16px;
-        text-decoration: none;
-        font-weight: 600;
-      }
-
-      .btn.primary {
-        background: linear-gradient(120deg, var(--accent), var(--accent-2));
-        color: #fff;
-      }
-
-      .btn.ghost {
-        border: 1px solid var(--line);
-        color: var(--ink-0);
-        background: #fff;
-      }
-
-      .grid {
-        margin-top: 18px;
-        display: grid;
-        gap: 16px;
-        grid-template-columns: repeat(12, 1fr);
-      }
-
-      .card {
-        grid-column: span 12;
-        border: 1px solid var(--line);
-        border-radius: 18px;
-        background: var(--card);
-        padding: 22px;
-        box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
-        animation: rise 0.8s ease both;
-      }
-
-      .card h2 {
-        margin: 0 0 8px;
-        font-family: "Space Grotesk", "Noto Sans SC", sans-serif;
-        font-size: clamp(22px, 4vw, 28px);
-      }
-
-      .muted {
-        color: var(--ink-1);
-      }
-
-      .projects {
-        display: grid;
-        gap: 12px;
-        margin-top: 14px;
-      }
-
-      .project {
-        border: 1px dashed rgba(15, 23, 42, 0.18);
-        border-radius: 12px;
-        padding: 12px 14px;
-        background: rgba(255, 255, 255, 0.68);
-      }
-
-      .project strong {
-        font-family: "Space Grotesk", "Noto Sans SC", sans-serif;
-        font-size: 17px;
-      }
-
-      footer {
-        margin-top: 18px;
-        text-align: center;
-        color: var(--ink-1);
-        font-size: 14px;
-      }
-
-      @keyframes rise {
-        from {
-          opacity: 0;
-          transform: translateY(16px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      @media (min-width: 860px) {
-        .about {
-          grid-column: span 7;
-        }
-
-        .skills {
-          grid-column: span 5;
-        }
-      }
-    </style>
+    <title>Haixi Zhao | Computational Biology & AI Protein Design</title>
+    <meta
+      name="description"
+      content="Haixi Zhao's visual CV and research portfolio: AI-guided protein design, computational biology, and experiment-integrated research."
+    />
+    <link rel="stylesheet" href="styles/main.css" />
   </head>
   <body>
-    <div class="grain" aria-hidden="true"></div>
-    <div class="wrap">
-      <nav class="nav">
-        <div class="brand">Haixi.dev</div>
-        <div class="links">
+    <main class="shell">
+      <header class="topbar">
+        <div class="logo"><span class="dot"></span>Haixi Zhao · Research Portfolio</div>
+        <nav class="navlinks">
           <a href="#about">About</a>
-          <a href="#projects">Projects</a>
+          <a href="#research">Research</a>
+          <a href="#publications">Publications</a>
+          <a href="#toolkit">Toolkit</a>
+          <a href="#vision">Vision</a>
           <a href="#contact">Contact</a>
-        </div>
-      </nav>
-
-      <header class="hero">
-        <span class="chip">zhaohaixi2005-a11y.github.io</span>
-        <h1>Hi, I am Haixi.<br />Building with curiosity.</h1>
-        <p class="lead">你好，我是 Haixi。这里是我的个人主页，聚焦于开发、学习记录和正在做的项目。这个页面会持续更新。</p>
-        <div class="actions">
-          <a class="btn primary" href="https://github.com/zhaohaixi2005-a11y" target="_blank" rel="noreferrer">GitHub Profile</a>
-          <a class="btn ghost" href="#projects">View Projects</a>
-        </div>
+        </nav>
       </header>
 
-      <section class="grid" id="about">
-        <article class="card about" style="animation-delay: 0.12s">
-          <h2>About Me</h2>
-          <p class="muted">I enjoy turning ideas into clean, useful products. I care about accessibility, practical design, and learning by building real things.</p>
-          <p class="muted">你可以把这里当作我的公开工作台: 我会放项目链接、实验和成长路线。</p>
-        </article>
+      <section class="hero reveal is-visible">
+        <div class="hero-grid">
+          <div>
+            <p class="kicker">Visual CV · Future Research Builder</p>
+            <h1>Haixi Zhao</h1>
+            <p class="tagline">
+              Computational Biology / AI Protein Design researcher bridging algorithmic design with experimental validation.
+              Focus areas include de novo protein design, PTM capture binders, membrane proteins, single-cell transcriptomics,
+              and directed evolution.
+            </p>
+            <div class="hero-actions">
+              <a class="btn primary" href="#research">Enter Research Gateways</a>
+              <a class="btn" href="assets/HAIXI_CV.pdf" target="_blank" rel="noreferrer">Open CV (PDF)</a>
+              <a class="btn" href="https://github.com/zhaohaixi2005-a11y" target="_blank" rel="noreferrer">GitHub</a>
+            </div>
+          </div>
 
-        <article class="card skills" style="animation-delay: 0.2s">
-          <h2>Focus</h2>
-          <p class="muted">Frontend engineering, product thinking, accessibility, and developer tooling.</p>
-          <p class="muted">Current mode: <strong>Ship fast, iterate weekly.</strong></p>
-        </article>
+          <div class="metrics">
+            <div class="metric">
+              <strong>6</strong>
+              <span>Clickable research gateways</span>
+            </div>
+            <div class="metric">
+              <strong>1 SCI</strong>
+              <span>Cellular & Molecular Biology Letters (IF 10.2)</span>
+            </div>
+            <div class="metric">
+              <strong>Cross-domain</strong>
+              <span>AI design · structural biology · wet lab validation</span>
+            </div>
+          </div>
+        </div>
       </section>
 
-      <section class="card" id="projects" style="animation-delay: 0.26s">
-        <h2>Projects</h2>
-        <p class="muted">先放 3 个卡片位，你后续把真实仓库链接填进去即可。</p>
-        <div class="projects">
-          <article class="project">
-            <strong>Project 01</strong>
-            <p class="muted">A short one-line summary of what it does and why it matters.</p>
+      <section class="section reveal" id="about">
+        <h2>About</h2>
+        <p class="section-lead">
+          我是 Haixi，一名聚焦计算生物学与 AI 蛋白设计的青年研究者。我关注的问题是：如何把生成式模型、结构约束和实验验证整合成可迭代的研究系统，
+          让 protein design 从“单点预测”走向“可验证、可放大、可工程化”的研究路径。
+        </p>
+      </section>
+
+      <section class="section reveal" id="research">
+        <h2>Research Experience / Selected Works</h2>
+        <p class="section-lead">
+          每个模块都是独立研究专题入口（research portal）。点击后进入该项目详情页，查看动机、问题定义、方法管线、个人贡献与关键结果。
+        </p>
+
+        <div class="research-grid">
+          <a class="portal span-6" href="projects/ptm-capture-binders.html">
+            <div class="portal-top">
+              <h3 class="portal-title">De Novo Design of PTM Capture Binders</h3>
+              <span class="portal-time">Dec 2025 - Present</span>
+            </div>
+            <div class="tags">
+              <span class="tag">Peking University</span>
+              <span class="tag">BoltzGen</span>
+              <span class="tag">RFdiffusion</span>
+              <span class="tag">LigandMPNN</span>
+            </div>
+            <p class="portal-summary">Designed pure-helical pseudocycle binders to capture Lys-LCA PTM species with geometry-aware filtering and full computational prioritization.</p>
+            <span class="portal-link">Open portal →</span>
+          </a>
+
+          <a class="portal span-6" href="projects/membrane-protein-design.html">
+            <div class="portal-top">
+              <h3 class="portal-title">Functional Membrane Protein Design</h3>
+              <span class="portal-time">Jun 2025 - Sep 2025</span>
+            </div>
+            <div class="tags">
+              <span class="tag">Westlake University</span>
+              <span class="tag">AlphaFold3</span>
+              <span class="tag">RFdiffusion</span>
+              <span class="tag">Cryo-EM</span>
+            </div>
+            <p class="portal-summary">Built state-specific design seeds for open/closed conformations and explored bridge elements coupling conformational transitions and function.</p>
+            <span class="portal-link">Open portal →</span>
+          </a>
+
+          <a class="portal span-6" href="projects/nox-directed-evolution.html">
+            <div class="portal-top">
+              <h3 class="portal-title">NOX Optimization via Directed Evolution</h3>
+              <span class="portal-time">Mar 2024 - Present</span>
+            </div>
+            <div class="tags">
+              <span class="tag">HUST</span>
+              <span class="tag">MEGA-X</span>
+              <span class="tag">MD Simulation</span>
+              <span class="tag">Mutagenesis</span>
+            </div>
+            <p class="portal-summary">Combined sequence analysis, docking, thermodynamic modeling, and evolution strategy to improve NADH oxidation and H2O2 output.</p>
+            <span class="portal-link">Open portal →</span>
+          </a>
+
+          <a class="portal span-6" href="projects/hypoxia-organoids.html">
+            <div class="portal-top">
+              <h3 class="portal-title">Hypoxia Responses in Colonic Organoids</h3>
+              <span class="portal-time">Oct 2024 - Mar 2025</span>
+            </div>
+            <div class="tags">
+              <span class="tag">Microfluidics</span>
+              <span class="tag">scRNA-seq</span>
+              <span class="tag">PCA/UMAP</span>
+              <span class="tag">QC Tuning</span>
+            </div>
+            <p class="portal-summary">Profiled hypoxia and nutrient-deprivation effects on organoid cell states with optimized single-cell preprocessing and visualization.</p>
+            <span class="portal-link">Open portal →</span>
+          </a>
+
+          <a class="portal span-6" href="projects/igem-triscale.html">
+            <div class="portal-top">
+              <h3 class="portal-title">iGEM 2025 TriScale Digital Twin</h3>
+              <span class="portal-time">Sep 2024 - Nov 2025</span>
+            </div>
+            <div class="tags">
+              <span class="tag">Modeling Leader</span>
+              <span class="tag">Docking</span>
+              <span class="tag">XGBoost</span>
+              <span class="tag">Gold Medal</span>
+            </div>
+            <p class="portal-summary">Led multiscale modeling integrating docking, AI-guided redesign, and growth-curve ML to guide system-level synthetic biology engineering.</p>
+            <span class="portal-link">Open portal →</span>
+          </a>
+
+          <a class="portal span-6" href="projects/culsc-nox-team.html">
+            <div class="portal-top">
+              <h3 class="portal-title">CULSC Directed-Evolution Project</h3>
+              <span class="portal-time">Apr 2024 - Jun 2025</span>
+            </div>
+            <div class="tags">
+              <span class="tag">Team Leader</span>
+              <span class="tag">NOX System</span>
+              <span class="tag">Competition</span>
+              <span class="tag">2nd Prize</span>
+            </div>
+            <p class="portal-summary">Coordinated project design, execution, and final delivery under competition constraints, with focus on reproducibility and integration.</p>
+            <span class="portal-link">Open portal →</span>
+          </a>
+        </div>
+      </section>
+
+      <section class="section reveal" id="publications">
+        <h2>Publications · Awards · Honors</h2>
+        <div class="cols">
+          <article class="subcard">
+            <h3>Selected Publications</h3>
+            <div class="timeline">
+              <div class="timeline-item">
+                <strong>2025 · Cellular & Molecular Biology Letters</strong>
+                <p class="section-lead">
+                  NSUN2-tRNA Val-CAC-axis-regulated codon-biased translation drives triple-negative breast cancer glycolysis and progression.
+                  <a href="https://doi.org/10.1186/s11658-025-00781-z" target="_blank" rel="noreferrer">DOI</a>
+                </p>
+              </div>
+              <div class="timeline-item">
+                <strong>2026 (under review)</strong>
+                <p class="section-lead">Revisiting NADH Oxidases: Classification, Product Outcomes, and System-Level Biocatalytic Applications.</p>
+              </div>
+            </div>
           </article>
-          <article class="project">
-            <strong>Project 02</strong>
-            <p class="muted">An experiment, a mini product, or a learning-by-building challenge.</p>
-          </article>
-          <article class="project">
-            <strong>Project 03</strong>
-            <p class="muted">Something in progress. Ship early, improve often.</p>
+
+          <article class="subcard">
+            <h3>Honors</h3>
+            <ul class="list">
+              <li>iGEM 2025 Gold Medal & Best iGemers (HUST-China)</li>
+              <li>2nd Prize, 10th China Undergraduate Life Sciences Competition</li>
+              <li>Scholarship for Scientific and Technological Innovation (2025)</li>
+              <li>Award for Self-Reliance and Excellence (2024, 2025)</li>
+              <li>BAIDU Technology Certification - LLM Prompt Engineer (2025)</li>
+            </ul>
           </article>
         </div>
       </section>
 
-      <section class="card" id="contact" style="animation-delay: 0.32s">
-        <h2>Contact</h2>
-        <p class="muted">Email: <a href="mailto:zhaohaixi2005@gmail.com">zhaohaixi2005@gmail.com</a></p>
-        <p class="muted">GitHub: <a href="https://github.com/zhaohaixi2005-a11y" target="_blank" rel="noreferrer">@zhaohaixi2005-a11y</a></p>
+      <section class="section reveal" id="toolkit">
+        <h2>Skills / Toolkit Ecosystem</h2>
+        <div class="cols">
+          <article class="subcard">
+            <h3>Computational Stack</h3>
+            <ul class="list">
+              <li><strong>Protein Design:</strong> AlphaFold2/3, Boltz2/gen, Chai-1, RFdiffusion, ProteinMPNN, LigandMPNN, Rosetta, PyRosetta</li>
+              <li><strong>Docking & Interaction:</strong> AutoDock4/Vina, HADDOCK, RosettaDock, ClusPro</li>
+              <li><strong>Bioinformatics:</strong> Scanpy, Python, R, Linux, HPC (Slurm)</li>
+              <li><strong>Molecular Dynamics:</strong> Gromacs, VMD</li>
+            </ul>
+          </article>
+          <article class="subcard">
+            <h3>Experimental & Platform Skills</h3>
+            <ul class="list">
+              <li>Protein expression, purification (Ni-NTA/His-tag, SEC, AKTA FPLC)</li>
+              <li>SDS-PAGE, Western blot, PCR/qPCR workflows</li>
+              <li>Cryo-EM grid preparation, vitrification, data collection</li>
+              <li>Single-cell transcriptomics and microfluidic system workflows</li>
+            </ul>
+          </article>
+        </div>
       </section>
 
-      <footer>© <span id="year">2026</span> Haixi. Built with GitHub Pages.</footer>
-    </div>
-    <script>
-      document.getElementById("year").textContent = String(new Date().getFullYear());
-    </script>
+      <section class="section reveal" id="vision">
+        <h2>Vision / Research Philosophy</h2>
+        <p class="section-lead">
+          I aim to build a research path where AI-driven structural design, mechanistic understanding, and wet-lab validation form one continuous loop.
+          The long-term goal is to create robust and reusable methodologies for programmable biomolecular systems, not just isolated project wins.
+        </p>
+      </section>
+
+      <section class="section reveal" id="contact">
+        <h2>Contact & Links</h2>
+        <div class="cols">
+          <article class="subcard">
+            <h3>Reach Me</h3>
+            <ul class="list">
+              <li>Email: <a href="mailto:zhaohaixi2005@gmail.com">zhaohaixi2005@gmail.com</a></li>
+              <li>GitHub: <a href="https://github.com/zhaohaixi2005-a11y" target="_blank" rel="noreferrer">@zhaohaixi2005-a11y</a></li>
+              <li>CV PDF: <a href="assets/HAIXI_CV.pdf" target="_blank" rel="noreferrer">Download</a></li>
+            </ul>
+          </article>
+          <article class="subcard">
+            <h3>Current Positioning</h3>
+            <p class="section-lead">Young interdisciplinary researcher connecting AI, structural biology, and experimental systems for future protein engineering.</p>
+          </article>
+        </div>
+      </section>
+
+      <footer class="footer">© <span id="year"></span> Haixi Zhao · Visual CV / Research Portfolio</footer>
+    </main>
+
+    <script src="scripts/main.js"></script>
   </body>
 </html>
