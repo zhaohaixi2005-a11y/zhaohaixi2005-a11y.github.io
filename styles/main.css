@@ -187,119 +187,51 @@ a:hover {
     radial-gradient(circle at 15% 85%, rgba(86, 247, 212, 0.2), transparent 46%);
 }
 
-.bio-viz {
+.molstar-stage {
   position: absolute;
   inset: 12px 12px 36px 12px;
-  width: calc(100% - 24px);
-  height: calc(100% - 48px);
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(181, 217, 255, 0.18);
+  background: linear-gradient(160deg, rgba(7, 18, 35, 0.78), rgba(5, 15, 30, 0.56));
   z-index: 2;
-  pointer-events: none;
 }
 
-.helix-front,
-.helix-back {
-  fill: none;
-  stroke-width: 5;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+#molstar-viewer {
+  position: absolute;
+  inset: 0;
 }
 
-.helix-front {
-  stroke: url(#helixGradA);
-  filter: drop-shadow(0 0 14px rgba(99, 201, 255, 0.64));
-  stroke-dasharray: 18 12;
-  animation: helix-flow 8.5s linear infinite;
+.molstar-fallback {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: #c7e8ff;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  background: rgba(5, 14, 26, 0.55);
 }
 
-.helix-back {
-  stroke: url(#helixGradB);
-  opacity: 0.75;
-  stroke-dasharray: 14 12;
-  animation: helix-flow 10.5s linear reverse infinite;
+.molstar-ready + .molstar-fallback {
+  display: none;
 }
 
-.helix-link {
-  stroke: rgba(192, 220, 255, 0.56);
-  stroke-width: 1.4;
-  stroke-linecap: round;
-  opacity: 0.72;
-  animation: link-pulse 2.3s ease-in-out infinite;
+/* Mol* default UI can be visually heavy; keep the viewport and hide surrounding chrome. */
+.molstar-stage .msp-plugin,
+.molstar-stage .msp-layout-standard,
+.molstar-stage .msp-viewport {
+  background: transparent !important;
 }
 
-.helix-link.l2 {
-  animation-delay: 0.2s;
-}
-
-.helix-link.l3 {
-  animation-delay: 0.4s;
-}
-
-.helix-link.l4 {
-  animation-delay: 0.6s;
-}
-
-.helix-link.l5 {
-  animation-delay: 0.8s;
-}
-
-.helix-link.l6 {
-  animation-delay: 1s;
-}
-
-.helix-link.l7 {
-  animation-delay: 1.2s;
-}
-
-.ribbon-main {
-  fill: none;
-  stroke: rgba(124, 250, 212, 0.7);
-  stroke-width: 7;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  filter: drop-shadow(0 0 12px rgba(86, 247, 212, 0.46));
-}
-
-.beta-arrow {
-  fill: rgba(124, 250, 212, 0.82);
-  filter: drop-shadow(0 0 10px rgba(86, 247, 212, 0.45));
-}
-
-.ai-net {
-  fill: none;
-  stroke: rgba(182, 193, 255, 0.78);
-  stroke-width: 2;
-  stroke-dasharray: 6 8;
-  animation: dash-shift 7s linear infinite;
-}
-
-.ai-node {
-  fill: #dce8ff;
-  filter: drop-shadow(0 0 8px rgba(193, 210, 255, 0.82));
-  animation: pulse 2.2s ease-in-out infinite;
-}
-
-.ai-node.n2 {
-  animation-delay: 0.2s;
-}
-
-.ai-node.n3 {
-  animation-delay: 0.4s;
-}
-
-.ai-node.n4 {
-  animation-delay: 0.6s;
-}
-
-.ai-node.n5 {
-  animation-delay: 0.8s;
-}
-
-.ai-node.n6 {
-  animation-delay: 1s;
-}
-
-.ai-node.n7 {
-  animation-delay: 1.2s;
+.molstar-stage .msp-layout-expanded,
+.molstar-stage .msp-top-right-controls,
+.molstar-stage .msp-top-left-controls,
+.molstar-stage .msp-control-panel-wrapper,
+.molstar-stage .msp-sequence-wrapper,
+.molstar-stage .msp-log {
+  display: none !important;
 }
 
 .viz-legend {
@@ -330,64 +262,6 @@ a:hover {
   background: rgba(5, 14, 26, 0.64);
   z-index: 3;
   pointer-events: none;
-}
-
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes ribbon-flow {
-  from {
-    stroke-dashoffset: 0;
-  }
-  to {
-    stroke-dashoffset: -220;
-  }
-}
-
-@keyframes helix-flow {
-  from {
-    stroke-dashoffset: 0;
-  }
-  to {
-    stroke-dashoffset: -180;
-  }
-}
-
-@keyframes link-pulse {
-  0%,
-  100% {
-    opacity: 0.28;
-  }
-  50% {
-    opacity: 0.9;
-  }
-}
-
-@keyframes dash-shift {
-  from {
-    stroke-dashoffset: 0;
-  }
-  to {
-    stroke-dashoffset: -140;
-  }
-}
-
-@keyframes pulse {
-  0%,
-  100% {
-    opacity: 0.5;
-    transform: scale(0.8);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.15);
-  }
 }
 
 .kicker {
@@ -713,7 +587,7 @@ a:hover {
     grid-template-columns: 1fr;
   }
 
-  .bio-viz {
+  .molstar-stage {
     inset: 14px 10px 40px 10px;
   }
 
