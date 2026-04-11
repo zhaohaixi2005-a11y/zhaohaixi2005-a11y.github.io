@@ -453,10 +453,10 @@ a:hover {
 }
 
 .portal-top {
-  display: flex;
-  justify-content: space-between;
-  gap: 8px;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 6px;
+  align-items: start;
 }
 
 .project-meta {
@@ -464,14 +464,18 @@ a:hover {
   flex-direction: column;
   align-items: flex-end;
   gap: 3px;
-  margin-left: 12px;
+  margin-left: 0;
   flex-shrink: 0;
-  width: min(58%, 340px);
+  width: 100%;
 }
 
 .portal-title {
   margin: 0;
-  font-size: 20px;
+  font-size: clamp(18px, 1.7vw, 22px);
+  line-height: 1.25;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   font-family: "Space Grotesk", "Noto Sans SC", sans-serif;
   color: var(--white);
 }
@@ -479,7 +483,7 @@ a:hover {
 .portal-time {
   font-family: "JetBrains Mono", monospace;
   color: var(--muted);
-  font-size: 12px;
+  font-size: clamp(11px, 0.92vw, 12px);
   width: 100%;
   text-align: right;
 }
@@ -635,14 +639,15 @@ a:hover {
     font-size: 12px;
   }
 
-  .portal-top {
-    flex-direction: column;
-    gap: 4px;
-  }
+  .portal-top { gap: 4px; }
 
   .project-meta {
     align-items: flex-start;
-    margin-left: 0;
+    width: 100%;
+  }
+
+  .portal-title {
+    font-size: 18px;
   }
 
   .project-affiliation {
