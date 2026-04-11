@@ -9,8 +9,10 @@
       content="Layered personal research homepage of Haixi Zhao, focused on AI-guided protein design and computational biology."
     />
     <link rel="stylesheet" href="styles/main.css" />
+    <script defer src="https://cdn.jsdelivr.net/npm/ngl@2.0.0-dev.37/dist/ngl.js"></script>
   </head>
   <body>
+    <canvas id="site-particles" class="site-particles" aria-hidden="true"></canvas>
     <main class="shell">
       <header class="topbar">
         <div class="logo"><span class="dot"></span>Haixi Zhao · Research Interface</div>
@@ -46,51 +48,17 @@
                 <span>Research and competition gateways</span>
                 <em class="metric-jump">Jump to gateways →</em>
               </a>
-              <a class="metric metric-link" href="projects/membrane-protein-design.html">
+              <a class="metric metric-link no-nav-link" href="#" role="button" aria-disabled="true">
                 <strong>Cross-domain</strong>
                 <span>AI design · structural biology · wet-lab validation</span>
                 <em class="metric-jump">View representative project →</em>
               </a>
             </div>
 
-            <div class="hero-visual" aria-hidden="true">
-              <canvas id="quantum-field" class="bio-canvas"></canvas>
-              <svg class="bio-viz" viewBox="0 0 420 250" role="presentation">
-                <defs>
-                  <linearGradient id="helixGradA" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stop-color="#6efee0" stop-opacity="0.4" />
-                    <stop offset="52%" stop-color="#66c9ff" stop-opacity="0.95" />
-                    <stop offset="100%" stop-color="#b9a9ff" stop-opacity="0.45" />
-                  </linearGradient>
-                  <linearGradient id="helixGradB" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stop-color="#b9a9ff" stop-opacity="0.35" />
-                    <stop offset="100%" stop-color="#72f0ff" stop-opacity="0.85" />
-                  </linearGradient>
-                </defs>
-
-                <path class="helix-front" fill="none" d="M28 170 C90 80, 140 84, 194 170 S304 254, 374 156" />
-                <path class="helix-back" fill="none" d="M28 196 C90 106, 140 110, 194 196 S304 280, 374 182" />
-                <line class="helix-link l1" x1="60" y1="148" x2="60" y2="173" />
-                <line class="helix-link l2" x1="104" y1="128" x2="104" y2="153" />
-                <line class="helix-link l3" x1="148" y1="138" x2="148" y2="163" />
-                <line class="helix-link l4" x1="194" y1="170" x2="194" y2="196" />
-                <line class="helix-link l5" x1="240" y1="204" x2="240" y2="229" />
-                <line class="helix-link l6" x1="286" y1="220" x2="286" y2="245" />
-                <line class="helix-link l7" x1="332" y1="200" x2="332" y2="225" />
-
-                <path class="ribbon-main" fill="none" d="M34 78 C78 54, 138 64, 170 92 C210 128, 262 128, 326 104" />
-                <polygon class="beta-arrow" points="324,95 362,102 328,116" />
-
-                <polyline class="ai-net" fill="none" points="58,42 112,28 152,48 202,24 246,46 292,30 346,46" />
-                <circle class="ai-node n1" cx="58" cy="42" r="3.4" />
-                <circle class="ai-node n2" cx="112" cy="28" r="3.4" />
-                <circle class="ai-node n3" cx="152" cy="48" r="3.4" />
-                <circle class="ai-node n4" cx="202" cy="24" r="3.4" />
-                <circle class="ai-node n5" cx="246" cy="46" r="3.4" />
-                <circle class="ai-node n6" cx="292" cy="30" r="3.4" />
-                <circle class="ai-node n7" cx="346" cy="46" r="3.4" />
-              </svg>
-              <div class="viz-legend">alpha-helix bundle · protein ribbon · ai fold graph</div>
+            <div class="hero-visual">
+              <div id="protein-stage" class="protein-stage" data-pdb-source="rcsb://1crn"></div>
+              <div id="protein-fallback" class="protein-fallback">Loading protein 3D model...</div>
+              <div class="viz-legend">interactive protein structure · auto-rotate · drag to explore</div>
               <div class="chipline">protein topology / AI network / quantum field / model-guided filtering</div>
             </div>
           </div>
