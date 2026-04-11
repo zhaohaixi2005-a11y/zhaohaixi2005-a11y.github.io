@@ -466,6 +466,7 @@ a:hover {
   gap: 3px;
   margin-left: 12px;
   flex-shrink: 0;
+  width: min(58%, 340px);
 }
 
 .portal-title {
@@ -479,13 +480,18 @@ a:hover {
   font-family: "JetBrains Mono", monospace;
   color: var(--muted);
   font-size: 12px;
+  width: 100%;
+  text-align: right;
 }
 
 .project-affiliation {
   margin: 0;
   color: rgba(190, 214, 238, 0.78);
-  font-size: 11px;
+  font-size: clamp(9px, 0.68vw, 11px);
   text-align: right;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   letter-spacing: 0.01em;
 }
 
@@ -640,7 +646,11 @@ a:hover {
   }
 
   .project-affiliation {
+    font-size: 10px;
     text-align: left;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
   }
 }
 
