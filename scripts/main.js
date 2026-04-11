@@ -110,8 +110,8 @@
       s.particles.push({
         x: Math.random() * s.width,
         y: Math.random() * s.height,
-        vx: (Math.random() - 0.5) * 0.34,
-        vy: (Math.random() - 0.5) * 0.34,
+        vx: (Math.random() - 0.5) * 0.46,
+        vy: (Math.random() - 0.5) * 0.46,
         r: 0.8 + Math.random() * 1.6
       });
     }
@@ -224,7 +224,7 @@
         vr: (Math.random() - 0.5) * 0.08,
         life: 0,
         ttl: 30 + Math.random() * 18,
-        size: 8 + Math.random() * 3,
+        size: 9 + Math.random() * 3,
         char: s.chars[Math.floor(Math.random() * s.chars.length)]
       });
     }
@@ -251,12 +251,12 @@
       f.vy += 0.003;
       f.vx *= 0.994;
 
-      var alpha = (1 - f.life / f.ttl) * 0.62;
+      var alpha = (1 - f.life / f.ttl) * 0.82;
       ctx.save();
       ctx.translate(f.x, f.y);
       ctx.rotate(f.rot);
       ctx.font = f.size.toFixed(1) + "px JetBrains Mono, monospace";
-      ctx.fillStyle = "rgba(176, 225, 255," + alpha.toFixed(3) + ")";
+      ctx.fillStyle = "rgba(214, 244, 255," + alpha.toFixed(3) + ")";
       ctx.fillText(f.char, 0, 0);
       ctx.restore();
     }
@@ -278,7 +278,7 @@
     if (!reducedMotion) {
       var onMouseMove = function (ev) {
         var now = performance.now();
-        if (now - fragmentState.lastSpawnAt < 54) return;
+        if (now - fragmentState.lastSpawnAt < 88) return;
         fragmentState.lastSpawnAt = now;
         spawnCodeFragments(ev.clientX, ev.clientY);
       };
