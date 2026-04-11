@@ -3,7 +3,7 @@
 :root {
   --bg: #041024;
   --bg-soft: #061833;
-  --panel: rgba(14, 29, 55, 0.76);
+  --panel: rgba(14, 29, 55, 0.58);
   --panel-strong: rgba(10, 23, 46, 0.9);
   --line: rgba(181, 217, 255, 0.2);
   --text: #eaf4ff;
@@ -45,7 +45,7 @@ body {
   width: 100%;
   height: 100%;
   pointer-events: none;
-  opacity: 0.62;
+  opacity: 0.9;
   z-index: 0;
 }
 
@@ -55,8 +55,9 @@ body {
   width: 100%;
   height: 100%;
   pointer-events: none;
-  opacity: 0.72;
-  z-index: 1;
+  opacity: 0.96;
+  z-index: 4;
+  mix-blend-mode: screen;
 }
 
 body::before {
@@ -146,7 +147,7 @@ a:hover {
   border: 1px solid var(--line);
   border-radius: var(--radius-xl);
   padding: clamp(24px, 4.4vw, 44px);
-  background: linear-gradient(145deg, rgba(12, 28, 53, 0.92), rgba(10, 25, 47, 0.72));
+  background: linear-gradient(145deg, rgba(12, 28, 53, 0.76), rgba(10, 25, 47, 0.52));
   box-shadow: var(--shadow);
   overflow: hidden;
   position: relative;
@@ -332,7 +333,7 @@ a:hover {
 
 .metric {
   border: 1px solid rgba(181, 217, 255, 0.18);
-  background: rgba(12, 26, 49, 0.74);
+  background: rgba(12, 26, 49, 0.56);
   border-radius: 14px;
   padding: 12px;
 }
@@ -429,7 +430,7 @@ a:hover {
   grid-column: span 12;
   border: 1px solid rgba(181, 217, 255, 0.22);
   border-radius: 16px;
-  background: linear-gradient(145deg, rgba(11, 26, 49, 0.92), rgba(9, 23, 43, 0.72));
+  background: linear-gradient(145deg, rgba(11, 26, 49, 0.76), rgba(9, 23, 43, 0.5));
   padding: 16px;
   position: relative;
   overflow: hidden;
@@ -536,7 +537,7 @@ a:hover {
   border: 1px solid rgba(181, 217, 255, 0.2);
   border-radius: 14px;
   padding: 14px;
-  background: rgba(11, 26, 49, 0.76);
+  background: rgba(11, 26, 49, 0.58);
 }
 
 .award-card h3 {
@@ -561,7 +562,7 @@ a:hover {
   border: 1px solid rgba(181, 217, 255, 0.18);
   border-radius: 14px;
   padding: 14px;
-  background: rgba(10, 24, 45, 0.74);
+  background: rgba(10, 24, 45, 0.58);
 }
 
 .subcard h3 {
