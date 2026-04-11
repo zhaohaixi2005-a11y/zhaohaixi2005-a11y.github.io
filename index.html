@@ -1,44 +1,310 @@
 <!doctype html>
-<html lang="en">
+<html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Haixi | GitHub Pages</title>
+    <title>Haixi | Portfolio</title>
+    <meta name="description" content="Haixi's personal portfolio website." />
     <style>
-      :root { color-scheme: light; }
+      @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;600&family=Noto+Sans+SC:wght@400;500;700&display=swap");
+
+      :root {
+        --bg-0: #f4f8ff;
+        --bg-1: #dbeafe;
+        --bg-2: #bbf7d0;
+        --ink-0: #0f172a;
+        --ink-1: #334155;
+        --card: rgba(255, 255, 255, 0.78);
+        --line: rgba(15, 23, 42, 0.12);
+        --accent: #0f766e;
+        --accent-2: #0369a1;
+        --shadow: 0 20px 50px rgba(15, 23, 42, 0.12);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
       body {
         margin: 0;
-        min-height: 100vh;
+        min-height: 100%;
+      }
+
+      body {
+        font-family: "Noto Sans SC", "Space Grotesk", "Avenir Next", sans-serif;
+        color: var(--ink-0);
+        background: radial-gradient(90vmax 90vmax at 15% -10%, var(--bg-2), transparent 60%),
+          radial-gradient(80vmax 80vmax at 85% 0%, var(--bg-1), transparent 58%),
+          linear-gradient(155deg, #ffffff 0%, var(--bg-0) 55%, #ecfeff 100%);
+        line-height: 1.6;
+      }
+
+      .grain {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        opacity: 0.05;
+        background-image: radial-gradient(#0f172a 0.7px, transparent 0.7px);
+        background-size: 6px 6px;
+      }
+
+      .wrap {
+        width: min(1080px, calc(100vw - 40px));
+        margin: 26px auto 44px;
+      }
+
+      .nav {
+        position: sticky;
+        top: 16px;
+        z-index: 5;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 12px 16px;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.72);
+        backdrop-filter: blur(8px);
+      }
+
+      .brand {
+        font-family: "Space Grotesk", "Noto Sans SC", sans-serif;
+        font-weight: 700;
+        letter-spacing: 0.4px;
+      }
+
+      .links {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+      }
+
+      .links a {
+        color: var(--ink-1);
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 14px;
+      }
+
+      .links a:hover {
+        color: var(--accent);
+      }
+
+      .hero {
+        margin-top: 22px;
+        padding: 38px 28px;
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        background: var(--card);
+        box-shadow: var(--shadow);
+        overflow: hidden;
+        position: relative;
+        animation: rise 0.75s ease both;
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        width: 280px;
+        height: 280px;
+        right: -80px;
+        top: -80px;
+        border-radius: 999px;
+        background: linear-gradient(160deg, rgba(14, 116, 144, 0.26), rgba(15, 118, 110, 0.08));
+      }
+
+      .chip {
+        display: inline-block;
+        padding: 4px 10px;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        font-family: "JetBrains Mono", monospace;
+        font-size: 12px;
+        color: var(--ink-1);
+        background: rgba(255, 255, 255, 0.8);
+      }
+
+      h1 {
+        margin: 12px 0 10px;
+        font-family: "Space Grotesk", "Noto Sans SC", sans-serif;
+        font-size: clamp(30px, 6vw, 58px);
+        line-height: 1.08;
+        letter-spacing: -0.03em;
+      }
+
+      .lead {
+        max-width: 680px;
+        color: var(--ink-1);
+        font-size: clamp(16px, 2.6vw, 20px);
+      }
+
+      .actions {
+        margin-top: 22px;
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        display: inline-block;
+        border-radius: 12px;
+        padding: 10px 16px;
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      .btn.primary {
+        background: linear-gradient(120deg, var(--accent), var(--accent-2));
+        color: #fff;
+      }
+
+      .btn.ghost {
+        border: 1px solid var(--line);
+        color: var(--ink-0);
+        background: #fff;
+      }
+
+      .grid {
+        margin-top: 18px;
         display: grid;
-        place-items: center;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-        background: linear-gradient(135deg, #f6f8fa 0%, #e6edf3 100%);
-        color: #0b1f33;
+        gap: 16px;
+        grid-template-columns: repeat(12, 1fr);
       }
-      main {
+
+      .card {
+        grid-column: span 12;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: var(--card);
+        padding: 22px;
+        box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
+        animation: rise 0.8s ease both;
+      }
+
+      .card h2 {
+        margin: 0 0 8px;
+        font-family: "Space Grotesk", "Noto Sans SC", sans-serif;
+        font-size: clamp(22px, 4vw, 28px);
+      }
+
+      .muted {
+        color: var(--ink-1);
+      }
+
+      .projects {
+        display: grid;
+        gap: 12px;
+        margin-top: 14px;
+      }
+
+      .project {
+        border: 1px dashed rgba(15, 23, 42, 0.18);
+        border-radius: 12px;
+        padding: 12px 14px;
+        background: rgba(255, 255, 255, 0.68);
+      }
+
+      .project strong {
+        font-family: "Space Grotesk", "Noto Sans SC", sans-serif;
+        font-size: 17px;
+      }
+
+      footer {
+        margin-top: 18px;
         text-align: center;
-        background: #ffffff;
-        border: 1px solid #d0d7de;
-        border-radius: 16px;
-        padding: 40px 28px;
-        box-shadow: 0 10px 30px rgba(11, 31, 51, 0.08);
-        width: min(680px, calc(100vw - 48px));
+        color: var(--ink-1);
+        font-size: 14px;
       }
-      h1 { margin: 0 0 10px; font-size: clamp(28px, 5vw, 42px); }
-      p { margin: 0; font-size: 18px; line-height: 1.6; }
-      code {
-        background: #f6f8fa;
-        border: 1px solid #d0d7de;
-        border-radius: 8px;
-        padding: 3px 8px;
+
+      @keyframes rise {
+        from {
+          opacity: 0;
+          transform: translateY(16px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (min-width: 860px) {
+        .about {
+          grid-column: span 7;
+        }
+
+        .skills {
+          grid-column: span 5;
+        }
       }
     </style>
   </head>
   <body>
-    <main>
-      <h1>Hello, I'm Haixi</h1>
-      <p>This site is live on GitHub Pages.</p>
-      <p>Repository: <code>zhaohaixi2005-a11y.github.io</code></p>
-    </main>
+    <div class="grain" aria-hidden="true"></div>
+    <div class="wrap">
+      <nav class="nav">
+        <div class="brand">Haixi.dev</div>
+        <div class="links">
+          <a href="#about">About</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
+
+      <header class="hero">
+        <span class="chip">zhaohaixi2005-a11y.github.io</span>
+        <h1>Hi, I am Haixi.<br />Building with curiosity.</h1>
+        <p class="lead">你好，我是 Haixi。这里是我的个人主页，聚焦于开发、学习记录和正在做的项目。这个页面会持续更新。</p>
+        <div class="actions">
+          <a class="btn primary" href="https://github.com/zhaohaixi2005-a11y" target="_blank" rel="noreferrer">GitHub Profile</a>
+          <a class="btn ghost" href="#projects">View Projects</a>
+        </div>
+      </header>
+
+      <section class="grid" id="about">
+        <article class="card about" style="animation-delay: 0.12s">
+          <h2>About Me</h2>
+          <p class="muted">I enjoy turning ideas into clean, useful products. I care about accessibility, practical design, and learning by building real things.</p>
+          <p class="muted">你可以把这里当作我的公开工作台: 我会放项目链接、实验和成长路线。</p>
+        </article>
+
+        <article class="card skills" style="animation-delay: 0.2s">
+          <h2>Focus</h2>
+          <p class="muted">Frontend engineering, product thinking, accessibility, and developer tooling.</p>
+          <p class="muted">Current mode: <strong>Ship fast, iterate weekly.</strong></p>
+        </article>
+      </section>
+
+      <section class="card" id="projects" style="animation-delay: 0.26s">
+        <h2>Projects</h2>
+        <p class="muted">先放 3 个卡片位，你后续把真实仓库链接填进去即可。</p>
+        <div class="projects">
+          <article class="project">
+            <strong>Project 01</strong>
+            <p class="muted">A short one-line summary of what it does and why it matters.</p>
+          </article>
+          <article class="project">
+            <strong>Project 02</strong>
+            <p class="muted">An experiment, a mini product, or a learning-by-building challenge.</p>
+          </article>
+          <article class="project">
+            <strong>Project 03</strong>
+            <p class="muted">Something in progress. Ship early, improve often.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="card" id="contact" style="animation-delay: 0.32s">
+        <h2>Contact</h2>
+        <p class="muted">Email: <a href="mailto:zhaohaixi2005@gmail.com">zhaohaixi2005@gmail.com</a></p>
+        <p class="muted">GitHub: <a href="https://github.com/zhaohaixi2005-a11y" target="_blank" rel="noreferrer">@zhaohaixi2005-a11y</a></p>
+      </section>
+
+      <footer>© <span id="year">2026</span> Haixi. Built with GitHub Pages.</footer>
+    </div>
+    <script>
+      document.getElementById("year").textContent = String(new Date().getFullYear());
+    </script>
   </body>
 </html>
