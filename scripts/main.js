@@ -59,15 +59,22 @@
         .then(function (loadedComponent) {
           var component = loadedComponent;
           component.addRepresentation("cartoon", {
-            colorScheme: "residueindex",
-            opacity: 0.95,
+            colorScheme: "chainname",
+            opacity: 0.92,
             roughness: 0.28,
             metalness: 0.08
           });
+          component.addRepresentation("surface", {
+            sele: "protein",
+            colorScheme: "chainname",
+            opacity: 0.16,
+            useWorker: true
+          });
           component.addRepresentation("ball+stick", {
             sele: "hetero and not water",
-            opacity: 0.86,
-            scale: 2
+            colorScheme: "element",
+            opacity: 0.96,
+            scale: 2.2
           });
           component.autoView();
           if (!reducedMotion) stage.setSpin([0, 1, 0], 0.004);
