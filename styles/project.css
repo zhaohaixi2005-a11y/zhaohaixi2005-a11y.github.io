@@ -19,50 +19,61 @@ body::after {
 }
 
 body::before {
-  opacity: 0.34;
+  opacity: 0.42;
   background:
-    radial-gradient(60rem 20rem at 50% 118%, rgba(99, 201, 255, 0.22), rgba(99, 201, 255, 0) 70%),
-    repeating-linear-gradient(
-      -10deg,
-      rgba(164, 227, 255, 0.08) 0 2px,
-      rgba(164, 227, 255, 0) 2px 24px,
-      rgba(86, 247, 212, 0.06) 24px 26px,
-      rgba(86, 247, 212, 0) 26px 52px
+    radial-gradient(60rem 20rem at 50% 118%, rgba(99, 201, 255, 0.2), rgba(99, 201, 255, 0) 72%),
+    repeating-radial-gradient(
+      ellipse 140% 58% at 50% 118%,
+      rgba(156, 226, 255, 0.22) 0 2px,
+      rgba(156, 226, 255, 0) 2px 22px,
+      rgba(86, 247, 212, 0.16) 22px 24px,
+      rgba(86, 247, 212, 0) 24px 46px
     );
-  background-size: 100% 100%, 420px 420px;
-  background-position: center center, 0 0;
-  filter: blur(10px);
-  animation: project-page-wave 20s linear infinite;
+  background-size: 100% 100%, 160% 126%;
+  background-position: center center, 50% 100%;
+  filter: blur(8px);
+  animation: project-page-ripple 22s linear infinite;
 }
 
 body::after {
-  opacity: 0.22;
+  opacity: 0.26;
   background:
-    radial-gradient(48rem 18rem at 20% 110%, rgba(86, 247, 212, 0.16), rgba(86, 247, 212, 0) 72%),
-    radial-gradient(42rem 16rem at 82% 112%, rgba(99, 201, 255, 0.16), rgba(99, 201, 255, 0) 72%);
-  filter: blur(18px);
-  animation: project-page-swell 15s ease-in-out infinite alternate;
+    repeating-radial-gradient(
+      ellipse 110% 44% at 50% 112%,
+      rgba(92, 201, 255, 0.1) 0 1px,
+      rgba(92, 201, 255, 0) 1px 18px,
+      rgba(86, 247, 212, 0.08) 18px 19px,
+      rgba(86, 247, 212, 0) 19px 36px
+    ),
+    radial-gradient(42rem 16rem at 18% 110%, rgba(86, 247, 212, 0.16), rgba(86, 247, 212, 0) 74%),
+    radial-gradient(38rem 14rem at 82% 112%, rgba(99, 201, 255, 0.14), rgba(99, 201, 255, 0) 74%);
+  background-size: 150% 118%, 100% 100%, 100% 100%;
+  background-position: 48% 100%, center center, center center;
+  filter: blur(14px);
+  animation: project-page-ripple-b 18s ease-in-out infinite alternate;
 }
 
-@keyframes project-page-wave {
+@keyframes project-page-ripple {
   0% {
-    background-position: center center, 0 0;
-    transform: translate3d(0, 0, 0);
+    background-position: center center, 46% 100%;
+    transform: translate3d(0, 0, 0) scaleY(1);
   }
   100% {
-    background-position: center center, 420px -30px;
-    transform: translate3d(0, -6px, 0);
+    background-position: center center, 54% 96%;
+    transform: translate3d(0, -8px, 0) scaleY(1.03);
   }
 }
 
-@keyframes project-page-swell {
+@keyframes project-page-ripple-b {
   0% {
-    opacity: 0.18;
+    opacity: 0.22;
+    background-position: 45% 100%, center center, center center;
     transform: translate3d(-1.5%, 0, 0) scale(1);
   }
   100% {
-    opacity: 0.28;
-    transform: translate3d(1.5%, -1%, 0) scale(1.03);
+    opacity: 0.32;
+    background-position: 55% 96%, center center, center center;
+    transform: translate3d(1.5%, -1%, 0) scale(1.02);
   }
 }
 
@@ -205,9 +216,9 @@ body::after {
 
 .project-title {
   margin: 10px 0 4px;
-  font-size: clamp(28px, 3.9vw, 38px);
-  line-height: 1.08;
-  max-width: 19ch;
+  font-size: clamp(27px, 3.55vw, 36px);
+  line-height: 1.1;
+  max-width: 21ch;
   text-wrap: balance;
   font-family: "Space Grotesk", "Noto Sans SC", sans-serif;
 }
