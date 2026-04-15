@@ -623,6 +623,34 @@ a:hover {
   margin-top: 5px;
 }
 
+.focus-list {
+  margin: 8px 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 8px;
+}
+
+.focus-list li {
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.6;
+  padding-left: 16px;
+  position: relative;
+}
+
+.focus-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.72em;
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: linear-gradient(120deg, var(--teal), var(--cyan));
+  box-shadow: 0 0 10px rgba(86, 247, 212, 0.32);
+}
+
 .timeline {
   margin-top: 10px;
   display: grid;
