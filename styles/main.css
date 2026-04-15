@@ -167,8 +167,8 @@ a:hover {
 
 .hero-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.56fr) minmax(340px, 0.82fr);
-  gap: 10px;
+  grid-template-columns: minmax(0, 1.72fr) minmax(320px, 0.72fr);
+  gap: 2px;
   align-items: start;
   position: relative;
   z-index: 2;
@@ -178,8 +178,9 @@ a:hover {
   display: grid;
   gap: 22px;
   align-content: start;
-  width: min(100%, 720px);
+  width: min(100%, 780px);
   margin: 0 auto;
+  justify-self: center;
 }
 
 .profile-flip-card {
@@ -303,6 +304,7 @@ a:hover {
 .hero-side {
   display: grid;
   gap: 12px;
+  margin-left: -10px;
 }
 
 .hero-visual {
@@ -423,9 +425,9 @@ a:hover {
 .tagline {
   margin: 0;
   color: var(--muted);
-  max-width: 40ch;
-  font-size: clamp(16px, 1.45vw, 19px);
-  line-height: 1.58;
+  max-width: 46ch;
+  font-size: clamp(15px, 1.22vw, 18px);
+  line-height: 1.62;
 }
 
 .hero-actions {
@@ -820,10 +822,15 @@ a:hover {
   .hero-copy {
     gap: 18px;
     width: 100%;
+    justify-self: stretch;
   }
 
   .profile-flip-card {
     width: min(100%, 228px);
+    margin-left: 0;
+  }
+
+  .hero-side {
     margin-left: 0;
   }
 
