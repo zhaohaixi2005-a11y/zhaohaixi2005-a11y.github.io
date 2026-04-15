@@ -174,6 +174,268 @@ a:hover {
   z-index: 2;
 }
 
+.hero-copy {
+  display: grid;
+  gap: 22px;
+  align-content: start;
+}
+
+.hero-avatar-card {
+  width: clamp(172px, 19vw, 220px);
+  aspect-ratio: 1 / 1;
+  position: relative;
+  perspective: 1500px;
+  border-radius: 26px;
+  outline: none;
+}
+
+.hero-avatar-card::before {
+  content: "";
+  position: absolute;
+  inset: -10px;
+  border-radius: 32px;
+  background:
+    radial-gradient(circle at 24% 18%, rgba(140, 223, 255, 0.24), transparent 34%),
+    radial-gradient(circle at 78% 82%, rgba(86, 247, 212, 0.16), transparent 28%);
+  filter: blur(14px);
+  opacity: 0.8;
+}
+
+.hero-avatar-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 26px;
+  transform-style: preserve-3d;
+  transition: transform 0.72s cubic-bezier(0.22, 0.74, 0.18, 1);
+}
+
+.hero-avatar-card:is(:hover, :focus-visible, :focus-within) .hero-avatar-inner {
+  transform: rotateY(180deg);
+}
+
+.hero-avatar-face {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: 26px;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border: 1px solid rgba(186, 224, 255, 0.28);
+  background:
+    linear-gradient(150deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.03) 32%, rgba(255, 255, 255, 0.06) 100%),
+    linear-gradient(145deg, rgba(15, 33, 60, 0.84), rgba(8, 18, 34, 0.9));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.14),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.03),
+    0 22px 42px rgba(2, 8, 22, 0.34);
+}
+
+.hero-avatar-face::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(118deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.02) 32%, rgba(255, 255, 255, 0.08) 58%, rgba(255, 255, 255, 0.02)),
+    radial-gradient(circle at 24% 22%, rgba(166, 236, 255, 0.16), transparent 24%),
+    linear-gradient(rgba(181, 217, 255, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(181, 217, 255, 0.07) 1px, transparent 1px);
+  background-size: auto, auto, 20px 20px, 20px 20px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero-avatar-face::after {
+  content: "";
+  position: absolute;
+  inset: 10px;
+  border-radius: 18px;
+  border: 1px solid rgba(212, 236, 255, 0.16);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero-avatar-back {
+  transform: rotateY(180deg);
+}
+
+.avatar-orbit {
+  position: absolute;
+  border-radius: 999px;
+  border: 1px solid rgba(120, 222, 255, 0.18);
+  z-index: 0;
+}
+
+.avatar-orbit-top {
+  width: 124px;
+  height: 124px;
+  top: -38px;
+  right: -26px;
+}
+
+.avatar-orbit-bottom {
+  width: 94px;
+  height: 94px;
+  bottom: -26px;
+  left: -16px;
+}
+
+.avatar-frame {
+  position: absolute;
+  inset: 22px;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+}
+
+.avatar-frame-portrait {
+  inset: 20px 26px 18px;
+}
+
+.avatar-head,
+.avatar-body {
+  position: absolute;
+}
+
+.avatar-head {
+  width: 84px;
+  height: 88px;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.avatar-body {
+  width: 114px;
+  height: 86px;
+  bottom: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.avatar-head-blocky {
+  border-radius: 22px 22px 26px 26px;
+  background:
+    linear-gradient(180deg, rgba(20, 28, 46, 0.94) 0 24%, rgba(243, 202, 167, 0.92) 24% 100%);
+  box-shadow:
+    inset 0 -8px 14px rgba(0, 0, 0, 0.12),
+    0 0 0 1px rgba(255, 255, 255, 0.03);
+}
+
+.avatar-head-blocky::before,
+.avatar-head-blocky::after {
+  content: "";
+  position: absolute;
+  top: 44px;
+  width: 12px;
+  height: 12px;
+  border-radius: 4px;
+  background: rgba(20, 24, 34, 0.84);
+}
+
+.avatar-head-blocky::before {
+  left: 18px;
+}
+
+.avatar-head-blocky::after {
+  right: 18px;
+}
+
+.avatar-body-blocky {
+  border-radius: 28px 28px 18px 18px;
+  background:
+    linear-gradient(180deg, rgba(18, 28, 46, 0.96) 0 36%, rgba(10, 17, 30, 0.92) 36% 100%);
+  clip-path: polygon(16% 14%, 84% 14%, 100% 100%, 0 100%);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+}
+
+.avatar-body-blocky::before {
+  content: "";
+  position: absolute;
+  inset: 12px 30px auto;
+  height: 20px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.avatar-head-portrait {
+  width: 80px;
+  height: 96px;
+  top: 18px;
+  border-radius: 40px 40px 36px 36px;
+  background:
+    radial-gradient(circle at 50% 70%, rgba(255, 223, 205, 0.96), rgba(244, 196, 178, 0.92) 72%, rgba(217, 167, 151, 0.84) 100%);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.04),
+    inset 0 -10px 18px rgba(110, 72, 58, 0.12);
+}
+
+.avatar-head-portrait::before {
+  content: "";
+  position: absolute;
+  inset: -6px -2px 38px;
+  border-radius: 40px 40px 18px 18px;
+  background:
+    radial-gradient(circle at 45% 10%, rgba(54, 60, 76, 0.98), rgba(20, 25, 37, 0.98) 70%);
+}
+
+.avatar-head-portrait::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -12px;
+  width: 22px;
+  height: 18px;
+  transform: translateX(-50%);
+  border-radius: 0 0 14px 14px;
+  background: rgba(240, 203, 188, 0.9);
+}
+
+.avatar-body-portrait {
+  width: 118px;
+  height: 88px;
+  bottom: 18px;
+  border-radius: 34px 34px 18px 18px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.94) 0 34%, rgba(12, 19, 32, 0.96) 34% 100%);
+  clip-path: polygon(24% 0, 76% 0, 100% 100%, 0 100%);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+}
+
+.avatar-body-portrait::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 30px;
+  width: 26px;
+  height: 44px;
+  transform: translateX(-50%);
+  clip-path: polygon(50% 0, 100% 24%, 72% 100%, 28% 100%, 0 24%);
+  background: linear-gradient(180deg, rgba(72, 126, 214, 0.96), rgba(22, 48, 92, 0.96));
+}
+
+.avatar-badge {
+  position: absolute;
+  left: 15px;
+  bottom: 15px;
+  z-index: 2;
+  border: 1px solid rgba(186, 224, 255, 0.24);
+  border-radius: 999px;
+  padding: 5px 10px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #e9f8ff;
+  background: rgba(6, 16, 31, 0.48);
+  backdrop-filter: blur(12px);
+}
+
+.hero-copy-body {
+  display: grid;
+  gap: 0;
+}
+
 .hero-side {
   display: grid;
   gap: 12px;
@@ -298,10 +560,13 @@ a:hover {
   margin: 0;
   color: var(--muted);
   max-width: 55ch;
+  max-width: 28ch;
+  font-size: clamp(19px, 2.15vw, 24px);
+  line-height: 1.5;
 }
 
 .hero-actions {
-  margin-top: 24px;
+  margin-top: 26px;
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
@@ -689,6 +954,14 @@ a:hover {
     grid-template-columns: 1fr;
   }
 
+  .hero-copy {
+    gap: 18px;
+  }
+
+  .hero-avatar-card {
+    width: min(100%, 220px);
+  }
+
   .award-list {
     grid-template-columns: 1fr;
     gap: 8px;
@@ -725,6 +998,29 @@ a:hover {
     overflow: visible;
     text-overflow: clip;
   }
+
+  .tagline {
+    max-width: 100%;
+    font-size: clamp(17px, 4.8vw, 22px);
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-avatar-card {
+    margin: 0 auto;
+  }
+
+  .hero-copy-body {
+    text-align: center;
+  }
+
+  .kicker {
+    justify-content: center;
+  }
+
+  .hero-actions {
+    justify-content: center;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -737,6 +1033,10 @@ a:hover {
   .metric-link,
   .btn,
   .reveal {
+    transition: none !important;
+  }
+
+  .hero-avatar-inner {
     transition: none !important;
   }
 }
