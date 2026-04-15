@@ -16,6 +16,11 @@
     });
   }
 
+  function get2dContext(canvas) {
+    if (!canvas) return null;
+    return canvas.getContext("2d", { alpha: true, desynchronized: true }) || canvas.getContext("2d");
+  }
+
   function initProteinViewer() {
     var mount = document.getElementById("protein-stage");
     if (!mount) return;
@@ -253,7 +258,7 @@
     document.body.insertBefore(canvas, document.body.firstChild);
 
     projectWaveState.canvas = canvas;
-    projectWaveState.ctx = canvas.getContext("2d");
+    projectWaveState.ctx = get2dContext(canvas);
     if (!projectWaveState.ctx) return;
 
     resizeProjectWaveCanvas();
@@ -321,6 +326,8 @@
     var s = backgroundState;
     var ctx = s.ctx;
     if (!ctx) return;
+    var maxLinkDistance = 140;
+    var maxLinkDistanceSq = maxLinkDistance * maxLinkDistance;
 
     ctx.clearRect(0, 0, s.width, s.height);
 
@@ -343,9 +350,10 @@
         var q = s.particles[j];
         var dx = p.x - q.x;
         var dy = p.y - q.y;
-        var dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 140) {
-          var alpha = (1 - dist / 140) * 0.55;
+        var distSq = dx * dx + dy * dy;
+        if (distSq < maxLinkDistanceSq) {
+          var dist = Math.sqrt(distSq);
+          var alpha = (1 - dist / maxLinkDistance) * 0.55;
           ctx.beginPath();
           ctx.moveTo(p.x, p.y);
           ctx.lineTo(q.x, q.y);
@@ -380,7 +388,7 @@
     if (!canvas) return;
 
     backgroundState.canvas = canvas;
-    backgroundState.ctx = canvas.getContext("2d");
+    backgroundState.ctx = get2dContext(canvas);
     if (!backgroundState.ctx) return;
 
     resizeParticleCanvas();
@@ -485,11 +493,13 @@
       ctx.restore();
     }
 
-    startFragmentAnimation();
+    if (s.fragments.length) {
+      startFragmentAnimation();
+    }
   }
 
   function startFragmentAnimation() {
-    if (reducedMotion || fragmentState.rafId || !fragmentState.ctx) return;
+    if (reducedMotion || fragmentState.rafId || !fragmentState.ctx || !fragmentState.fragments.length) return;
     fragmentState.rafId = window.requestAnimationFrame(animateFragments);
   }
 
@@ -504,11 +514,10 @@
     if (!canvas) return;
 
     fragmentState.canvas = canvas;
-    fragmentState.ctx = canvas.getContext("2d");
+    fragmentState.ctx = get2dContext(canvas);
     if (!fragmentState.ctx) return;
 
     resizeFragmentCanvas();
-    startFragmentAnimation();
 
     if (!reducedMotion) {
       var onMouseMove = function (ev) {
@@ -516,6 +525,7 @@
         if (now - fragmentState.lastSpawnAt < 96) return;
         fragmentState.lastSpawnAt = now;
         spawnCodeFragments(ev.clientX, ev.clientY);
+        startFragmentAnimation();
       };
       window.addEventListener("mousemove", onMouseMove);
       cleanups.push(function () {
@@ -525,6 +535,7 @@
 
     var onResize = function () {
       resizeFragmentCanvas();
+      if (!fragmentState.fragments.length) return;
       startFragmentAnimation();
     };
     window.addEventListener("resize", onResize);
@@ -600,8 +611,9 @@
 
     if (fragmentState.ctx) {
       resizeFragmentCanvas();
+      fragmentState.ctx.clearRect(0, 0, fragmentState.width, fragmentState.height);
       fragmentState.fragments = [];
-      startFragmentAnimation();
+      stopFragmentAnimation();
     }
   }
 
