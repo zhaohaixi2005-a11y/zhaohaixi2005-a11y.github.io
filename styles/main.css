@@ -552,6 +552,10 @@ a:hover {
   max-width: 75ch;
 }
 
+#about .section-lead {
+  max-width: none;
+}
+
 .research-grid {
   margin-top: 14px;
   display: grid;
