@@ -181,7 +181,7 @@ a:hover {
   width: min(100%, 700px);
   margin: 0;
   justify-self: end;
-  transform: translateX(28px);
+  transform: translateX(48px);
 }
 
 .profile-flip-card {
