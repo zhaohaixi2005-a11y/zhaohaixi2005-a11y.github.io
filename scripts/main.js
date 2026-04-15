@@ -83,6 +83,126 @@
       });
   }
 
+  var projectWaveState = {
+    canvas: null,
+    ctx: null,
+    dpr: 1,
+    width: 0,
+    height: 0,
+    rafId: 0,
+    lastTs: 0,
+    resizeRaf: 0,
+    layers: [
+      { base: 0.34, amp: 18, freq: 0.010, speed: 0.00026, alpha: 0.16, width: 1.4, offset: 0.0 },
+      { base: 0.48, amp: 24, freq: 0.008, speed: 0.00019, alpha: 0.12, width: 1.8, offset: 1.9 },
+      { base: 0.66, amp: 20, freq: 0.012, speed: 0.00023, alpha: 0.09, width: 1.2, offset: 3.7 }
+    ]
+  };
+
+  function resizeProjectWaveCanvas() {
+    var s = projectWaveState;
+    if (!s.canvas || !s.ctx) return;
+
+    s.dpr = Math.min(window.devicePixelRatio || 1, 2);
+    s.width = Math.max(window.innerWidth || 0, 1);
+    s.height = Math.max(window.innerHeight || 0, 1);
+    s.canvas.width = Math.floor(s.width * s.dpr);
+    s.canvas.height = Math.floor(s.height * s.dpr);
+    s.ctx.setTransform(s.dpr, 0, 0, s.dpr, 0, 0);
+  }
+
+  function drawProjectWaveFrame(timestamp) {
+    var s = projectWaveState;
+    var ctx = s.ctx;
+    if (!ctx) return;
+
+    ctx.clearRect(0, 0, s.width, s.height);
+
+    for (var i = 0; i < s.layers.length; i += 1) {
+      var layer = s.layers[i];
+      var baseY = s.height * layer.base;
+      ctx.beginPath();
+      for (var x = -20; x <= s.width + 20; x += 8) {
+        var y =
+          baseY +
+          Math.sin(x * layer.freq + timestamp * layer.speed + layer.offset) * layer.amp +
+          Math.sin(x * layer.freq * 0.46 - timestamp * layer.speed * 1.4 + layer.offset * 2.1) * (layer.amp * 0.42);
+        if (x === -20) {
+          ctx.moveTo(x, y);
+        } else {
+          ctx.lineTo(x, y);
+        }
+      }
+      ctx.strokeStyle = "rgba(132, 212, 255," + layer.alpha.toFixed(3) + ")";
+      ctx.lineWidth = layer.width;
+      ctx.stroke();
+    }
+
+    var gradient = ctx.createLinearGradient(0, s.height * 0.2, 0, s.height);
+    gradient.addColorStop(0, "rgba(110, 198, 255, 0.00)");
+    gradient.addColorStop(0.55, "rgba(110, 198, 255, 0.025)");
+    gradient.addColorStop(1, "rgba(86, 247, 212, 0.055)");
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0, 0, s.width, s.height);
+  }
+
+  function animateProjectWave(timestamp) {
+    projectWaveState.rafId = 0;
+    drawProjectWaveFrame(timestamp);
+    startProjectWaveAnimation();
+  }
+
+  function startProjectWaveAnimation() {
+    if (reducedMotion || projectWaveState.rafId || !projectWaveState.ctx) return;
+    projectWaveState.rafId = window.requestAnimationFrame(animateProjectWave);
+  }
+
+  function stopProjectWaveAnimation() {
+    if (!projectWaveState.rafId) return;
+    window.cancelAnimationFrame(projectWaveState.rafId);
+    projectWaveState.rafId = 0;
+  }
+
+  function initProjectWaveCanvas() {
+    var shell = document.querySelector(".project-shell");
+    if (!shell) return;
+
+    var canvas = document.createElement("canvas");
+    canvas.className = "project-wave-canvas";
+    canvas.setAttribute("aria-hidden", "true");
+    document.body.insertBefore(canvas, document.body.firstChild);
+
+    projectWaveState.canvas = canvas;
+    projectWaveState.ctx = canvas.getContext("2d");
+    if (!projectWaveState.ctx) return;
+
+    resizeProjectWaveCanvas();
+    drawProjectWaveFrame(0);
+    startProjectWaveAnimation();
+
+    var onResize = function () {
+      if (projectWaveState.resizeRaf) return;
+      projectWaveState.resizeRaf = window.requestAnimationFrame(function () {
+        projectWaveState.resizeRaf = 0;
+        resizeProjectWaveCanvas();
+        drawProjectWaveFrame(performance.now ? performance.now() : 0);
+        startProjectWaveAnimation();
+      });
+    };
+    window.addEventListener("resize", onResize);
+    cleanups.push(function () {
+      window.removeEventListener("resize", onResize);
+      stopProjectWaveAnimation();
+      if (projectWaveState.resizeRaf) {
+        window.cancelAnimationFrame(projectWaveState.resizeRaf);
+        projectWaveState.resizeRaf = 0;
+      }
+      if (projectWaveState.canvas && projectWaveState.canvas.parentNode) {
+        projectWaveState.canvas.parentNode.removeChild(projectWaveState.canvas);
+      }
+    });
+  }
+
   var backgroundState = {
     canvas: null,
     ctx: null,
@@ -365,6 +485,7 @@
 
   initSiteParticles();
   initCursorFragments();
+  initProjectWaveCanvas();
   initProteinViewer();
   initNoNavCards();
   initRevealObserver();
@@ -391,6 +512,12 @@
       startBackgroundAnimation();
     }
 
+    if (projectWaveState.ctx) {
+      resizeProjectWaveCanvas();
+      drawProjectWaveFrame(performance.now ? performance.now() : 0);
+      startProjectWaveAnimation();
+    }
+
     if (fragmentState.ctx) {
       resizeFragmentCanvas();
       fragmentState.fragments = [];
@@ -412,6 +539,7 @@
   document.addEventListener("visibilitychange", function () {
     if (document.visibilityState === "hidden") {
       stopBackgroundAnimation();
+      stopProjectWaveAnimation();
       stopFragmentAnimation();
       cancelRefreshFrames();
       return;
@@ -421,6 +549,7 @@
 
   window.addEventListener("pagehide", function () {
     stopBackgroundAnimation();
+    stopProjectWaveAnimation();
     stopFragmentAnimation();
     cancelRefreshFrames();
   });
