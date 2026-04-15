@@ -93,9 +93,60 @@
     lastTs: 0,
     resizeRaf: 0,
     layers: [
-      { base: 0.34, amp: 18, freq: 0.010, speed: 0.00026, alpha: 0.16, width: 1.4, offset: 0.0 },
-      { base: 0.48, amp: 24, freq: 0.008, speed: 0.00019, alpha: 0.12, width: 1.8, offset: 1.9 },
-      { base: 0.66, amp: 20, freq: 0.012, speed: 0.00023, alpha: 0.09, width: 1.2, offset: 3.7 }
+      {
+        base: 0.36,
+        ampA: 26,
+        ampB: 12,
+        ampC: 7,
+        freqA: 0.0074,
+        freqB: 0.013,
+        freqC: 0.020,
+        speedA: 0.00016,
+        speedB: -0.0001,
+        speedC: 0.00022,
+        phase: 0.2,
+        depth: 168,
+        strokeAlpha: 0.22,
+        topAlpha: 0.18,
+        bottomAlpha: 0.02,
+        lineWidth: 1.6
+      },
+      {
+        base: 0.52,
+        ampA: 32,
+        ampB: 16,
+        ampC: 10,
+        freqA: 0.0061,
+        freqB: 0.0106,
+        freqC: 0.017,
+        speedA: 0.00011,
+        speedB: -0.00014,
+        speedC: 0.00019,
+        phase: 1.7,
+        depth: 210,
+        strokeAlpha: 0.18,
+        topAlpha: 0.14,
+        bottomAlpha: 0.015,
+        lineWidth: 1.8
+      },
+      {
+        base: 0.68,
+        ampA: 28,
+        ampB: 15,
+        ampC: 8,
+        freqA: 0.0052,
+        freqB: 0.0094,
+        freqC: 0.016,
+        speedA: 0.00008,
+        speedB: -0.0001,
+        speedC: 0.00015,
+        phase: 3.2,
+        depth: 240,
+        strokeAlpha: 0.14,
+        topAlpha: 0.11,
+        bottomAlpha: 0.012,
+        lineWidth: 1.4
+      }
     ]
   };
 
@@ -111,6 +162,17 @@
     s.ctx.setTransform(s.dpr, 0, 0, s.dpr, 0, 0);
   }
 
+  function sampleProjectWaveY(layer, x, timestamp, height) {
+    var drift = Math.sin(timestamp * 0.00009 + layer.phase * 1.3) * height * 0.012;
+    return (
+      height * layer.base +
+      drift +
+      Math.sin(x * layer.freqA + timestamp * layer.speedA + layer.phase) * layer.ampA +
+      Math.sin(x * layer.freqB + timestamp * layer.speedB + layer.phase * 1.9) * layer.ampB +
+      Math.sin(x * layer.freqC + timestamp * layer.speedC + layer.phase * 2.7) * layer.ampC
+    );
+  }
+
   function drawProjectWaveFrame(timestamp) {
     var s = projectWaveState;
     var ctx = s.ctx;
@@ -120,28 +182,46 @@
 
     for (var i = 0; i < s.layers.length; i += 1) {
       var layer = s.layers[i];
-      var baseY = s.height * layer.base;
+      var points = [];
+      var gradient = ctx.createLinearGradient(0, s.height * layer.base - 40, 0, s.height * layer.base + layer.depth);
+      gradient.addColorStop(0, "rgba(146, 224, 255," + layer.topAlpha.toFixed(3) + ")");
+      gradient.addColorStop(0.45, "rgba(98, 194, 255," + (layer.topAlpha * 0.72).toFixed(3) + ")");
+      gradient.addColorStop(1, "rgba(36, 88, 148," + layer.bottomAlpha.toFixed(3) + ")");
+
       ctx.beginPath();
-      for (var x = -20; x <= s.width + 20; x += 8) {
-        var y =
-          baseY +
-          Math.sin(x * layer.freq + timestamp * layer.speed + layer.offset) * layer.amp +
-          Math.sin(x * layer.freq * 0.46 - timestamp * layer.speed * 1.4 + layer.offset * 2.1) * (layer.amp * 0.42);
-        if (x === -20) {
+      for (var x = -40; x <= s.width + 40; x += 10) {
+        var y = sampleProjectWaveY(layer, x, timestamp, s.height);
+        points.push({ x: x, y: y });
+        if (x === -40) {
           ctx.moveTo(x, y);
         } else {
           ctx.lineTo(x, y);
         }
       }
-      ctx.strokeStyle = "rgba(132, 212, 255," + layer.alpha.toFixed(3) + ")";
-      ctx.lineWidth = layer.width;
+
+      ctx.lineTo(s.width + 40, s.height + layer.depth);
+      ctx.lineTo(-40, s.height + layer.depth);
+      ctx.closePath();
+      ctx.fillStyle = gradient;
+      ctx.fill();
+
+      ctx.beginPath();
+      for (var j = 0; j < points.length; j += 1) {
+        if (j === 0) {
+          ctx.moveTo(points[j].x, points[j].y);
+        } else {
+          ctx.lineTo(points[j].x, points[j].y);
+        }
+      }
+      ctx.strokeStyle = "rgba(168, 232, 255," + layer.strokeAlpha.toFixed(3) + ")";
+      ctx.lineWidth = layer.lineWidth;
       ctx.stroke();
     }
 
     var gradient = ctx.createLinearGradient(0, s.height * 0.2, 0, s.height);
     gradient.addColorStop(0, "rgba(110, 198, 255, 0.00)");
-    gradient.addColorStop(0.55, "rgba(110, 198, 255, 0.025)");
-    gradient.addColorStop(1, "rgba(86, 247, 212, 0.055)");
+    gradient.addColorStop(0.5, "rgba(110, 198, 255, 0.04)");
+    gradient.addColorStop(1, "rgba(86, 247, 212, 0.08)");
     ctx.fillStyle = gradient;
     ctx.fillRect(0, 0, s.width, s.height);
   }

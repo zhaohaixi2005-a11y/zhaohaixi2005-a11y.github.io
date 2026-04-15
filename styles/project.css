@@ -19,64 +19,19 @@ body::after {
 }
 
 body::before {
-  opacity: 0.52;
+  opacity: 0.2;
   background:
-    radial-gradient(44rem 22rem at 50% 52%, rgba(99, 201, 255, 0.16), rgba(99, 201, 255, 0) 72%),
-    repeating-radial-gradient(
-      ellipse 86% 54% at 50% 52%,
-      rgba(156, 226, 255, 0.2) 0 1.5px,
-      rgba(156, 226, 255, 0) 1.5px 18px,
-      rgba(86, 247, 212, 0.14) 18px 19.5px,
-      rgba(86, 247, 212, 0) 19.5px 36px
-    );
-  background-size: 100% 100%, 140% 140%;
-  background-position: center center, 50% 52%;
-  filter: blur(4px);
-  mix-blend-mode: screen;
-  animation: project-page-ripple 18s linear infinite;
+    radial-gradient(44rem 22rem at 50% 52%, rgba(99, 201, 255, 0.14), rgba(99, 201, 255, 0) 72%),
+    linear-gradient(180deg, rgba(86, 247, 212, 0.03), rgba(86, 247, 212, 0));
+  filter: blur(18px);
 }
 
 body::after {
-  opacity: 0.32;
+  opacity: 0.18;
   background:
-    repeating-radial-gradient(
-      ellipse 72% 42% at 54% 58%,
-      rgba(92, 201, 255, 0.1) 0 1px,
-      rgba(92, 201, 255, 0) 1px 14px,
-      rgba(86, 247, 212, 0.08) 14px 15px,
-      rgba(86, 247, 212, 0) 15px 28px
-    ),
     radial-gradient(36rem 18rem at 18% 88%, rgba(86, 247, 212, 0.12), rgba(86, 247, 212, 0) 74%),
     radial-gradient(34rem 16rem at 82% 18%, rgba(99, 201, 255, 0.12), rgba(99, 201, 255, 0) 74%);
-  background-size: 132% 132%, 100% 100%, 100% 100%;
-  background-position: 54% 58%, center center, center center;
-  filter: blur(10px);
-  mix-blend-mode: screen;
-  animation: project-page-ripple-b 14s ease-in-out infinite alternate;
-}
-
-@keyframes project-page-ripple {
-  0% {
-    background-position: center center, 48% 50%;
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-  100% {
-    background-position: center center, 52% 54%;
-    transform: translate3d(0, -4px, 0) scale(1.025);
-  }
-}
-
-@keyframes project-page-ripple-b {
-  0% {
-    opacity: 0.26;
-    background-position: 52% 56%, center center, center center;
-    transform: translate3d(-1%, 0, 0) scale(1);
-  }
-  100% {
-    opacity: 0.36;
-    background-position: 56% 60%, center center, center center;
-    transform: translate3d(1%, -1%, 0) scale(1.02);
-  }
+  filter: blur(20px);
 }
 
 .project-wave-canvas {
@@ -86,7 +41,7 @@ body::after {
   height: 100%;
   pointer-events: none;
   z-index: 0;
-  opacity: 0.55;
+  opacity: 0.92;
   mix-blend-mode: screen;
 }
 
