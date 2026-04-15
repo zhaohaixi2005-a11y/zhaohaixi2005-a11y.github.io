@@ -1,25 +1,68 @@
 @import url("./main.css");
 
 body {
+  position: relative;
   background:
     radial-gradient(62rem 34rem at 84% -10%, rgba(72, 156, 255, 0.2), transparent 68%),
     radial-gradient(48rem 30rem at 12% 6%, rgba(86, 247, 212, 0.1), transparent 72%),
     linear-gradient(180deg, rgba(7, 18, 36, 0.3), rgba(7, 18, 36, 0.3)),
     linear-gradient(155deg, #01060f 0%, #041024 42%, #051a39 100%);
-  background-size: 120% 120%, 115% 115%, 100% 100%, 100% 100%;
-  background-position: 0% 0%, 100% 0%, 0 0, 0 0;
-  animation: project-page-bg-drift 28s ease-in-out infinite alternate;
 }
 
-@keyframes project-page-bg-drift {
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+body::before {
+  opacity: 0.34;
+  background:
+    radial-gradient(60rem 20rem at 50% 118%, rgba(99, 201, 255, 0.22), rgba(99, 201, 255, 0) 70%),
+    repeating-linear-gradient(
+      -10deg,
+      rgba(164, 227, 255, 0.08) 0 2px,
+      rgba(164, 227, 255, 0) 2px 24px,
+      rgba(86, 247, 212, 0.06) 24px 26px,
+      rgba(86, 247, 212, 0) 26px 52px
+    );
+  background-size: 100% 100%, 420px 420px;
+  background-position: center center, 0 0;
+  filter: blur(10px);
+  animation: project-page-wave 20s linear infinite;
+}
+
+body::after {
+  opacity: 0.22;
+  background:
+    radial-gradient(48rem 18rem at 20% 110%, rgba(86, 247, 212, 0.16), rgba(86, 247, 212, 0) 72%),
+    radial-gradient(42rem 16rem at 82% 112%, rgba(99, 201, 255, 0.16), rgba(99, 201, 255, 0) 72%);
+  filter: blur(18px);
+  animation: project-page-swell 15s ease-in-out infinite alternate;
+}
+
+@keyframes project-page-wave {
   0% {
-    background-position: 0% 0%, 100% 0%, 0 0, 0 0;
-  }
-  50% {
-    background-position: 3% 2%, 97% 4%, 0 0, 0 0;
+    background-position: center center, 0 0;
+    transform: translate3d(0, 0, 0);
   }
   100% {
-    background-position: 6% 4%, 94% 8%, 0 0, 0 0;
+    background-position: center center, 420px -30px;
+    transform: translate3d(0, -6px, 0);
+  }
+}
+
+@keyframes project-page-swell {
+  0% {
+    opacity: 0.18;
+    transform: translate3d(-1.5%, 0, 0) scale(1);
+  }
+  100% {
+    opacity: 0.28;
+    transform: translate3d(1.5%, -1%, 0) scale(1.03);
   }
 }
 
@@ -162,9 +205,10 @@ body {
 
 .project-title {
   margin: 10px 0 4px;
-  font-size: clamp(30px, 4.6vw, 42px);
+  font-size: clamp(28px, 3.9vw, 38px);
   line-height: 1.08;
-  max-width: 14ch;
+  max-width: 19ch;
+  text-wrap: balance;
   font-family: "Space Grotesk", "Noto Sans SC", sans-serif;
 }
 
@@ -309,6 +353,11 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   body {
+    animation: none;
+  }
+
+  body::before,
+  body::after {
     animation: none;
   }
 
