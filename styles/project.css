@@ -26,28 +26,31 @@
 
 .project-header-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.25fr) minmax(300px, 0.9fr);
-  gap: 22px;
-  align-items: start;
+  grid-template-columns: minmax(0, 1.32fr) minmax(280px, 0.78fr);
+  gap: 28px;
+  align-items: center;
 }
 
 .project-summary {
-  max-width: 680px;
-  margin: 14px 0 0;
+  max-width: 760px;
+  margin: 16px 0 0;
   color: rgba(234, 244, 255, 0.84);
+  font-size: clamp(17px, 2vw, 19px);
+  line-height: 1.65;
 }
 
 .project-meta-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 14px;
+  gap: 12px;
+  margin-top: 22px;
 }
 
 .project-title {
   margin: 10px 0 4px;
-  font-size: clamp(30px, 5vw, 46px);
-  line-height: 1.1;
+  font-size: clamp(30px, 4.6vw, 42px);
+  line-height: 1.08;
+  max-width: 14ch;
   font-family: "Space Grotesk", "Noto Sans SC", sans-serif;
 }
 
@@ -60,15 +63,15 @@
 .project-pill {
   display: inline-flex;
   align-items: center;
-  min-height: 36px;
-  padding: 8px 12px;
+  min-height: 34px;
+  padding: 8px 14px;
   border: 1px solid rgba(181, 217, 255, 0.18);
   border-radius: 999px;
   background: rgba(10, 20, 38, 0.74);
   color: var(--white);
   font-family: "JetBrains Mono", monospace;
-  font-size: 11px;
-  letter-spacing: 0.02em;
+  font-size: 12px;
+  letter-spacing: 0.01em;
 }
 
 .project-academic-card {
@@ -77,16 +80,17 @@
   background:
     linear-gradient(160deg, rgba(10, 21, 40, 0.96), rgba(10, 23, 45, 0.72)),
     radial-gradient(circle at top, rgba(86, 247, 212, 0.1), transparent 42%);
-  padding: 18px;
+  padding: 20px;
   min-height: 100%;
+  align-self: stretch;
 }
 
 .project-academic-card h2 {
-  margin: 0 0 14px;
-  font-size: 13px;
+  margin: 0 0 16px;
+  font-size: 12px;
   color: var(--teal);
   text-transform: uppercase;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.16em;
   font-family: "JetBrains Mono", monospace;
 }
 
@@ -96,7 +100,7 @@
 }
 
 .academic-item {
-  padding: 14px 16px;
+  padding: 16px 18px;
   border-radius: 18px;
   border: 1px solid rgba(181, 217, 255, 0.14);
   background: rgba(5, 14, 28, 0.5);
@@ -104,7 +108,7 @@
 
 .academic-label {
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   color: var(--muted);
   font-size: 11px;
   letter-spacing: 0.12em;
@@ -114,29 +118,23 @@
 
 .institution-name {
   display: block;
-  font-size: clamp(22px, 3vw, 30px);
-  line-height: 1;
+  font-size: clamp(24px, 2.4vw, 32px);
+  line-height: 1.06;
   font-weight: 700;
   color: var(--white);
+  letter-spacing: 0.02em;
   font-family: "Space Grotesk", "Noto Sans SC", sans-serif;
 }
 
-.institution-subline {
-  margin-top: 8px;
-  color: var(--cyan);
-  font-size: 15px;
-  font-weight: 600;
-}
-
 .mentor-name {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 10px;
   color: var(--white);
-  font-size: 18px;
+  font-size: 22px;
   font-weight: 700;
-  line-height: 1.4;
+  line-height: 1.2;
 }
 
 .mentor-name a {
@@ -148,16 +146,23 @@
   color: var(--teal);
 }
 
-.mentor-title {
-  color: var(--cyan);
-  font-size: 12px;
-  font-weight: 600;
+.mentor-role {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(99, 201, 255, 0.14);
+  border: 1px solid rgba(99, 201, 255, 0.18);
+  color: #bfe6ff;
+  font-size: 11px;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.12em;
 }
 
 .project-header .tags {
-  margin-top: 18px;
+  margin-top: 22px;
 }
 
 .project-layout {
@@ -193,6 +198,7 @@
 @media (max-width: 930px) {
   .project-header-grid {
     grid-template-columns: 1fr;
+    gap: 20px;
   }
 
   .project-layout {
