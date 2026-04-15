@@ -167,7 +167,7 @@ a:hover {
 
 .hero-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.72fr) minmax(320px, 0.72fr);
+  grid-template-columns: minmax(0, 1.45fr) minmax(420px, 1fr);
   gap: 2px;
   align-items: start;
   position: relative;
@@ -304,8 +304,8 @@ a:hover {
 .hero-side {
   display: grid;
   gap: 12px;
-  justify-self: end;
-  width: min(100%, 1500px);
+  justify-self: stretch;
+  width: min(100%, 1000px);
   margin-left: 0;
 }
 
