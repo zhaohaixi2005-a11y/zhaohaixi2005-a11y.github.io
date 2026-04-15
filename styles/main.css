@@ -240,10 +240,9 @@ a:hover {
   inset: 0;
   z-index: 2;
   background:
-    linear-gradient(118deg, rgba(255, 255, 255, 0.24), rgba(255, 255, 255, 0.03) 34%, rgba(255, 255, 255, 0.1) 58%, rgba(255, 255, 255, 0.03)),
-    linear-gradient(rgba(181, 217, 255, 0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(181, 217, 255, 0.08) 1px, transparent 1px);
-  background-size: auto, 22px 22px, 22px 22px;
+    linear-gradient(118deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.02) 28%, rgba(255, 255, 255, 0.08) 52%, rgba(255, 255, 255, 0.02)),
+    linear-gradient(132deg, transparent 0 54%, rgba(255, 255, 255, 0.16) 58%, transparent 62%),
+    linear-gradient(132deg, transparent 0 68%, rgba(167, 228, 255, 0.1) 71%, transparent 74%);
   pointer-events: none;
 }
 
@@ -275,22 +274,21 @@ a:hover {
   position: relative;
   z-index: 1;
   display: block;
+  width: 100%;
+  height: 100%;
+  padding: 16px;
+  box-sizing: border-box;
+  object-fit: contain;
 }
 
 .profile-card-art--cartoon {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
   object-position: center center;
-  transform: scale(1.03);
-  filter: saturate(0.92) contrast(1.04) brightness(0.92);
+  filter: saturate(0.96) contrast(1.03) brightness(0.95);
 }
 
 .profile-card-art--photo {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 24%;
+  padding: 14px 14px 10px;
+  object-position: center bottom;
 }
 
 .hero-copy-body {
