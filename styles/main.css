@@ -167,8 +167,8 @@ a:hover {
 
 .hero-grid {
   display: grid;
-  grid-template-columns: 1.25fr 0.95fr;
-  gap: 22px;
+  grid-template-columns: minmax(0, 1.42fr) minmax(360px, 0.88fr);
+  gap: 16px;
   align-items: start;
   position: relative;
   z-index: 2;
@@ -181,7 +181,7 @@ a:hover {
 }
 
 .profile-flip-card {
-  width: clamp(168px, 19vw, 220px);
+  width: clamp(188px, 21vw, 244px);
   aspect-ratio: 1 / 1;
   position: relative;
   border-radius: 26px;
@@ -421,8 +421,9 @@ a:hover {
 .tagline {
   margin: 0;
   color: var(--muted);
-  max-width: 55ch;
-  max-width: 31ch;
+  max-width: 40ch;
+  font-size: clamp(18px, 1.9vw, 22px);
+  line-height: 1.58;
 }
 
 .hero-actions {
@@ -819,7 +820,7 @@ a:hover {
   }
 
   .profile-flip-card {
-    width: min(100%, 208px);
+    width: min(100%, 220px);
   }
 
   .award-list {
