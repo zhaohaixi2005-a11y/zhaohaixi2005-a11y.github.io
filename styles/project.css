@@ -192,7 +192,7 @@ body::after {
 
 .project-header-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.32fr) minmax(280px, 0.78fr);
+  grid-template-columns: minmax(0, 1.42fr) minmax(260px, 0.68fr);
   gap: 28px;
   align-items: center;
   position: relative;
@@ -216,9 +216,9 @@ body::after {
 
 .project-title {
   margin: 10px 0 4px;
-  font-size: clamp(27px, 3.55vw, 36px);
-  line-height: 1.1;
-  max-width: 21ch;
+  font-size: clamp(25px, 3.15vw, 33px);
+  line-height: 1.08;
+  max-width: 26ch;
   text-wrap: balance;
   font-family: "Space Grotesk", "Noto Sans SC", sans-serif;
 }
