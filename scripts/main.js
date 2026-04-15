@@ -158,9 +158,21 @@
     }
   }
 
+  function startBackgroundAnimation() {
+    if (reducedMotion || backgroundState.rafId || !backgroundState.ctx) return;
+    backgroundState.rafId = window.requestAnimationFrame(animateBackground);
+  }
+
+  function stopBackgroundAnimation() {
+    if (!backgroundState.rafId) return;
+    window.cancelAnimationFrame(backgroundState.rafId);
+    backgroundState.rafId = 0;
+  }
+
   function animateBackground() {
+    backgroundState.rafId = 0;
     drawParticleFrame();
-    if (!reducedMotion) backgroundState.rafId = window.requestAnimationFrame(animateBackground);
+    startBackgroundAnimation();
   }
 
   function initSiteParticles() {
@@ -172,15 +184,18 @@
     if (!backgroundState.ctx) return;
 
     resizeParticleCanvas();
-    animateBackground();
+    drawParticleFrame();
+    startBackgroundAnimation();
 
     var onResize = function () {
       resizeParticleCanvas();
+      drawParticleFrame();
+      startBackgroundAnimation();
     };
     window.addEventListener("resize", onResize);
     cleanups.push(function () {
       window.removeEventListener("resize", onResize);
-      if (backgroundState.rafId) window.cancelAnimationFrame(backgroundState.rafId);
+      stopBackgroundAnimation();
     });
   }
 
@@ -238,6 +253,7 @@
     var ctx = s.ctx;
     if (!ctx) return;
 
+    s.rafId = 0;
     ctx.clearRect(0, 0, s.width, s.height);
 
     for (var i = s.fragments.length - 1; i >= 0; i -= 1) {
@@ -269,7 +285,18 @@
       ctx.restore();
     }
 
-    if (!reducedMotion) fragmentState.rafId = window.requestAnimationFrame(animateFragments);
+    startFragmentAnimation();
+  }
+
+  function startFragmentAnimation() {
+    if (reducedMotion || fragmentState.rafId || !fragmentState.ctx) return;
+    fragmentState.rafId = window.requestAnimationFrame(animateFragments);
+  }
+
+  function stopFragmentAnimation() {
+    if (!fragmentState.rafId) return;
+    window.cancelAnimationFrame(fragmentState.rafId);
+    fragmentState.rafId = 0;
   }
 
   function initCursorFragments() {
@@ -281,7 +308,7 @@
     if (!fragmentState.ctx) return;
 
     resizeFragmentCanvas();
-    animateFragments();
+    startFragmentAnimation();
 
     if (!reducedMotion) {
       var onMouseMove = function (ev) {
@@ -298,11 +325,12 @@
 
     var onResize = function () {
       resizeFragmentCanvas();
+      startFragmentAnimation();
     };
     window.addEventListener("resize", onResize);
     cleanups.push(function () {
       window.removeEventListener("resize", onResize);
-      if (fragmentState.rafId) window.cancelAnimationFrame(fragmentState.rafId);
+      stopFragmentAnimation();
     });
   }
 
@@ -341,13 +369,35 @@
   initNoNavCards();
   initRevealObserver();
 
-  window.addEventListener("beforeunload", function () {
-    cleanups.forEach(function (fn) {
-      try {
-        fn();
-      } catch (err) {
-        // noop
-      }
-    });
+  function refreshInteractiveCanvases() {
+    if (backgroundState.ctx) {
+      resizeParticleCanvas();
+      drawParticleFrame();
+      startBackgroundAnimation();
+    }
+
+    if (fragmentState.ctx) {
+      resizeFragmentCanvas();
+      fragmentState.fragments = [];
+      startFragmentAnimation();
+    }
+  }
+
+  document.addEventListener("visibilitychange", function () {
+    if (document.visibilityState === "hidden") {
+      stopBackgroundAnimation();
+      stopFragmentAnimation();
+      return;
+    }
+    refreshInteractiveCanvases();
+  });
+
+  window.addEventListener("pagehide", function () {
+    stopBackgroundAnimation();
+    stopFragmentAnimation();
+  });
+
+  window.addEventListener("pageshow", function () {
+    refreshInteractiveCanvases();
   });
 })();
