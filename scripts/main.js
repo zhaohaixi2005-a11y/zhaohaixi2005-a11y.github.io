@@ -27,9 +27,51 @@
 
     var fallback = document.getElementById("protein-fallback");
     var source = mount.getAttribute("data-pdb-source") || "rcsb://1crn";
+    var spinBtn = document.querySelector('[data-viewer-action="spin"]');
+    var resetBtn = document.querySelector('[data-viewer-action="reset"]');
+    var cofactorsBtn = document.querySelector('[data-viewer-action="cofactors"]');
+    var stage = null;
+    var component = null;
+    var heteroRepresentation = null;
+    var isSpinning = !reducedMotion;
+    var cofactorsVisible = true;
+
+    function setButtonState(button, disabled) {
+      if (!button) return;
+      button.disabled = !!disabled;
+    }
+
+    function syncViewerButtons() {
+      if (spinBtn) {
+        spinBtn.textContent = isSpinning ? "Pause Spin" : "Resume Spin";
+        spinBtn.setAttribute("aria-pressed", isSpinning ? "true" : "false");
+      }
+      if (cofactorsBtn) {
+        cofactorsBtn.textContent = cofactorsVisible ? "Hide Cofactors" : "Show Cofactors";
+        cofactorsBtn.setAttribute("aria-pressed", cofactorsVisible ? "true" : "false");
+      }
+    }
+
+    function enableViewerButtons(enabled) {
+      setButtonState(spinBtn, !enabled);
+      setButtonState(resetBtn, !enabled);
+      setButtonState(cofactorsBtn, !enabled);
+      syncViewerButtons();
+    }
+
+    function applySpinState() {
+      if (!stage || !stage.setSpin) return;
+      stage.setSpin([0, 1, 0], isSpinning ? 0.004 : 0);
+    }
+
+    function applyCofactorState() {
+      if (!heteroRepresentation || !heteroRepresentation.setVisibility) return;
+      heteroRepresentation.setVisibility(cofactorsVisible);
+    }
 
     function onFail(text, err) {
       if (fallback) fallback.textContent = text;
+      enableViewerButtons(false);
       if (err) console.error(err);
     }
 
@@ -39,7 +81,7 @@
         return;
       }
 
-      var stage = new window.NGL.Stage("protein-stage", {
+      stage = new window.NGL.Stage("protein-stage", {
         backgroundColor: "transparent",
         quality: "medium",
         sampleLevel: 1
@@ -55,20 +97,23 @@
 
       stage
         .loadFile(source, { defaultRepresentation: false })
-        .then(function (component) {
+        .then(function (loadedComponent) {
+          component = loadedComponent;
           component.addRepresentation("cartoon", {
             colorScheme: "residueindex",
             opacity: 0.95,
             roughness: 0.28,
             metalness: 0.08
           });
-          component.addRepresentation("ball+stick", {
+          heteroRepresentation = component.addRepresentation("ball+stick", {
             sele: "hetero and not water",
             opacity: 0.86,
             scale: 2
           });
           component.autoView();
-          if (!reducedMotion) stage.setSpin([0, 1, 0], 0.004);
+          applySpinState();
+          applyCofactorState();
+          enableViewerButtons(true);
           mount.classList.add("ready");
         })
         .catch(function (err) {
@@ -86,6 +131,34 @@
       .catch(function (err) {
         onFail("3D engine unavailable", err);
       });
+
+    enableViewerButtons(false);
+
+    if (spinBtn) {
+      spinBtn.addEventListener("click", function () {
+        if (!stage) return;
+        isSpinning = !isSpinning;
+        applySpinState();
+        syncViewerButtons();
+      });
+    }
+
+    if (resetBtn) {
+      resetBtn.addEventListener("click", function () {
+        if (!component) return;
+        component.autoView();
+        applySpinState();
+      });
+    }
+
+    if (cofactorsBtn) {
+      cofactorsBtn.addEventListener("click", function () {
+        if (!heteroRepresentation) return;
+        cofactorsVisible = !cofactorsVisible;
+        applyCofactorState();
+        syncViewerButtons();
+      });
+    }
   }
 
   var projectWaveState = {
