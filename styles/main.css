@@ -305,7 +305,7 @@ a:hover {
   display: grid;
   gap: 12px;
   justify-self: end;
-  width: min(100%, 740px);
+  width: min(100%, 1000px);
   margin-left: 0;
 }
 
