@@ -8,7 +8,7 @@
       name="description"
       content="Layered personal research homepage of Haixi Zhao, focused on AI-guided protein design and computational biology."
     />
-    <link rel="stylesheet" href="styles/main.css" />
+    <link rel="stylesheet" href="styles/main.css?v=20260415d" />
   </head>
   <body>
     <canvas id="site-bg-canvas" class="site-bg-canvas" aria-hidden="true"></canvas>
@@ -26,13 +26,33 @@
 
       <section class="hero reveal is-visible">
         <div class="hero-grid">
-          <div>
-            <p class="kicker">AI-guided Protein Design · Computational Biology</p>
-            <h1>Haixi Zhao</h1>
-            <p class="tagline">I design computational-to-experimental research loops for protein engineering, from structure generation to biological validation.</p>
-            <div class="hero-actions">
-              <a class="btn primary" href="#research">Explore Research Gateways</a>
-              <a class="btn" href="https://github.com/zhaohaixi2005-a11y" target="_blank" rel="noreferrer">GitHub</a>
+          <div class="hero-copy">
+            <div class="profile-flip-card" tabindex="0" aria-label="Flip portrait card of Haixi Zhao">
+              <div class="profile-flip-card__inner">
+                <div class="profile-flip-card__face profile-flip-card__face--front">
+                  <img
+                    class="profile-card-art profile-card-art--cartoon"
+                    src="assets/avatar-cartoon-card.png"
+                    alt="Cartoon portrait of Haixi Zhao"
+                  />
+                </div>
+                <div class="profile-flip-card__face profile-flip-card__face--back">
+                  <img
+                    class="profile-card-art profile-card-art--photo"
+                    src="assets/avatar-photo-card.png"
+                    alt="Portrait of Haixi Zhao"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="hero-copy-body">
+              <p class="kicker">AI-guided Protein Design · Computational Biology</p>
+              <h1>Haixi Zhao</h1>
+              <p class="tagline">I design computational-to-experimental research loops for protein engineering, from structure generation to biological validation.</p>
+              <div class="hero-actions">
+                <a class="btn primary" href="#research">Explore Research Gateways</a>
+                <a class="btn" href="https://github.com/zhaohaixi2005-a11y" target="_blank" rel="noreferrer">GitHub</a>
+              </div>
             </div>
           </div>
 
