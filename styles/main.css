@@ -381,49 +381,6 @@ a:hover {
   pointer-events: none;
 }
 
-.viewer-controls {
-  position: absolute;
-  top: 12px;
-  right: 18px;
-  display: flex;
-  gap: 8px;
-  z-index: 4;
-  align-items: center;
-}
-
-.viewer-control-btn {
-  border: 1px solid rgba(181, 217, 255, 0.24);
-  border-radius: 999px;
-  padding: 6px 10px;
-  background: rgba(5, 14, 26, 0.7);
-  color: #d8efff;
-  font-family: "JetBrains Mono", monospace;
-  font-size: 10px;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  cursor: pointer;
-  backdrop-filter: blur(10px);
-  transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease, color 0.2s ease;
-}
-
-.viewer-control-btn:hover {
-  transform: translateY(-1px);
-  border-color: rgba(123, 251, 213, 0.58);
-  background: rgba(8, 20, 37, 0.88);
-  color: #effbff;
-}
-
-.viewer-control-btn[aria-pressed="true"] {
-  border-color: rgba(86, 247, 212, 0.52);
-  color: #baffef;
-}
-
-.viewer-control-btn:disabled {
-  opacity: 0.48;
-  cursor: not-allowed;
-  transform: none;
-}
-
 .chipline {
   position: absolute;
   left: 20px;
@@ -893,12 +850,6 @@ a:hover {
   .protein-stage,
   .protein-fallback {
     inset: 14px 10px 40px 10px;
-  }
-
-  .viewer-controls {
-    position: static;
-    margin: 42px 12px 0;
-    flex-wrap: wrap;
   }
 
   .navlinks {
