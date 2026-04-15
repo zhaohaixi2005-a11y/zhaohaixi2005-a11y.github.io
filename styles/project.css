@@ -39,27 +39,47 @@
 .project-header::before {
   left: -8%;
   right: -6%;
-  bottom: 8%;
-  height: 120px;
+  bottom: 2%;
+  height: 156px;
   border-radius: 999px;
   background:
-    radial-gradient(120% 100% at 50% 50%, rgba(99, 201, 255, 0.12), rgba(99, 201, 255, 0) 62%);
-  filter: blur(26px);
-  opacity: 0.5;
-  transform: rotate(-3deg);
+    radial-gradient(118% 100% at 50% 50%, rgba(99, 201, 255, 0.18), rgba(99, 201, 255, 0) 64%);
+  filter: blur(22px);
+  opacity: 0.68;
+  transform: rotate(-4deg) translate3d(0, 0, 0);
+  animation: project-wave-drift-a 13s ease-in-out infinite alternate;
 }
 
 .project-header::after {
-  left: 18%;
+  left: 10%;
   right: -12%;
-  top: 18%;
-  height: 150px;
+  top: 10%;
+  height: 176px;
   border-radius: 999px;
   background:
-    radial-gradient(110% 100% at 50% 50%, rgba(86, 247, 212, 0.08), rgba(86, 247, 212, 0) 60%);
-  filter: blur(34px);
-  opacity: 0.35;
-  transform: rotate(7deg);
+    radial-gradient(112% 100% at 50% 50%, rgba(86, 247, 212, 0.12), rgba(86, 247, 212, 0) 60%);
+  filter: blur(30px);
+  opacity: 0.48;
+  transform: rotate(8deg) translate3d(0, 0, 0);
+  animation: project-wave-drift-b 16s ease-in-out infinite alternate;
+}
+
+@keyframes project-wave-drift-a {
+  0% {
+    transform: rotate(-4deg) translate3d(-1%, 0, 0) scaleX(1);
+  }
+  100% {
+    transform: rotate(-1deg) translate3d(2%, -8px, 0) scaleX(1.06);
+  }
+}
+
+@keyframes project-wave-drift-b {
+  0% {
+    transform: rotate(8deg) translate3d(0, 0, 0) scaleX(0.98);
+  }
+  100% {
+    transform: rotate(5deg) translate3d(-2%, 10px, 0) scaleX(1.04);
+  }
 }
 
 .project-header-grid {
@@ -230,5 +250,12 @@
 
   .project-layout {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-header::before,
+  .project-header::after {
+    animation: none;
   }
 }

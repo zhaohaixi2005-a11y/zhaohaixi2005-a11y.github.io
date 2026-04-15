@@ -98,8 +98,8 @@
     if (!s.canvas || !s.ctx) return;
 
     s.dpr = Math.min(window.devicePixelRatio || 1, 2);
-    s.width = s.canvas.clientWidth;
-    s.height = s.canvas.clientHeight;
+    s.width = Math.max(s.canvas.clientWidth || 0, window.innerWidth || 0, 1);
+    s.height = Math.max(s.canvas.clientHeight || 0, window.innerHeight || 0, 1);
     s.canvas.width = Math.max(1, Math.floor(s.width * s.dpr));
     s.canvas.height = Math.max(1, Math.floor(s.height * s.dpr));
     s.ctx.setTransform(s.dpr, 0, 0, s.dpr, 0, 0);
@@ -217,8 +217,8 @@
     if (!s.canvas || !s.ctx) return;
 
     s.dpr = Math.min(window.devicePixelRatio || 1, 2);
-    s.width = s.canvas.clientWidth;
-    s.height = s.canvas.clientHeight;
+    s.width = Math.max(s.canvas.clientWidth || 0, window.innerWidth || 0, 1);
+    s.height = Math.max(s.canvas.clientHeight || 0, window.innerHeight || 0, 1);
     s.canvas.width = Math.max(1, Math.floor(s.width * s.dpr));
     s.canvas.height = Math.max(1, Math.floor(s.height * s.dpr));
     s.ctx.setTransform(s.dpr, 0, 0, s.dpr, 0, 0);
@@ -369,7 +369,22 @@
   initNoNavCards();
   initRevealObserver();
 
+  var refreshRafA = 0;
+  var refreshRafB = 0;
+
+  function cancelRefreshFrames() {
+    if (refreshRafA) {
+      window.cancelAnimationFrame(refreshRafA);
+      refreshRafA = 0;
+    }
+    if (refreshRafB) {
+      window.cancelAnimationFrame(refreshRafB);
+      refreshRafB = 0;
+    }
+  }
+
   function refreshInteractiveCanvases() {
+    cancelRefreshFrames();
     if (backgroundState.ctx) {
       resizeParticleCanvas();
       drawParticleFrame();
@@ -383,21 +398,34 @@
     }
   }
 
+  function scheduleInteractiveRefresh() {
+    cancelRefreshFrames();
+    refreshRafA = window.requestAnimationFrame(function () {
+      refreshRafA = 0;
+      refreshRafB = window.requestAnimationFrame(function () {
+        refreshRafB = 0;
+        refreshInteractiveCanvases();
+      });
+    });
+  }
+
   document.addEventListener("visibilitychange", function () {
     if (document.visibilityState === "hidden") {
       stopBackgroundAnimation();
       stopFragmentAnimation();
+      cancelRefreshFrames();
       return;
     }
-    refreshInteractiveCanvases();
+    scheduleInteractiveRefresh();
   });
 
   window.addEventListener("pagehide", function () {
     stopBackgroundAnimation();
     stopFragmentAnimation();
+    cancelRefreshFrames();
   });
 
   window.addEventListener("pageshow", function () {
-    refreshInteractiveCanvases();
+    scheduleInteractiveRefresh();
   });
 })();
