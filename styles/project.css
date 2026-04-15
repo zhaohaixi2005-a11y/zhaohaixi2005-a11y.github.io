@@ -1,5 +1,28 @@
 @import url("./main.css");
 
+body {
+  background:
+    radial-gradient(62rem 34rem at 84% -10%, rgba(72, 156, 255, 0.2), transparent 68%),
+    radial-gradient(48rem 30rem at 12% 6%, rgba(86, 247, 212, 0.1), transparent 72%),
+    linear-gradient(180deg, rgba(7, 18, 36, 0.3), rgba(7, 18, 36, 0.3)),
+    linear-gradient(155deg, #01060f 0%, #041024 42%, #051a39 100%);
+  background-size: 120% 120%, 115% 115%, 100% 100%, 100% 100%;
+  background-position: 0% 0%, 100% 0%, 0 0, 0 0;
+  animation: project-page-bg-drift 28s ease-in-out infinite alternate;
+}
+
+@keyframes project-page-bg-drift {
+  0% {
+    background-position: 0% 0%, 100% 0%, 0 0, 0 0;
+  }
+  50% {
+    background-position: 3% 2%, 97% 4%, 0 0, 0 0;
+  }
+  100% {
+    background-position: 6% 4%, 94% 8%, 0 0, 0 0;
+  }
+}
+
 .project-shell {
   width: min(1040px, calc(100vw - 38px));
   margin: 22px auto 42px;
@@ -51,17 +74,33 @@
 }
 
 .project-header::after {
-  left: 10%;
-  right: -12%;
-  top: 10%;
-  height: 176px;
-  border-radius: 999px;
+  left: -4%;
+  right: -4%;
+  bottom: -10px;
+  top: auto;
+  height: 130px;
+  border-radius: 0;
   background:
-    radial-gradient(112% 100% at 50% 50%, rgba(86, 247, 212, 0.12), rgba(86, 247, 212, 0) 60%);
-  filter: blur(30px);
-  opacity: 0.48;
-  transform: rotate(8deg) translate3d(0, 0, 0);
-  animation: project-wave-drift-b 16s ease-in-out infinite alternate;
+    linear-gradient(
+      180deg,
+      rgba(86, 247, 212, 0) 0%,
+      rgba(86, 247, 212, 0.06) 34%,
+      rgba(99, 201, 255, 0.16) 66%,
+      rgba(99, 201, 255, 0) 100%
+    ),
+    repeating-linear-gradient(
+      -8deg,
+      rgba(164, 227, 255, 0.16) 0 2px,
+      rgba(164, 227, 255, 0) 2px 16px,
+      rgba(86, 247, 212, 0.12) 16px 18px,
+      rgba(86, 247, 212, 0) 18px 34px
+    );
+  background-size: 100% 100%, 280px 100%;
+  background-position: center center, 0 0;
+  filter: blur(10px);
+  opacity: 0.5;
+  transform: translate3d(0, 0, 0);
+  animation: project-wave-lines 14s linear infinite;
 }
 
 @keyframes project-wave-drift-a {
@@ -79,6 +118,21 @@
   }
   100% {
     transform: rotate(5deg) translate3d(-2%, 10px, 0) scaleX(1.04);
+  }
+}
+
+@keyframes project-wave-lines {
+  0% {
+    background-position: center center, 0 0;
+    opacity: 0.42;
+  }
+  50% {
+    background-position: center center, 160px -6px;
+    opacity: 0.56;
+  }
+  100% {
+    background-position: center center, 320px 0;
+    opacity: 0.42;
   }
 }
 
@@ -254,6 +308,10 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  body {
+    animation: none;
+  }
+
   .project-header::before,
   .project-header::after {
     animation: none;
