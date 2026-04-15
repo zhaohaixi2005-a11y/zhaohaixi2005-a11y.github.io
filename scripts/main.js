@@ -417,6 +417,7 @@
     rafId: 0,
     maxFragments: 92,
     lastSpawnAt: 0,
+    isMutedOverViewer: false,
     chars: ["A", "T", "G", "C", "0", "1", "{", "}", "<", ">", "/", "\\", "[", "]", "(", ")", ";", ":", "+", "-", "*"]
   };
 
@@ -509,6 +510,34 @@
     fragmentState.rafId = 0;
   }
 
+  function clearFragments() {
+    if (!fragmentState.ctx) return;
+    fragmentState.fragments = [];
+    fragmentState.ctx.clearRect(0, 0, fragmentState.width, fragmentState.height);
+    stopFragmentAnimation();
+  }
+
+  function initViewerFragmentMuteZone() {
+    var muteTarget = document.querySelector(".hero-visual");
+    if (!muteTarget) return;
+
+    var onEnter = function () {
+      fragmentState.isMutedOverViewer = true;
+      clearFragments();
+    };
+
+    var onLeave = function () {
+      fragmentState.isMutedOverViewer = false;
+    };
+
+    muteTarget.addEventListener("pointerenter", onEnter);
+    muteTarget.addEventListener("pointerleave", onLeave);
+    cleanups.push(function () {
+      muteTarget.removeEventListener("pointerenter", onEnter);
+      muteTarget.removeEventListener("pointerleave", onLeave);
+    });
+  }
+
   function initCursorFragments() {
     var canvas = document.getElementById("cursor-fragments-canvas");
     if (!canvas) return;
@@ -521,6 +550,7 @@
 
     if (!reducedMotion) {
       var onMouseMove = function (ev) {
+        if (fragmentState.isMutedOverViewer) return;
         var now = performance.now();
         if (now - fragmentState.lastSpawnAt < 96) return;
         fragmentState.lastSpawnAt = now;
@@ -576,6 +606,7 @@
 
   initSiteParticles();
   initCursorFragments();
+  initViewerFragmentMuteZone();
   initProjectWaveCanvas();
   initProteinViewer();
   initNoNavCards();
