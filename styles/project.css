@@ -283,6 +283,42 @@ body::after {
   color: var(--teal);
 }
 
+.project-external-link {
+  display: grid;
+  gap: 10px;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.project-external-link:hover {
+  transform: translateY(-2px);
+  border-color: rgba(123, 251, 213, 0.42);
+  background: rgba(6, 18, 34, 0.72);
+  box-shadow: 0 14px 30px rgba(19, 88, 156, 0.2);
+}
+
+.project-external-link:focus-visible {
+  outline: 2px solid rgba(123, 251, 213, 0.82);
+  outline-offset: 2px;
+}
+
+.project-link-copy {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.project-link-jump {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--teal);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+  letter-spacing: 0.02em;
+}
+
 .project-header .tags {
   margin-top: 22px;
   position: relative;
