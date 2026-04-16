@@ -27,11 +27,41 @@
 
     var fallback = document.getElementById("protein-fallback");
     var source = mount.getAttribute("data-pdb-source") || "rcsb://1crn";
+    var modeButtons = Array.prototype.slice.call(document.querySelectorAll(".protein-mode-button"));
     var stage = null;
+    var proteinRepresentations = {
+      cartoon: [],
+      surface: []
+    };
+    var activeMode = "cartoon";
 
     function onFail(text, err) {
       if (fallback) fallback.textContent = text;
       if (err) console.error(err);
+    }
+
+    function syncModeButtons(mode) {
+      modeButtons.forEach(function (button) {
+        var isActive = button.getAttribute("data-protein-mode") === mode;
+        button.classList.toggle("is-active", isActive);
+        button.setAttribute("aria-pressed", isActive ? "true" : "false");
+      });
+    }
+
+    function setMode(mode) {
+      activeMode = mode === "surface" ? "surface" : "cartoon";
+
+      ["cartoon", "surface"].forEach(function (representationMode) {
+        proteinRepresentations[representationMode].forEach(function (representation) {
+          representation.setVisibility(representationMode === activeMode);
+        });
+      });
+
+      syncModeButtons(activeMode);
+
+      if (stage && stage.viewer) {
+        stage.viewer.requestRender();
+      }
     }
 
     function bootNgl() {
@@ -58,24 +88,55 @@
         .loadFile(source, { defaultRepresentation: false })
         .then(function (loadedComponent) {
           var component = loadedComponent;
-          component.addRepresentation("cartoon", {
-            colorScheme: "chainname",
-            opacity: 0.92,
-            roughness: 0.28,
-            metalness: 0.08
-          });
-          component.addRepresentation("surface", {
-            sele: "protein",
-            colorScheme: "chainname",
-            opacity: 0.16,
-            useWorker: true
-          });
+
+          proteinRepresentations.cartoon.push(
+            component.addRepresentation("cartoon", {
+              sele: ":A and protein",
+              colorScheme: "uniform",
+              colorValue: 0x5ea8ff,
+              opacity: 0.98,
+              flatShaded: true
+            })
+          );
+          proteinRepresentations.cartoon.push(
+            component.addRepresentation("cartoon", {
+              sele: ":B and protein",
+              colorScheme: "uniform",
+              colorValue: 0xf2a45a,
+              opacity: 0.98,
+              flatShaded: true
+            })
+          );
+
+          proteinRepresentations.surface.push(
+            component.addRepresentation("surface", {
+              sele: ":A and protein",
+              colorScheme: "uniform",
+              colorValue: 0x4f93e6,
+              opacity: 0.86,
+              flatShaded: true,
+              useWorker: true
+            })
+          );
+          proteinRepresentations.surface.push(
+            component.addRepresentation("surface", {
+              sele: ":B and protein",
+              colorScheme: "uniform",
+              colorValue: 0xe69349,
+              opacity: 0.86,
+              flatShaded: true,
+              useWorker: true
+            })
+          );
+
           component.addRepresentation("ball+stick", {
             sele: "hetero and not water",
             colorScheme: "element",
             opacity: 0.96,
             scale: 2.2
           });
+
+          setMode(activeMode);
           component.autoView();
           if (!reducedMotion) stage.setSpin([0, 1, 0], 0.004);
           mount.classList.add("ready");
@@ -84,6 +145,18 @@
           onFail("3D model failed to load", err);
         });
     }
+
+    modeButtons.forEach(function (button) {
+      var onClick = function () {
+        setMode(button.getAttribute("data-protein-mode"));
+      };
+      button.addEventListener("click", onClick);
+      cleanups.push(function () {
+        button.removeEventListener("click", onClick);
+      });
+    });
+
+    syncModeButtons(activeMode);
 
     if (window.NGL && window.NGL.Stage) {
       bootNgl();

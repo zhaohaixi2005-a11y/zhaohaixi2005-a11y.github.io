@@ -381,6 +381,50 @@ a:hover {
   pointer-events: none;
 }
 
+.protein-mode-toggle {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px;
+  border: 1px solid rgba(181, 217, 255, 0.22);
+  border-radius: 999px;
+  background: rgba(6, 16, 30, 0.76);
+  box-shadow: inset 0 0 0 1px rgba(120, 212, 255, 0.06);
+  z-index: 4;
+}
+
+.protein-mode-button {
+  appearance: none;
+  border: 0;
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgba(203, 225, 247, 0.88);
+  background: transparent;
+  cursor: pointer;
+  transition:
+    background-color 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.protein-mode-button:hover,
+.protein-mode-button:focus-visible {
+  color: #eef7ff;
+  outline: none;
+}
+
+.protein-mode-button.is-active {
+  background: rgba(88, 233, 209, 0.16);
+  color: #9ff6eb;
+}
+
 .chipline {
   position: absolute;
   left: 20px;
@@ -850,6 +894,12 @@ a:hover {
   .protein-stage,
   .protein-fallback {
     inset: 14px 10px 40px 10px;
+  }
+
+  .protein-mode-toggle {
+    top: auto;
+    right: 12px;
+    bottom: 48px;
   }
 
   .navlinks {
