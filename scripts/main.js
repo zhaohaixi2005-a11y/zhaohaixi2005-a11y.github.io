@@ -93,7 +93,7 @@
             component.addRepresentation("cartoon", {
               sele: ":A and protein",
               colorScheme: "uniform",
-              colorValue: 0x5ea8ff,
+              colorValue: 0x56c2ff,
               opacity: 0.98,
               flatShaded: true
             })
@@ -102,7 +102,7 @@
             component.addRepresentation("cartoon", {
               sele: ":B and protein",
               colorScheme: "uniform",
-              colorValue: 0xf2a45a,
+              colorValue: 0x7cf7d4,
               opacity: 0.98,
               flatShaded: true
             })
@@ -112,7 +112,7 @@
             component.addRepresentation("surface", {
               sele: ":A and protein",
               colorScheme: "uniform",
-              colorValue: 0x4f93e6,
+              colorValue: 0x56c2ff,
               opacity: 0.86,
               flatShaded: true,
               useWorker: true
@@ -122,7 +122,7 @@
             component.addRepresentation("surface", {
               sele: ":B and protein",
               colorScheme: "uniform",
-              colorValue: 0xe69349,
+              colorValue: 0x7cf7d4,
               opacity: 0.86,
               flatShaded: true,
               useWorker: true

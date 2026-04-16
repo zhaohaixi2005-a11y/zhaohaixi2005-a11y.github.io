@@ -333,9 +333,9 @@ a:hover {
 
 .protein-stage {
   position: absolute;
-  inset: 12px 12px 36px 12px;
+  inset: 12px;
   width: calc(100% - 24px);
-  height: calc(100% - 48px);
+  height: calc(100% - 24px);
   z-index: 2;
   border-radius: 12px;
   overflow: hidden;
@@ -345,7 +345,7 @@ a:hover {
 
 .protein-fallback {
   position: absolute;
-  inset: 12px 12px 36px 12px;
+  inset: 12px;
   display: grid;
   place-items: center;
   z-index: 2;
@@ -893,13 +893,13 @@ a:hover {
 
   .protein-stage,
   .protein-fallback {
-    inset: 14px 10px 40px 10px;
+    inset: 14px 10px;
   }
 
   .protein-mode-toggle {
-    top: auto;
+    top: 16px;
     right: 12px;
-    bottom: 48px;
+    bottom: auto;
   }
 
   .navlinks {
