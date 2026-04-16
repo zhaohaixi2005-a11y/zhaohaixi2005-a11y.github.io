@@ -131,7 +131,8 @@
 
           component.addRepresentation("ball+stick", {
             sele: "hetero and not water",
-            colorScheme: "element",
+            colorScheme: "uniform",
+            colorValue: 0xf6c177,
             opacity: 0.96,
             scale: 2.2
           });
