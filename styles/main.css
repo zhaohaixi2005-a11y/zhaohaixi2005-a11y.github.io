@@ -522,6 +522,11 @@ a:hover {
   transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
 
+.metric-publications {
+  display: flex;
+  flex-direction: column;
+}
+
 .metric-link:hover {
   transform: translateY(-2px);
   border-color: rgba(123, 251, 213, 0.58);
@@ -561,6 +566,38 @@ a:hover {
   color: #9ce8ff;
   font-size: 12px;
   letter-spacing: 0.01em;
+}
+
+.publication-list {
+  display: grid;
+  gap: 7px;
+  margin-top: 10px;
+}
+
+.publication-link {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 7px;
+  align-items: start;
+  color: #dff6ff;
+  font-size: 11.5px;
+  line-height: 1.42;
+}
+
+.publication-link b {
+  color: var(--teal);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10.5px;
+  line-height: 1.55;
+}
+
+.publication-link span {
+  color: inherit;
+  overflow-wrap: anywhere;
+}
+
+.publication-link:hover span {
+  color: var(--teal);
 }
 
 .section {
@@ -605,6 +642,69 @@ a:hover {
   display: grid;
   gap: 14px;
   grid-template-columns: repeat(12, minmax(0, 1fr));
+}
+
+.publication-grid {
+  margin-top: 14px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.publication-card {
+  border: 1px solid rgba(181, 217, 255, 0.2);
+  border-radius: 14px;
+  padding: 16px;
+  background:
+    linear-gradient(150deg, rgba(8, 19, 40, 0.88), rgba(7, 18, 36, 0.62)),
+    radial-gradient(20rem 11rem at 92% 6%, rgba(86, 247, 212, 0.11), transparent 72%);
+  box-shadow: inset 0 0 0 1px rgba(109, 198, 255, 0.05);
+}
+
+.publication-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  align-items: center;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10.5px;
+  color: rgba(191, 216, 239, 0.92);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.publication-meta span:first-child {
+  color: var(--teal);
+}
+
+.publication-card h3 {
+  margin: 10px 0 8px;
+  font-family: "Space Grotesk", "Noto Sans SC", sans-serif;
+  font-size: 17px;
+  line-height: 1.36;
+  color: var(--white);
+}
+
+.publication-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.62;
+}
+
+.publication-card p strong {
+  color: #eaf4ff;
+  font-weight: 700;
+}
+
+.publication-doi {
+  display: inline-flex;
+  margin-top: 12px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  line-height: 1.4;
+  color: #9ce8ff;
+  overflow-wrap: anywhere;
 }
 
 .portal {
@@ -866,7 +966,8 @@ a:hover {
 
 @media (max-width: 900px) {
   .hero-grid,
-  .cols {
+  .cols,
+  .publication-grid {
     grid-template-columns: 1fr;
   }
 

@@ -8,7 +8,7 @@
       name="description"
       content="Layered personal research homepage of Haixi Zhao, focused on AI-guided protein design and computational biology."
     />
-    <link rel="stylesheet" href="styles/main.css?v=20260415n" />
+    <link rel="stylesheet" href="styles/main.css?v=20260612a" />
   </head>
   <body>
     <canvas id="site-bg-canvas" class="site-bg-canvas" aria-hidden="true"></canvas>
@@ -18,6 +18,7 @@
         <div class="logo"><span class="dot"></span>Haixi Zhao · Research Interface</div>
         <nav class="navlinks">
           <a href="#about">About</a>
+          <a href="#publications">Publications</a>
           <a href="#research">Research</a>
           <a href="#competitions">Competitions</a>
           <a href="#contact">Contact</a>
@@ -58,11 +59,20 @@
 
           <div class="hero-side">
             <div class="metrics">
-              <a class="metric metric-link" href="https://doi.org/10.1186/s11658-025-00781-z" target="_blank" rel="noreferrer">
-                <strong>SCI 1</strong>
-                <span>Cellular & Molecular Biology Letters (IF 10.2)</span>
-                <em class="metric-jump">Open publication ↗</em>
-              </a>
+              <article class="metric metric-publications">
+                <strong>SCI 2</strong>
+                <span>Cellular &amp; Molecular Biology Letters</span>
+                <div class="publication-list" aria-label="Selected publications">
+                  <a class="publication-link" href="https://doi.org/10.1186/s11658-026-00977-x" target="_blank" rel="noreferrer">
+                    <b>2026</b>
+                    <span>NAT10/c-Myc feedback loop in anaplastic thyroid carcinoma</span>
+                  </a>
+                  <a class="publication-link" href="https://doi.org/10.1186/s11658-025-00781-z" target="_blank" rel="noreferrer">
+                    <b>2025</b>
+                    <span>NSUN2-tRNAVal-CAC axis in triple-negative breast cancer</span>
+                  </a>
+                </div>
+              </article>
               <a class="metric metric-link" href="#research">
                 <strong>6+</strong>
                 <span>Research and competition gateways</span>
@@ -106,6 +116,33 @@
           My work centers on AI-guided protein design, structural biology, and systems-level bioengineering, aiming
           to turn research into a process that is interpretable, verifiable, and continuously evolvable.
         </p>
+      </section>
+
+      <section class="section reveal" id="publications">
+        <h2>Publications</h2>
+        <p class="section-lead">Selected SCI publications indexed by DOI.</p>
+
+        <div class="publication-grid">
+          <article class="publication-card">
+            <div class="publication-meta">
+              <span>2026</span>
+              <span>Cellular &amp; Molecular Biology Letters</span>
+            </div>
+            <h3>The NAT10/c-Myc positive feedback loop orchestrates tRNA ac4C modification and OTUB1-mediated protein stabilization to drive anaplastic thyroid carcinoma progression</h3>
+            <p>Bo Wei, <strong>Haixi Zhao</strong>, Shi Chang, Wenlong Wang</p>
+            <a class="publication-doi" href="https://doi.org/10.1186/s11658-026-00977-x" target="_blank" rel="noreferrer">doi:10.1186/s11658-026-00977-x</a>
+          </article>
+
+          <article class="publication-card">
+            <div class="publication-meta">
+              <span>2025</span>
+              <span>Cellular &amp; Molecular Biology Letters</span>
+            </div>
+            <h3>NSUN2-tRNAVal-CAC-axis-regulated codon-biased translation drives triple-negative breast cancer glycolysis and progression</h3>
+            <p>Wenlong Wang, Ying Ding, <strong>Haixi Zhao</strong>, Shouman Wang, Juan Huang, Lunquan Sun</p>
+            <a class="publication-doi" href="https://doi.org/10.1186/s11658-025-00781-z" target="_blank" rel="noreferrer">doi:10.1186/s11658-025-00781-z</a>
+          </article>
+        </div>
       </section>
 
       <section class="section reveal" id="research">
