@@ -975,6 +975,7 @@ a:hover {
     gap: 18px;
     width: 100%;
     justify-self: stretch;
+    transform: none;
   }
 
   .profile-flip-card {
