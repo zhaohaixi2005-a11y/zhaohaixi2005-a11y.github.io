@@ -1,6 +1,11 @@
 (function () {
   var reducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var cleanups = [];
+  var pageActive = true;
+
+  function canAnimate() {
+    return pageActive && document.visibilityState !== "hidden";
+  }
 
   var year = document.getElementById("year");
   if (year) year.textContent = String(new Date().getFullYear());
@@ -29,15 +34,31 @@
     var source = mount.getAttribute("data-pdb-source") || "rcsb://1crn";
     var modeButtons = Array.prototype.slice.call(document.querySelectorAll(".protein-mode-button"));
     var stage = null;
-    var proteinRepresentations = {
-      cartoon: [],
-      surface: []
-    };
+    var component = null;
+    var disposed = false;
+    var ready = false;
+    var pageSuspended = false;
+    var inView = false;
+    var spinning = false;
+    var viewportObserver = null;
+    var proteinRepresentations = { cartoon: [], surface: [] };
     var activeMode = "cartoon";
 
     function onFail(text, err) {
+      if (disposed) return;
       if (fallback) fallback.textContent = text;
       if (err) console.error(err);
+    }
+
+    function releaseStage() {
+      ready = false;
+      if (!stage) return;
+      stage.setSpin(false);
+      stage.removeAllComponents();
+      stage.dispose();
+      stage = null;
+      component = null;
+      spinning = false;
     }
 
     function syncModeButtons(mode) {
@@ -48,127 +69,199 @@
       });
     }
 
+    function syncSpin() {
+      if (!stage || disposed) return;
+      var shouldSpin = ready && inView && !reducedMotion && !pageSuspended && canAnimate();
+      if (shouldSpin === spinning) return;
+      stage.setSpin(shouldSpin);
+      spinning = shouldSpin;
+    }
+
+    function createSurfaceRepresentations() {
+      if (!component || proteinRepresentations.surface.length) return;
+      try {
+        [[":A", 0x56c2ff], [":B", 0x7cf7d4]].forEach(function (chain) {
+          proteinRepresentations.surface.push(
+            component.addRepresentation("surface", {
+              sele: chain[0] + " and protein",
+              colorScheme: "uniform",
+              colorValue: chain[1],
+              opacity: 0.86,
+              flatShaded: true,
+              useWorker: true,
+              visible: false
+            })
+          );
+        });
+      } catch (err) {
+        proteinRepresentations.surface.forEach(function (representation) {
+          representation.dispose();
+        });
+        proteinRepresentations.surface = [];
+        throw err;
+      }
+    }
+
     function setMode(mode) {
       activeMode = mode === "surface" ? "surface" : "cartoon";
-
+      if (component && activeMode === "surface") {
+        try {
+          createSurfaceRepresentations();
+        } catch (err) {
+          activeMode = "cartoon";
+          onFail("Surface view unavailable", err);
+        }
+      }
       ["cartoon", "surface"].forEach(function (representationMode) {
         proteinRepresentations[representationMode].forEach(function (representation) {
           representation.setVisibility(representationMode === activeMode);
         });
       });
-
       syncModeButtons(activeMode);
+      if (stage && stage.viewer) stage.viewer.requestRender();
+    }
 
-      if (stage && stage.viewer) {
-        stage.viewer.requestRender();
-      }
+    function checkViewport() {
+      var bounds = mount.getBoundingClientRect();
+      inView = bounds.bottom > 0 && bounds.top < window.innerHeight &&
+        bounds.right > 0 && bounds.left < window.innerWidth;
+      syncSpin();
+    }
+
+    function onResize() {
+      if (!stage || disposed) return;
+      stage.handleResize();
+      if (!viewportObserver) checkViewport();
+    }
+
+    function onVisibilityChange() { syncSpin(); }
+    function onPageHide() {
+      pageSuspended = true;
+      syncSpin();
+    }
+    function onPageShow() {
+      pageActive = true;
+      pageSuspended = false;
+      checkViewport();
+    }
+
+    window.addEventListener("resize", onResize);
+    document.addEventListener("visibilitychange", onVisibilityChange);
+    window.addEventListener("pagehide", onPageHide);
+    window.addEventListener("pageshow", onPageShow);
+    if ("IntersectionObserver" in window) {
+      viewportObserver = new IntersectionObserver(function (entries) {
+        inView = entries[0].isIntersecting;
+        syncSpin();
+      }, { threshold: 0.01 });
+      viewportObserver.observe(mount);
+    } else {
+      checkViewport();
+      window.addEventListener("scroll", checkViewport, { passive: true });
     }
 
     function bootNgl() {
+      if (disposed) return;
       if (!window.NGL || !window.NGL.Stage) {
         onFail("3D engine unavailable");
         return;
       }
-
-      stage = new window.NGL.Stage("protein-stage", {
-        backgroundColor: "transparent",
-        quality: "medium",
-        sampleLevel: 1
-      });
-
-      var onResize = function () {
-        stage.handleResize();
-      };
-      window.addEventListener("resize", onResize);
-      cleanups.push(function () {
-        window.removeEventListener("resize", onResize);
-      });
-
-      stage
-        .loadFile(source, { defaultRepresentation: false })
-        .then(function (loadedComponent) {
-          var component = loadedComponent;
-
-          proteinRepresentations.cartoon.push(
-            component.addRepresentation("cartoon", {
-              sele: ":A and protein",
-              colorScheme: "uniform",
-              colorValue: 0x56c2ff,
-              opacity: 0.98,
-              flatShaded: true
-            })
-          );
-          proteinRepresentations.cartoon.push(
-            component.addRepresentation("cartoon", {
-              sele: ":B and protein",
-              colorScheme: "uniform",
-              colorValue: 0x7cf7d4,
-              opacity: 0.98,
-              flatShaded: true
-            })
-          );
-
-          proteinRepresentations.surface.push(
-            component.addRepresentation("surface", {
-              sele: ":A and protein",
-              colorScheme: "uniform",
-              colorValue: 0x56c2ff,
-              opacity: 0.86,
-              flatShaded: true,
-              useWorker: true
-            })
-          );
-          proteinRepresentations.surface.push(
-            component.addRepresentation("surface", {
-              sele: ":B and protein",
-              colorScheme: "uniform",
-              colorValue: 0x7cf7d4,
-              opacity: 0.86,
-              flatShaded: true,
-              useWorker: true
-            })
-          );
-
-          component.addRepresentation("ball+stick", {
-            sele: "hetero and not water",
-            colorScheme: "uniform",
-            colorValue: 0xf6c177,
-            opacity: 0.96,
-            scale: 2.2
-          });
-
-          setMode(activeMode);
-          component.autoView();
-          if (!reducedMotion) stage.setSpin([0, 1, 0], 0.004);
-          mount.classList.add("ready");
-        })
-        .catch(function (err) {
-          onFail("3D model failed to load", err);
+      try {
+        stage = new window.NGL.Stage("protein-stage", {
+          backgroundColor: "transparent",
+          quality: "medium",
+          sampleLevel: 1
         });
+        // NGL can return a partial stage when the browser has no WebGL renderer.
+        if (!stage.viewer || !stage.viewer.renderer) {
+          if (stage.tasks) stage.tasks.dispose();
+          stage = null;
+          throw new Error("WebGL unavailable");
+        }
+        Promise.resolve(stage.loadFile(source, { defaultRepresentation: false }))
+          .then(function (loadedComponent) {
+            if (disposed) {
+              loadedComponent.dispose();
+              return;
+            }
+            component = loadedComponent;
+            [[":A", 0x56c2ff], [":B", 0x7cf7d4]].forEach(function (chain) {
+              proteinRepresentations.cartoon.push(
+                component.addRepresentation("cartoon", {
+                  sele: chain[0] + " and protein",
+                  colorScheme: "uniform",
+                  colorValue: chain[1],
+                  opacity: 0.98,
+                  flatShaded: true,
+                  visible: false
+                })
+              );
+            });
+            component.addRepresentation("ball+stick", {
+              sele: "hetero and not water",
+              colorScheme: "uniform",
+              colorValue: 0xf6c177,
+              opacity: 0.96,
+              scale: 2.2
+            });
+            setMode(activeMode);
+            component.autoView();
+            ready = true;
+            syncSpin();
+            mount.classList.add("ready");
+          })
+          .catch(function (err) {
+            releaseStage();
+            onFail("3D model failed to load", err);
+          });
+      } catch (err) {
+        releaseStage();
+        onFail("3D engine unavailable", err);
+      }
     }
 
     modeButtons.forEach(function (button) {
       var onClick = function () {
-        setMode(button.getAttribute("data-protein-mode"));
+        if (!disposed) setMode(button.getAttribute("data-protein-mode"));
       };
       button.addEventListener("click", onClick);
-      cleanups.push(function () {
-        button.removeEventListener("click", onClick);
-      });
+      cleanups.push(function () { button.removeEventListener("click", onClick); });
+    });
+    cleanups.push(function () {
+      disposed = true;
+      if (viewportObserver) viewportObserver.disconnect();
+      window.removeEventListener("resize", onResize);
+      window.removeEventListener("scroll", checkViewport);
+      document.removeEventListener("visibilitychange", onVisibilityChange);
+      window.removeEventListener("pagehide", onPageHide);
+      window.removeEventListener("pageshow", onPageShow);
+      releaseStage();
     });
 
     syncModeButtons(activeMode);
-
     if (window.NGL && window.NGL.Stage) {
       bootNgl();
-      return;
+    } else {
+      loadScript("https://cdn.jsdelivr.net/npm/ngl@2.0.0-dev.37/dist/ngl.js")
+        .catch(function (err) {
+          if (disposed) throw err;
+          return loadScript("https://unpkg.com/ngl@2.0.0-dev.37/dist/ngl.js");
+        })
+        .then(bootNgl)
+        .catch(function (err) { onFail("3D engine unavailable", err); });
     }
+  }
 
-    loadScript("https://unpkg.com/ngl@2.0.0-dev.37/dist/ngl.js")
-      .then(bootNgl)
-      .catch(function (err) {
-        onFail("3D engine unavailable", err);
-      });
+  function initPortraitToggle() {
+    var portrait = document.querySelector("button.profile-flip-card");
+    if (!portrait) return;
+    var onClick = function () {
+      var flipped = portrait.getAttribute("aria-pressed") !== "true";
+      portrait.classList.toggle("is-flipped", flipped);
+      portrait.setAttribute("aria-pressed", flipped ? "true" : "false");
+    };
+    portrait.addEventListener("click", onClick);
+    cleanups.push(function () { portrait.removeEventListener("click", onClick); });
   }
 
   var projectWaveState = {
@@ -178,7 +271,7 @@
     width: 0,
     height: 0,
     rafId: 0,
-    lastTs: 0,
+    lastTs: null,
     resizeRaf: 0,
     layers: [
       {
@@ -242,7 +335,7 @@
     var s = projectWaveState;
     if (!s.canvas || !s.ctx) return;
 
-    s.dpr = Math.min(window.devicePixelRatio || 1, 2);
+    s.dpr = Math.min(window.devicePixelRatio || 1, 1.25);
     s.width = Math.max(window.innerWidth || 0, 1);
     s.height = Math.max(window.innerHeight || 0, 1);
     s.canvas.width = Math.floor(s.width * s.dpr);
@@ -315,20 +408,29 @@
   }
 
   function animateProjectWave(timestamp) {
-    projectWaveState.rafId = 0;
-    drawProjectWaveFrame(timestamp);
+    var s = projectWaveState;
+    s.rafId = 0;
+    if (!canAnimate()) return;
+    var interval = 1000 / 24;
+    var elapsed = s.lastTs === null ? interval : timestamp - s.lastTs;
+    if (elapsed >= interval) {
+      drawProjectWaveFrame(timestamp);
+      s.lastTs = timestamp - elapsed % interval;
+    }
     startProjectWaveAnimation();
   }
 
   function startProjectWaveAnimation() {
-    if (reducedMotion || projectWaveState.rafId || !projectWaveState.ctx) return;
+    if (reducedMotion || !canAnimate() || projectWaveState.rafId || !projectWaveState.ctx) return;
     projectWaveState.rafId = window.requestAnimationFrame(animateProjectWave);
   }
 
   function stopProjectWaveAnimation() {
-    if (!projectWaveState.rafId) return;
-    window.cancelAnimationFrame(projectWaveState.rafId);
+    if (projectWaveState.rafId) window.cancelAnimationFrame(projectWaveState.rafId);
     projectWaveState.rafId = 0;
+    projectWaveState.lastTs = null;
+    if (projectWaveState.resizeRaf) window.cancelAnimationFrame(projectWaveState.resizeRaf);
+    projectWaveState.resizeRaf = 0;
   }
 
   function initProjectWaveCanvas() {
@@ -349,9 +451,10 @@
     startProjectWaveAnimation();
 
     var onResize = function () {
-      if (projectWaveState.resizeRaf) return;
+      if (!canAnimate() || projectWaveState.resizeRaf) return;
       projectWaveState.resizeRaf = window.requestAnimationFrame(function () {
         projectWaveState.resizeRaf = 0;
+        if (!canAnimate()) return;
         resizeProjectWaveCanvas();
         drawProjectWaveFrame(performance.now ? performance.now() : 0);
         startProjectWaveAnimation();
@@ -378,34 +481,38 @@
     width: 0,
     height: 0,
     particles: [],
-    rafId: 0
+    rafId: 0,
+    lastTs: null,
+    lastMotionTs: null
   };
 
   function resizeParticleCanvas() {
     var s = backgroundState;
     if (!s.canvas || !s.ctx) return;
 
-    s.dpr = Math.min(window.devicePixelRatio || 1, 2);
+    s.dpr = Math.min(window.devicePixelRatio || 1, 1.5);
     s.width = Math.max(s.canvas.clientWidth || 0, window.innerWidth || 0, 1);
     s.height = Math.max(s.canvas.clientHeight || 0, window.innerHeight || 0, 1);
     s.canvas.width = Math.max(1, Math.floor(s.width * s.dpr));
     s.canvas.height = Math.max(1, Math.floor(s.height * s.dpr));
     s.ctx.setTransform(s.dpr, 0, 0, s.dpr, 0, 0);
 
-    var particleCount = Math.max(58, Math.min(180, Math.floor((s.width * s.height) / 14800)));
+    var particleCount = Math.max(28, Math.min(80, Math.floor((s.width * s.height) / 22000)));
     s.particles = [];
+    s.lastTs = null;
+    s.lastMotionTs = null;
     for (var i = 0; i < particleCount; i += 1) {
       s.particles.push({
         x: Math.random() * s.width,
         y: Math.random() * s.height,
-        vx: (Math.random() - 0.5) * 0.62,
-        vy: (Math.random() - 0.5) * 0.62,
+        vx: (Math.random() - 0.5) * 0.62 * 60,
+        vy: (Math.random() - 0.5) * 0.62 * 60,
         r: 1 + Math.random() * 2.1
       });
     }
   }
 
-  function drawParticleFrame() {
+  function drawParticleFrame(deltaSeconds) {
     var s = backgroundState;
     var ctx = s.ctx;
     if (!ctx) return;
@@ -416,8 +523,8 @@
 
     for (var i = 0; i < s.particles.length; i += 1) {
       var p = s.particles[i];
-      p.x += p.vx;
-      p.y += p.vy;
+      p.x += p.vx * (deltaSeconds || 0);
+      p.y += p.vy * (deltaSeconds || 0);
 
       if (p.x < -12 || p.x > s.width + 12) p.vx *= -1;
       if (p.y < -12 || p.y > s.height + 12) p.vy *= -1;
@@ -426,8 +533,6 @@
       ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
       ctx.fillStyle = "rgba(212, 244, 255, 0.98)";
       ctx.fill();
-      ctx.shadowBlur = 8;
-      ctx.shadowColor = "rgba(146, 223, 255, 0.8)";
 
       for (var j = i + 1; j < s.particles.length; j += 1) {
         var q = s.particles[j];
@@ -445,24 +550,33 @@
           ctx.stroke();
         }
       }
-      ctx.shadowBlur = 0;
     }
   }
 
   function startBackgroundAnimation() {
-    if (reducedMotion || backgroundState.rafId || !backgroundState.ctx) return;
+    if (reducedMotion || !canAnimate() || backgroundState.rafId || !backgroundState.ctx) return;
     backgroundState.rafId = window.requestAnimationFrame(animateBackground);
   }
 
   function stopBackgroundAnimation() {
-    if (!backgroundState.rafId) return;
-    window.cancelAnimationFrame(backgroundState.rafId);
+    if (backgroundState.rafId) window.cancelAnimationFrame(backgroundState.rafId);
     backgroundState.rafId = 0;
+    backgroundState.lastTs = null;
+    backgroundState.lastMotionTs = null;
   }
 
-  function animateBackground() {
-    backgroundState.rafId = 0;
-    drawParticleFrame();
+  function animateBackground(timestamp) {
+    var s = backgroundState;
+    s.rafId = 0;
+    if (!canAnimate()) return;
+    var interval = 1000 / 30;
+    var elapsed = s.lastTs === null ? interval : timestamp - s.lastTs;
+    if (elapsed >= interval) {
+      var delta = s.lastMotionTs === null ? 0 : Math.min((timestamp - s.lastMotionTs) / 1000, 0.1);
+      drawParticleFrame(delta);
+      s.lastTs = timestamp - elapsed % interval;
+      s.lastMotionTs = timestamp;
+    }
     startBackgroundAnimation();
   }
 
@@ -479,6 +593,7 @@
     startBackgroundAnimation();
 
     var onResize = function () {
+      if (!canAnimate()) return;
       resizeParticleCanvas();
       drawParticleFrame();
       startBackgroundAnimation();
@@ -487,187 +602,6 @@
     cleanups.push(function () {
       window.removeEventListener("resize", onResize);
       stopBackgroundAnimation();
-    });
-  }
-
-  var fragmentState = {
-    canvas: null,
-    ctx: null,
-    dpr: 1,
-    width: 0,
-    height: 0,
-    fragments: [],
-    rafId: 0,
-    maxFragments: 92,
-    lastSpawnAt: 0,
-    isMutedOverViewer: false,
-    chars: ["A", "T", "G", "C", "0", "1", "{", "}", "<", ">", "/", "\\", "[", "]", "(", ")", ";", ":", "+", "-", "*"]
-  };
-
-  function resizeFragmentCanvas() {
-    var s = fragmentState;
-    if (!s.canvas || !s.ctx) return;
-
-    s.dpr = Math.min(window.devicePixelRatio || 1, 2);
-    s.width = Math.max(s.canvas.clientWidth || 0, window.innerWidth || 0, 1);
-    s.height = Math.max(s.canvas.clientHeight || 0, window.innerHeight || 0, 1);
-    s.canvas.width = Math.max(1, Math.floor(s.width * s.dpr));
-    s.canvas.height = Math.max(1, Math.floor(s.height * s.dpr));
-    s.ctx.setTransform(s.dpr, 0, 0, s.dpr, 0, 0);
-  }
-
-  function spawnCodeFragments(x, y) {
-    var s = fragmentState;
-    if (s.fragments.length >= s.maxFragments) return;
-
-    var burst = 1 + Math.floor(Math.random() * 2);
-    for (var i = 0; i < burst; i += 1) {
-      if (s.fragments.length >= s.maxFragments) break;
-      var angle = Math.random() * Math.PI * 2;
-      var speed = 0.28 + Math.random() * 0.6;
-      s.fragments.push({
-        x: x + (Math.random() - 0.5) * 8,
-        y: y + (Math.random() - 0.5) * 8,
-        vx: Math.cos(angle) * speed,
-        vy: Math.sin(angle) * speed - 0.2,
-        rot: Math.random() * Math.PI * 2,
-        vr: (Math.random() - 0.5) * 0.08,
-        life: 0,
-        ttl: 44 + Math.random() * 28,
-        size: 10 + Math.random() * 3.5,
-        char: s.chars[Math.floor(Math.random() * s.chars.length)]
-      });
-    }
-  }
-
-  function animateFragments() {
-    var s = fragmentState;
-    var ctx = s.ctx;
-    if (!ctx) return;
-
-    s.rafId = 0;
-    ctx.clearRect(0, 0, s.width, s.height);
-
-    for (var i = s.fragments.length - 1; i >= 0; i -= 1) {
-      var f = s.fragments[i];
-      f.life += 1;
-      if (f.life > f.ttl) {
-        s.fragments.splice(i, 1);
-        continue;
-      }
-
-      f.x += f.vx;
-      f.y += f.vy;
-      f.rot += f.vr;
-      f.vy += 0.003;
-      f.vx *= 0.994;
-
-      var alpha = (1 - f.life / f.ttl) * 0.96;
-      ctx.save();
-      ctx.translate(f.x, f.y);
-      ctx.rotate(f.rot);
-      ctx.font = f.size.toFixed(1) + "px JetBrains Mono, monospace";
-      ctx.shadowBlur = 10;
-      ctx.shadowColor = "rgba(122, 223, 255, 0.95)";
-      ctx.fillStyle = "rgba(232, 250, 255," + alpha.toFixed(3) + ")";
-      ctx.fillText(f.char, 0, 0);
-      ctx.strokeStyle = "rgba(122, 223, 255," + (alpha * 0.78).toFixed(3) + ")";
-      ctx.lineWidth = 0.45;
-      ctx.strokeText(f.char, 0, 0);
-      ctx.restore();
-    }
-
-    if (s.fragments.length) {
-      startFragmentAnimation();
-    }
-  }
-
-  function startFragmentAnimation() {
-    if (reducedMotion || fragmentState.rafId || !fragmentState.ctx || !fragmentState.fragments.length) return;
-    fragmentState.rafId = window.requestAnimationFrame(animateFragments);
-  }
-
-  function stopFragmentAnimation() {
-    if (!fragmentState.rafId) return;
-    window.cancelAnimationFrame(fragmentState.rafId);
-    fragmentState.rafId = 0;
-  }
-
-  function clearFragments() {
-    if (!fragmentState.ctx) return;
-    fragmentState.fragments = [];
-    fragmentState.ctx.clearRect(0, 0, fragmentState.width, fragmentState.height);
-    stopFragmentAnimation();
-  }
-
-  function initViewerFragmentMuteZone() {
-    var muteTarget = document.querySelector(".hero-visual");
-    if (!muteTarget) return;
-
-    var onEnter = function () {
-      fragmentState.isMutedOverViewer = true;
-      clearFragments();
-    };
-
-    var onLeave = function () {
-      fragmentState.isMutedOverViewer = false;
-    };
-
-    muteTarget.addEventListener("pointerenter", onEnter);
-    muteTarget.addEventListener("pointerleave", onLeave);
-    cleanups.push(function () {
-      muteTarget.removeEventListener("pointerenter", onEnter);
-      muteTarget.removeEventListener("pointerleave", onLeave);
-    });
-  }
-
-  function initCursorFragments() {
-    var canvas = document.getElementById("cursor-fragments-canvas");
-    if (!canvas) return;
-
-    fragmentState.canvas = canvas;
-    fragmentState.ctx = get2dContext(canvas);
-    if (!fragmentState.ctx) return;
-
-    resizeFragmentCanvas();
-
-    if (!reducedMotion) {
-      var onMouseMove = function (ev) {
-        if (fragmentState.isMutedOverViewer) return;
-        var now = performance.now();
-        if (now - fragmentState.lastSpawnAt < 96) return;
-        fragmentState.lastSpawnAt = now;
-        spawnCodeFragments(ev.clientX, ev.clientY);
-        startFragmentAnimation();
-      };
-      window.addEventListener("mousemove", onMouseMove);
-      cleanups.push(function () {
-        window.removeEventListener("mousemove", onMouseMove);
-      });
-    }
-
-    var onResize = function () {
-      resizeFragmentCanvas();
-      if (!fragmentState.fragments.length) return;
-      startFragmentAnimation();
-    };
-    window.addEventListener("resize", onResize);
-    cleanups.push(function () {
-      window.removeEventListener("resize", onResize);
-      stopFragmentAnimation();
-    });
-  }
-
-  function initNoNavCards() {
-    var cards = document.querySelectorAll(".no-nav-link");
-    cards.forEach(function (card) {
-      card.addEventListener("click", function (event) {
-        event.preventDefault();
-        card.classList.add("is-tapped");
-        window.setTimeout(function () {
-          card.classList.remove("is-tapped");
-        }, 220);
-      });
     });
   }
 
@@ -685,14 +619,13 @@
     items.forEach(function (el) {
       io.observe(el);
     });
+    cleanups.push(function () { io.disconnect(); });
   }
 
   initSiteParticles();
-  initCursorFragments();
-  initViewerFragmentMuteZone();
   initProjectWaveCanvas();
   initProteinViewer();
-  initNoNavCards();
+  initPortraitToggle();
   initRevealObserver();
 
   var refreshRafA = 0;
@@ -722,17 +655,11 @@
       drawProjectWaveFrame(performance.now ? performance.now() : 0);
       startProjectWaveAnimation();
     }
-
-    if (fragmentState.ctx) {
-      resizeFragmentCanvas();
-      fragmentState.ctx.clearRect(0, 0, fragmentState.width, fragmentState.height);
-      fragmentState.fragments = [];
-      stopFragmentAnimation();
-    }
   }
 
   function scheduleInteractiveRefresh() {
     cancelRefreshFrames();
+    if (!canAnimate()) return;
     refreshRafA = window.requestAnimationFrame(function () {
       refreshRafA = 0;
       refreshRafB = window.requestAnimationFrame(function () {
@@ -746,21 +673,26 @@
     if (document.visibilityState === "hidden") {
       stopBackgroundAnimation();
       stopProjectWaveAnimation();
-      stopFragmentAnimation();
       cancelRefreshFrames();
       return;
     }
     scheduleInteractiveRefresh();
   });
 
-  window.addEventListener("pagehide", function () {
+  window.addEventListener("pagehide", function (event) {
+    pageActive = false;
     stopBackgroundAnimation();
     stopProjectWaveAnimation();
-    stopFragmentAnimation();
     cancelRefreshFrames();
+    // A cached page must keep its viewer and listeners for pageshow.
+    if (!event.persisted) {
+      cleanups.forEach(function (cleanup) { cleanup(); });
+      cleanups = [];
+    }
   });
 
   window.addEventListener("pageshow", function () {
+    pageActive = true;
     scheduleInteractiveRefresh();
   });
 })();

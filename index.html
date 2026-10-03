@@ -8,15 +8,14 @@
       name="description"
       content="Haixi Zhao is a Bioscience undergraduate at HUST and Université Paris-Saclay working on computational protein design, structural biology, and protein engineering."
     />
-    <link rel="stylesheet" href="styles/main.css?v=20261003d" />
+    <link rel="stylesheet" href="styles/main.css?v=20261003e" />
     <noscript><style>.reveal { opacity: 1; transform: none; }</style></noscript>
   </head>
   <body>
     <canvas id="site-bg-canvas" class="site-bg-canvas" aria-hidden="true"></canvas>
-    <canvas id="cursor-fragments-canvas" class="cursor-fragments-canvas" aria-hidden="true"></canvas>
     <main class="shell">
       <header class="topbar">
-        <div class="logo"><span class="dot"></span>Haixi Zhao · Research Interface</div>
+        <div class="logo"><span class="dot"></span>Haixi Zhao · Protein Design</div>
         <nav class="navlinks" aria-label="Main navigation">
           <a href="#about">About</a>
           <a href="#publications">Publications</a>
@@ -29,30 +28,32 @@
       <section class="hero reveal is-visible">
         <div class="hero-grid">
           <div class="hero-copy">
-            <div class="profile-flip-card" tabindex="0" aria-label="Flip portrait card of Haixi Zhao">
-              <div class="profile-flip-card__inner">
-                <div class="profile-flip-card__face profile-flip-card__face--front">
+            <button class="profile-flip-card" type="button" aria-pressed="false" aria-label="Switch portrait of Haixi Zhao" title="Click to switch portrait">
+              <span class="profile-flip-card__inner">
+                <span class="profile-flip-card__face profile-flip-card__face--front">
                   <img
                     class="profile-card-art profile-card-art--cartoon"
                     src="assets/avatar-cartoon-card.png?v=20260415b"
                     alt="Cartoon portrait of Haixi Zhao"
                   />
-                </div>
-                <div class="profile-flip-card__face profile-flip-card__face--back">
+                </span>
+                <span class="profile-flip-card__face profile-flip-card__face--back">
                   <img
                     class="profile-card-art profile-card-art--photo"
                     src="assets/avatar-photo-card.png?v=20260415b"
                     alt="Portrait of Haixi Zhao"
                   />
-                </div>
-              </div>
-            </div>
+                </span>
+              </span>
+              <span class="profile-card-hint" aria-hidden="true">Flip portrait ↔</span>
+            </button>
             <div class="hero-copy-body">
               <p class="kicker">AI-guided Protein Design · Computational Biology</p>
               <h1>Haixi Zhao</h1>
+              <p class="hero-affiliation">Bioscience undergraduate · HUST × Université Paris-Saclay</p>
               <p class="tagline">I design computational-to-experimental research loops for protein engineering, from structure generation to biological validation.</p>
               <div class="hero-actions">
-                <a class="btn primary" href="#research">Explore Research Gateways</a>
+                <a class="btn primary" href="#research">Explore Research</a>
                 <a class="btn" href="assets/HAIXI_CV.pdf?v=20261003" target="_blank" rel="noreferrer">Download CV</a>
                 <a class="btn" href="https://github.com/zhaohaixi2005-a11y" target="_blank" rel="noreferrer">GitHub</a>
               </div>
@@ -62,8 +63,8 @@
           <div class="hero-side">
             <div class="metrics">
               <article class="metric metric-publications">
-                <strong>SCI 3</strong>
-                <span>Microbiological Research · Cellular &amp; Molecular Biology Letters</span>
+                <strong>Selected publications</strong>
+                <span class="publication-highlight">First-author review · Microbiological Research</span>
                 <div class="publication-list" aria-label="Selected publications">
                   <a class="publication-link" href="https://doi.org/10.1016/j.micres.2026.128741" target="_blank" rel="noreferrer">
                     <b>2026</b>
@@ -80,14 +81,14 @@
                 </div>
               </article>
               <a class="metric metric-link" href="#research">
-                <strong>6</strong>
-                <span>Research gateways</span>
-                <em class="metric-jump">Jump to gateways →</em>
+                <strong>Research projects</strong>
+                <span>Protein assemblies · recognition · enzyme engineering</span>
+                <em class="metric-jump">Explore six projects →</em>
               </a>
               <a class="metric metric-link" href="#about">
-                <strong>Cross-domain</strong>
-                <span>AI design · structural biology · wet-lab validation</span>
-                <em class="metric-jump">Research approach →</em>
+                <strong>Design ↔ experiment</strong>
+                <span>Algorithms · structural modeling · biochemical validation</span>
+                <em class="metric-jump">My research approach →</em>
               </a>
             </div>
 
@@ -125,11 +126,12 @@
           with experience in algorithm development, structural modeling, protein expression and purification,
           and cryo-EM sample preparation.
         </p>
+        <p class="research-note">I enjoy the point where an abstract design idea becomes something concrete: a sampling method, a protein model, or a molecule we can test.</p>
       </section>
 
       <section class="section reveal" id="publications">
         <h2>Publications</h2>
-        <p class="section-lead">Selected SCI publications indexed by DOI.</p>
+        <p class="section-lead">Published research, with links to the full papers.</p>
 
         <div class="publication-grid">
           <article class="publication-card">
@@ -171,12 +173,12 @@
       </section>
 
       <section class="section reveal" id="research">
-        <h2>Research Gateways</h2>
+        <h2>Research Projects</h2>
 
         <div class="research-grid">
           <a class="portal span-6" href="projects/rfd3-symmetric-assemblies.html">
             <div class="portal-top">
-              <h3 class="portal-title">RFD3 Symmetric Assemblies</h3>
+              <h3 class="portal-title">Protein Assembly Design</h3>
               <div class="project-meta">
                 <span class="portal-time">Jul 2026 - Present</span>
                 <p class="project-affiliation">LMU Munich · Germany</p>
@@ -188,6 +190,7 @@
               <span class="tag">Symmetry</span>
             </div>
             <p class="portal-summary">Generative scaffold design for protein assemblies, with supplied interfaces and global symmetry preserved during sampling.</p>
+            <p class="portal-contribution"><strong>My contribution:</strong> Task compiler and constrained sampling workflow.</p>
             <span class="portal-link">View project →</span>
           </a>
 
@@ -205,6 +208,7 @@
               <span class="tag">LigandMPNN</span>
             </div>
             <p class="portal-summary">Pseudocyclic protein binders for lysine-linked LCA modifications, combining backbone generation and sequence design for selective recognition.</p>
+            <p class="portal-contribution"><strong>My contribution:</strong> Binder architecture and computational design pipeline.</p>
             <span class="portal-link">View project →</span>
           </a>
 
@@ -223,6 +227,7 @@
               <span class="tag">Cryo-EM</span>
             </div>
             <p class="portal-summary">State-specific structural seeding and bridge design for membrane proteins, supported by protein production and cryo-EM sample preparation.</p>
+            <p class="portal-contribution"><strong>My contribution:</strong> State-specific modeling and cryo-EM sample preparation.</p>
             <span class="portal-link">View project →</span>
           </a>
 
@@ -240,6 +245,7 @@
               <span class="tag">Mutagenesis</span>
             </div>
             <p class="portal-summary">Structure-guided enzyme engineering for NAD⁺ regeneration and H₂O₂ production, focusing on cofactor recognition and retention.</p>
+            <p class="portal-contribution"><strong>My contribution:</strong> Cofactor modeling and mutation prioritization.</p>
             <span class="portal-link">View project →</span>
           </a>
 
@@ -257,6 +263,7 @@
               <span class="tag">PCA/UMAP</span>
             </div>
             <p class="portal-summary">Single-cell analysis workflow optimization for hypoxia and nutrient-deprivation response mapping.</p>
+            <p class="portal-contribution"><strong>My contribution:</strong> QC refinement and transcriptomic interpretation.</p>
             <span class="portal-link">View project →</span>
           </a>
 
@@ -274,6 +281,7 @@
               <span class="tag">Cancer Translation</span>
             </div>
             <p class="portal-summary">Structure-informed analysis of NSUN2 and NAT10 mediated translational regulation in TNBC and ATC.</p>
+            <p class="portal-contribution"><strong>My contribution:</strong> Structural modeling and interface interpretation.</p>
             <span class="portal-link">View project →</span>
           </a>
         </div>
@@ -331,7 +339,6 @@
       <footer class="footer">© <span id="year"></span> Haixi Zhao · Personal Research Homepage</footer>
     </main>
 
-    <script src="https://cdn.jsdelivr.net/npm/ngl@2.0.0-dev.37/dist/ngl.js"></script>
-    <script src="scripts/main.js?v=20261003"></script>
+    <script src="scripts/main.js?v=20261003e"></script>
   </body>
 </html>
