@@ -647,13 +647,6 @@ a:hover {
   margin-top: 12px;
 }
 
-.research-subheading {
-  margin: 28px 0 0;
-  color: var(--muted);
-  font-family: "Space Grotesk", "Noto Sans SC", sans-serif;
-  font-size: 20px;
-}
-
 .research-grid {
   margin-top: 14px;
   display: grid;
@@ -678,9 +671,8 @@ a:hover {
   box-shadow: inset 0 0 0 1px rgba(109, 198, 255, 0.05);
 }
 
-.publication-card-featured {
+.publication-card:last-child:nth-child(odd) {
   grid-column: 1 / -1;
-  border-color: rgba(86, 247, 212, 0.36);
 }
 
 .publication-role {
