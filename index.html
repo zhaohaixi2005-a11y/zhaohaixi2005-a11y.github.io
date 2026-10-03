@@ -16,17 +16,17 @@
     <a class="skip-link" href="#research">Skip to research</a>
     <canvas id="site-bg-canvas" class="site-bg-canvas" aria-hidden="true"></canvas>
     <main class="shell">
-      <header class="topbar"><a class="logo" href="#home" aria-label="Haixi Zhao homepage"><span class="dot" aria-hidden="true"></span>Haixi Zhao<span class="logo-field"> / Protein Design</span></a><div class="header-controls"><nav class="navlinks" aria-label="Main navigation"><a href="#research">Research</a><a href="#publications">Publications</a><a href="#about">About</a><a href="#competitions">Beyond research</a><a href="#contact">Contact ↗</a></nav><button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark theme" aria-pressed="false" title="Switch to dark theme"><svg data-theme-icon="day" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg><svg data-theme-icon="night" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.4A8.5 8.5 0 0 1 9.6 3.5a8.5 8.5 0 1 0 10.9 10.9Z"/></svg></button></div></header>
+      <header class="topbar"><a class="logo" href="#home" aria-label="Haixi Zhao homepage"><span class="dot" aria-hidden="true"></span>Haixi Zhao<span class="logo-field"> / Protein Design</span></a><div class="header-controls"><nav class="navlinks" aria-label="Main navigation"><a href="#research">Research</a><a href="#publications">Publications</a><a href="#about">About</a><a href="#competitions">Beyond the Lab</a><a href="#contact">Contact ↗</a></nav><button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark theme" aria-pressed="false" title="Switch to dark theme"><svg data-theme-icon="day" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg><svg data-theme-icon="night" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.4A8.5 8.5 0 0 1 9.6 3.5a8.5 8.5 0 1 0 10.9 10.9Z"/></svg></button></div></header>
 <section class="hero reveal is-visible" id="home">
   <div class="hero-grid">
     <div class="hero-copy">
-      <div class="hero-identity"><button class="profile-flip-card" type="button" aria-pressed="false" aria-label="Switch portrait of Haixi Zhao" title="Click to switch portrait">
+      <div class="hero-identity"><button class="profile-flip-card" type="button" aria-pressed="false" aria-label="Switch between photo and illustrated portrait" title="Switch between photo and illustration">
               <span class="profile-flip-card__inner">
                 <span class="profile-flip-card__face profile-flip-card__face--front">
                   <img
                     class="profile-card-art profile-card-art--cartoon"
                     src="assets/avatar-cartoon-card.png?v=20260415b"
-                    alt="Cartoon portrait of Haixi Zhao"
+                    alt="Illustrated portrait of Haixi Zhao"
                   />
                 </span>
                 <span class="profile-flip-card__face profile-flip-card__face--back">
@@ -40,24 +40,24 @@
               <span class="profile-card-hint" aria-hidden="true">Flip ↔</span>
             </button><div><p class="eyebrow">RESEARCH PORTFOLIO / 2026</p><h1>Haixi Zhao</h1><p class="hero-affiliation">HUST × Université Paris-Saclay</p></div></div>
       <p class="hero-statement">Designing proteins.<br />Connecting computation<br />to experiment.</p>
-      <p class="tagline">I develop computational-to-experimental research loops for protein engineering, from structure generation to biological validation.</p>
-      <div class="hero-actions"><a class="btn primary" href="#research">Explore my research <span aria-hidden="true">↘</span></a><a class="btn" href="assets/HAIXI_CV.pdf?v=20261003" target="_blank" rel="noreferrer">Read CV ↗</a><a class="hero-github" href="https://github.com/zhaohaixi2005-a11y" target="_blank" rel="noreferrer">GitHub ↗</a></div>
+      <p class="tagline">I develop protein engineering workflows that connect computational design with experimental work.</p>
+      <div class="hero-actions"><a class="btn primary" href="#research">Explore my research <span aria-hidden="true">↘</span></a><a class="btn" href="assets/HAIXI_CV.pdf?v=20261003" target="_blank" rel="noreferrer">View CV ↗</a><a class="hero-github" href="https://github.com/zhaohaixi2005-a11y" target="_blank" rel="noreferrer">GitHub ↗</a></div>
     </div>
     <div class="hero-side">
-      <div class="visual-heading"><span class="eyebrow">A WINDOW INTO MY WORK</span><span class="visual-index">[ NOX / NAD / FAD ]</span></div>
+      <div class="visual-heading"><span class="eyebrow">A CLOSER LOOK AT NOX</span><span class="visual-index">[ NOX / NAD / FAD ]</span></div>
       <div class="hero-visual">
         <img class="protein-preview" src="assets/protein-preview.svg" width="800" height="600" alt="Alpha-carbon trace of the predicted NOX dimer, with NAD and FAD cofactors" fetchpriority="high" />
         <div id="protein-stage" class="protein-stage" data-pdb-source="assets/pdb/dimer0057_nadh_fad.cif"></div>
         <div id="protein-fallback" class="protein-fallback" role="status">Loading interactive view…</div>
         <div class="protein-mode-toggle" role="group" aria-label="Protein display mode"><button type="button" class="protein-mode-button is-active" data-protein-mode="cartoon" aria-pressed="true">Cartoon</button><button type="button" class="protein-mode-button" data-protein-mode="surface" aria-pressed="false">Surface</button></div>
       </div>
-      <div class="visual-caption"><div><strong>Structure → engineering hypothesis</strong><span>Predicted NOX dimer with NAD/FAD cofactors</span></div><a href="projects/nox-directed-evolution.html" aria-label="Read NADH oxidase engineering project">Explore the project ↗</a></div>
+      <div class="visual-caption"><div><strong>Structure-guided enzyme engineering</strong><span>Predicted NOX dimer with NAD and FAD cofactors</span></div><a href="projects/nox-directed-evolution.html" aria-label="Explore the NADH oxidase engineering project">Explore the project ↗</a></div>
       <div class="hero-evidence"><a href="#publications"><b>03</b><span>SCI publications ↘</span></a><a href="#research"><b>06</b><span>Research projects ↘</span></a><a href="#competitions"><b>iGEM</b><span>Gold medal · 2025 ↘</span></a></div>
     </div>
   </div>
   <div class="education-strip"><span class="education-label">EDUCATION<br /><small>Sino-French dual degree</small></span><a class="education-institution" href="https://english.hust.edu.cn/" aria-label="Huazhong University of Science and Technology official website" target="_blank" rel="noreferrer"><svg class="hust-day-lockup brand-light" viewBox="0 0 280 72" width="280" height="72" aria-hidden="true" focusable="false"><svg x="0" y="4" width="84" height="64" viewBox="0 0 712 539" preserveAspectRatio="xMinYMid meet" overflow="hidden"><image href="assets/institutions/hust-lockup.png" width="1707" height="539"></image></svg><svg x="96" y="4" width="184" height="64" viewBox="735 164 975 244" preserveAspectRatio="xMinYMid meet" overflow="hidden"><image href="assets/institutions/hust-lockup.png" width="1707" height="539"></image></svg></svg><img class="brand-dark" src="assets/institutions/hust-white.png" alt="Huazhong University of Science and Technology" width="400" height="94" /><span aria-hidden="true">↗</span></a><a class="education-institution education-institution--saclay" href="https://www.universite-paris-saclay.fr/en" aria-label="Université Paris-Saclay official website" target="_blank" rel="noreferrer"><img class="brand-light" src="assets/institutions/paris-saclay.svg" width="190" height="67" alt="Université Paris-Saclay" loading="lazy" /><img class="brand-dark" src="assets/institutions/paris-saclay-white.svg" width="150" height="53" alt="Université Paris-Saclay" loading="lazy" /><span aria-hidden="true">↗</span></a><span class="graduation">Expected graduation<br /><strong>June 2027</strong></span></div>
 </section>
-<nav class="research-routes" aria-label="Explore research by question"><span class="route-intro">START WITH<br /><strong>A research question</strong></span><a href="#protein-structure"><span>01</span><strong>Design a structure</strong><span aria-hidden="true">↘</span></a><a href="#molecular-recognition"><span>02</span><strong>Engineer a function</strong><span aria-hidden="true">↘</span></a><a href="#biological-response"><span>03</span><strong>Understand the biology</strong><span aria-hidden="true">↘</span></a></nav><section class="section reveal" id="research"><div class="section-heading"><div><p class="eyebrow">01 / SELECTED RESEARCH</p><h2>Follow the question.</h2></div><span class="section-aside">Six projects · three connected directions</span></div><p class="section-lead">Each project follows a concrete question, my contribution, and the evidence so far.</p><div class="research-track" id="protein-structure"><div class="track-heading"><p class="eyebrow">01 / STRUCTURE</p><div><h3>How can we build new protein structures?</h3><p>Generative methods, constrained interfaces, and state-specific design.</p></div></div><div class="research-grid"><article class="portal span-6"><a class="institution-mark" href="https://www.lmu.de/en/" target="_blank" rel="noreferrer" aria-label="LMU Munich official website"><img src="assets/institutions/lmu.svg" width="96" height="56" alt="LMU Munich" loading="lazy" /></a>
+<nav class="research-routes" aria-label="Explore research by question"><span class="route-intro">START WITH<br /><strong>A research question</strong></span><a href="#protein-structure"><span>01</span><strong>Design a structure</strong><span aria-hidden="true">↘</span></a><a href="#molecular-recognition"><span>02</span><strong>Engineer a function</strong><span aria-hidden="true">↘</span></a><a href="#biological-response"><span>03</span><strong>Understand the biology</strong><span aria-hidden="true">↘</span></a></nav><section class="section reveal" id="research"><div class="section-heading"><div><p class="eyebrow">01 / SELECTED RESEARCH</p><h2>Research Projects</h2></div><span class="section-aside">Six projects · three connected directions</span></div><p class="section-lead">Each project presents its research question, my contributions, and the progress to date.</p><div class="research-track" id="protein-structure"><div class="track-heading"><p class="eyebrow">01 / STRUCTURE</p><div><h3>How can we design new protein structures?</h3><p>Generative methods, constrained interfaces, and state-specific design.</p></div></div><div class="research-grid"><article class="portal span-6"><a class="institution-mark" href="https://www.lmu.de/en/" target="_blank" rel="noreferrer" aria-label="LMU Munich official website"><img src="assets/institutions/lmu.svg" width="96" height="56" alt="LMU Munich" loading="lazy" /></a>
             <div class="portal-top">
               <h3 class="portal-title"><a href="projects/rfd3-symmetric-assemblies.html">Protein Assembly Design <span aria-hidden="true">↗</span></a></h3>
               <div class="project-meta">
@@ -70,9 +70,9 @@
               <span class="tag">Protein Interfaces</span>
               <span class="tag">Symmetry</span>
             </div>
-            <p class="portal-summary">Generative scaffold design for protein assemblies, with supplied interfaces and global symmetry preserved during sampling.</p>
+            <p class="portal-summary">Generative scaffold design for protein assemblies, with specified interfaces and global symmetry preserved during sampling.</p>
             <p class="portal-contribution"><strong>My contribution:</strong> Task compiler and constrained sampling workflow.</p>
-            <a class="portal-link" href="projects/rfd3-symmetric-assemblies.html">Read the project <span aria-hidden="true">→</span></a>
+            <a class="portal-link" href="projects/rfd3-symmetric-assemblies.html">Explore project <span aria-hidden="true">→</span></a>
           </article><article class="portal span-6"><a class="institution-mark" href="https://en.westlake.edu.cn/" target="_blank" rel="noreferrer" aria-label="Westlake University official website"><img class="brand-light" src="assets/institutions/westlake.png" width="749" height="224" alt="Westlake University" loading="lazy" /><img class="brand-dark" src="assets/institutions/westlake-white.png" width="886" height="264" alt="Westlake University" loading="lazy" /></a>
             <div class="portal-top">
               <h3 class="portal-title"><a href="projects/membrane-protein-design.html">Membrane Protein Design <span aria-hidden="true">↗</span></a></h3>
@@ -84,15 +84,15 @@
             <div class="tags project-tags">
               <span class="tag">De Novo Design</span>
               <span class="tag">RFdiffusion</span>
-              <span class="tag">AlphaFold3</span>
+              <span class="tag">AlphaFold 3</span>
               <span class="tag">Cryo-EM</span>
             </div>
-            <p class="portal-summary">State-specific structural seeding and bridge design for membrane proteins, supported by protein production and cryo-EM sample preparation.</p>
+            <p class="portal-summary">Membrane protein design using state-specific starting structures and bridge architectures, with protein production and cryo-EM sample preparation.</p>
             <p class="portal-contribution"><strong>My contribution:</strong> State-specific modeling and cryo-EM sample preparation.</p>
-            <a class="portal-link" href="projects/membrane-protein-design.html">Read the project <span aria-hidden="true">→</span></a>
-          </article></div></div><div class="research-track" id="molecular-recognition"><div class="track-heading"><p class="eyebrow">02 / FUNCTION</p><div><h3>How can proteins recognize specific chemistry?</h3><p>From selective molecular capture to cofactor-guided enzyme engineering.</p></div></div><div class="research-grid"><article class="portal span-6"><a class="institution-mark" href="https://english.pku.edu.cn/" target="_blank" rel="noreferrer" aria-label="Peking University official website"><img class="brand-light" src="assets/institutions/pku-lockup.png" width="1702" height="479" alt="Peking University" loading="lazy" /><img class="brand-dark" src="assets/institutions/pku-lockup-white.png" width="852" height="240" alt="Peking University" loading="lazy" /></a>
+            <a class="portal-link" href="projects/membrane-protein-design.html">Explore project <span aria-hidden="true">→</span></a>
+          </article></div></div><div class="research-track" id="molecular-recognition"><div class="track-heading"><p class="eyebrow">02 / FUNCTION</p><div><h3>How can we engineer selective molecular recognition?</h3><p>From selective molecular capture to cofactor-guided enzyme engineering.</p></div></div><div class="research-grid"><article class="portal span-6"><a class="institution-mark" href="https://english.pku.edu.cn/" target="_blank" rel="noreferrer" aria-label="Peking University official website"><img class="brand-light" src="assets/institutions/pku-lockup.png" width="1702" height="479" alt="Peking University" loading="lazy" /><img class="brand-dark" src="assets/institutions/pku-lockup-white.png" width="852" height="240" alt="Peking University" loading="lazy" /></a>
             <div class="portal-top">
-              <h3 class="portal-title"><a href="projects/ptm-capture-binders.html">PTM Capture Binders <span aria-hidden="true">↗</span></a></h3>
+              <h3 class="portal-title"><a href="projects/ptm-capture-binders.html">Binders for PTM Capture <span aria-hidden="true">↗</span></a></h3>
               <div class="project-meta">
                 <span class="portal-time">Dec 2025 - Present</span>
                 <a class="project-affiliation" href="https://english.pku.edu.cn/" target="_blank" rel="noreferrer">Peking University · Beijing ↗</a>
@@ -105,7 +105,7 @@
             </div>
             <p class="portal-summary">Pseudocyclic protein binders for lysine-linked LCA modifications, combining backbone generation and sequence design for selective recognition.</p>
             <p class="portal-contribution"><strong>My contribution:</strong> Binder architecture and computational design pipeline.</p>
-            <a class="portal-link" href="projects/ptm-capture-binders.html">Read the project <span aria-hidden="true">→</span></a>
+            <a class="portal-link" href="projects/ptm-capture-binders.html">Explore project <span aria-hidden="true">→</span></a>
           </article><article class="portal span-6"><a class="institution-mark" href="https://english.hust.edu.cn/" target="_blank" rel="noreferrer" aria-label="HUST official website"><svg class="hust-day-lockup brand-light" viewBox="0 0 280 72" width="280" height="72" aria-hidden="true" focusable="false"><svg x="0" y="4" width="84" height="64" viewBox="0 0 712 539" preserveAspectRatio="xMinYMid meet" overflow="hidden"><image href="assets/institutions/hust-lockup.png" width="1707" height="539"></image></svg><svg x="96" y="4" width="184" height="64" viewBox="735 164 975 244" preserveAspectRatio="xMinYMid meet" overflow="hidden"><image href="assets/institutions/hust-lockup.png" width="1707" height="539"></image></svg></svg><img class="brand-dark" src="assets/institutions/hust-white.png" alt="Huazhong University of Science and Technology" width="400" height="94" /></a>
             <div class="portal-top">
               <h3 class="portal-title"><a href="projects/nox-directed-evolution.html">NADH Oxidase Engineering <span aria-hidden="true">↗</span></a></h3>
@@ -121,7 +121,7 @@
             </div>
             <p class="portal-summary">Structure-guided enzyme engineering for NAD⁺ regeneration and H₂O₂ production, focusing on cofactor recognition and retention.</p>
             <p class="portal-contribution"><strong>My contribution:</strong> Cofactor modeling and mutation prioritization.</p>
-            <a class="portal-link" href="projects/nox-directed-evolution.html">Read the project <span aria-hidden="true">→</span></a>
+            <a class="portal-link" href="projects/nox-directed-evolution.html">Explore project <span aria-hidden="true">→</span></a>
           </article></div></div><div class="research-track" id="biological-response"><div class="track-heading"><p class="eyebrow">03 / BIOLOGY</p><div><h3>How do molecular changes shape cell behavior?</h3><p>Structural interpretation and single-cell analysis connect models to biology.</p></div></div><div class="research-grid"><article class="portal span-6"><a class="institution-mark" href="https://en.csu.edu.cn/" target="_blank" rel="noreferrer" aria-label="Central South University official website"><img class="brand-light" src="assets/institutions/csu.png" width="240" height="70" alt="Central South University" loading="lazy" /><img class="brand-dark" src="assets/institutions/csu-white.png" width="285" height="85" alt="Central South University" loading="lazy" /></a>
             <div class="portal-top">
               <h3 class="portal-title"><a href="projects/trna-cancer-translation.html">tRNA Modification in Cancer <span aria-hidden="true">↗</span></a></h3>
@@ -132,15 +132,15 @@
             </div>
             <div class="tags">
               <span class="tag">tRNA Modification</span>
-              <span class="tag">AlphaFold3</span>
-              <span class="tag">Cancer Translation</span>
+              <span class="tag">AlphaFold 3</span>
+              <span class="tag">Translation in Cancer</span>
             </div>
-            <p class="portal-summary">Structure-informed analysis of NSUN2 and NAT10 mediated translational regulation in TNBC and ATC.</p>
+            <p class="portal-summary">Structure-informed analysis of NSUN2- and NAT10-mediated translational regulation in TNBC and ATC.</p>
             <p class="portal-contribution"><strong>My contribution:</strong> Structural modeling and interface interpretation.</p>
-            <a class="portal-link" href="projects/trna-cancer-translation.html">Read the project <span aria-hidden="true">→</span></a>
+            <a class="portal-link" href="projects/trna-cancer-translation.html">Explore project <span aria-hidden="true">→</span></a>
           </article><article class="portal span-6"><a class="institution-mark" href="https://english.hust.edu.cn/" target="_blank" rel="noreferrer" aria-label="HUST official website"><svg class="hust-day-lockup brand-light" viewBox="0 0 280 72" width="280" height="72" aria-hidden="true" focusable="false"><svg x="0" y="4" width="84" height="64" viewBox="0 0 712 539" preserveAspectRatio="xMinYMid meet" overflow="hidden"><image href="assets/institutions/hust-lockup.png" width="1707" height="539"></image></svg><svg x="96" y="4" width="184" height="64" viewBox="735 164 975 244" preserveAspectRatio="xMinYMid meet" overflow="hidden"><image href="assets/institutions/hust-lockup.png" width="1707" height="539"></image></svg></svg><img class="brand-dark" src="assets/institutions/hust-white.png" alt="Huazhong University of Science and Technology" width="400" height="94" /></a>
             <div class="portal-top">
-              <h3 class="portal-title"><a href="projects/hypoxia-organoids.html">Hypoxia Organoid Profiling <span aria-hidden="true">↗</span></a></h3>
+              <h3 class="portal-title"><a href="projects/hypoxia-organoids.html">Organoid Responses to Hypoxia <span aria-hidden="true">↗</span></a></h3>
               <div class="project-meta">
                 <span class="portal-time">Oct 2024 - Mar 2025</span>
                 <a class="project-affiliation" href="https://english.hust.edu.cn/" target="_blank" rel="noreferrer">HUST · Wuhan ↗</a>
@@ -151,12 +151,12 @@
               <span class="tag">Microfluidics</span>
               <span class="tag">PCA/UMAP</span>
             </div>
-            <p class="portal-summary">Single-cell analysis workflow optimization for hypoxia and nutrient-deprivation response mapping.</p>
-            <p class="portal-contribution"><strong>My contribution:</strong> QC refinement and transcriptomic interpretation.</p>
-            <a class="portal-link" href="projects/hypoxia-organoids.html">Read the project <span aria-hidden="true">→</span></a>
+            <p class="portal-summary">Optimization of single-cell analysis workflows to map responses to hypoxia and nutrient deprivation.</p>
+            <p class="portal-contribution"><strong>My contribution:</strong> Refinement of quality control and interpretation of transcriptomic data.</p>
+            <a class="portal-link" href="projects/hypoxia-organoids.html">Explore project <span aria-hidden="true">→</span></a>
           </article></div></div></section><section class="section reveal" id="publications">
         <div class="section-heading"><div><p class="eyebrow">02 / PUBLICATIONS</p><h2>Selected Publications</h2></div><span class="section-aside">3 SCI papers · 1 submitted manuscript</span></div>
-        <p class="section-lead">Protein engineering and cancer biology, published in JCR Q1 journals.</p>
+        <p class="section-lead">These papers cover protein engineering and cancer biology and are published in JCR Q1 journals.</p>
 
         <div class="publication-grid">
           <article class="publication-card">
@@ -200,60 +200,60 @@
           <p><em>An enzyme cascade of pre-oxidation and in situ H₂O₂ generation enables LiP-driven lignin dimer depolymerization.</em> Submitted to <em>Journal of Agricultural and Food Chemistry</em>.</p>
         </div>
       </section><section class="section reveal" id="about">
-        <div class="section-heading"><div><p class="eyebrow">03 / ABOUT</p><h2>Between a model and a molecule.</h2></div></div>
+        <div class="section-heading"><div><p class="eyebrow">03 / ABOUT</p><h2>About Me</h2></div></div>
         <p class="section-lead">
-          I am in the Sino-French dual-degree program between
+          I am enrolled in the Sino-French dual-degree program offered by
           Huazhong University of Science and Technology and Université Paris-Saclay,
-          with expected graduation in June 2027.
+          and expect to graduate in June 2027.
         </p>
         <p class="section-lead">
           I am interested in how computational methods can guide the design of protein structure and function.
-          My projects span protein assemblies, molecular recognition, membrane proteins, and enzyme engineering,
-          with experience in algorithm development, structural modeling, protein expression and purification,
+          My projects span protein assemblies, molecular recognition, membrane proteins, and enzyme engineering.
+          My experience includes algorithm development, structural modeling, protein expression and purification,
           and cryo-EM sample preparation.
         </p>
         <p class="research-note">I enjoy the point where an abstract design idea becomes something concrete: a sampling method, a protein model, or a molecule we can test.</p>
       </section><section class="section reveal" id="competitions">
-        <div class="section-heading"><div><p class="eyebrow">04 / BEYOND THE BENCH</p><h2>Building with others.</h2></div><span class="section-aside">Competitions · leadership · recognition</span></div>
+        <div class="section-heading"><div><p class="eyebrow">04 / BEYOND THE BENCH</p><h2>Beyond the Lab</h2></div><span class="section-aside">Competitions · leadership · recognition</span></div>
 
         <div class="awards-grid">
           <a class="award-card span-6" href="projects/igem-triscale.html">
-            <h3>iGEM 2025 - HUST-China (Modeling Leader)</h3>
-            <p>Gold Medal & Best iGemers · TriScale digital-twin workflow</p>
+            <h3>iGEM 2025 · HUST-China (Modeling Lead)</h3>
+            <p>Gold Medal &amp; Best iGemers · TriScale digital twin modeling</p>
             <span class="portal-link">View project →</span>
           </a>
           <a class="award-card span-6" href="projects/culsc-nox-team.html">
             <h3>10th CULSC (Team Leader)</h3>
-            <p>2nd Prize · Directed-evolution project integration and delivery</p>
+            <p>2nd Prize · Leading a team project in NOX directed evolution</p>
             <span class="portal-link">View project →</span>
           </a>
           <article class="award-card">
-            <h3>Selected Academic Recognition</h3>
+            <h3>Honors, Scholarships, and Certifications</h3>
             <ul class="award-list">
               <li>Scholarship for Scientific and Technological Innovation (2025 &amp; 2026)</li>
               <li>Award for Self-Reliance and Excellence (2024, 2025 &amp; 2026)</li>
               <li>Community Service Scholarship (2025 &amp; 2026)</li>
-              <li>Outstanding Leader, Spark Program &lt;Undergraduate Track&gt; (Jun. 2024)</li>
+              <li>Outstanding Leader, Spark Program (Undergraduate Track, June 2024)</li>
               <li>BAIDU Technology Certification - LLM Prompt Engineer (May 2025)</li>
             </ul>
           </article>
         </div>
       </section><section class="section reveal" id="contact">
-        <div class="section-heading"><div><p class="eyebrow">05 / CONTACT</p><h2>Let’s compare ideas.</h2></div></div>
+        <div class="section-heading"><div><p class="eyebrow">05 / CONTACT</p><h2>Get in Touch</h2></div></div>
         <div class="cols">
           <article class="subcard">
             <h3>Links</h3>
             <ul class="list">
               <li>Email: <a href="mailto:zhaohaixi2005@gmail.com">zhaohaixi2005@gmail.com</a></li>
               <li>GitHub: <a href="https://github.com/zhaohaixi2005-a11y" target="_blank" rel="noreferrer">@zhaohaixi2005-a11y</a></li>
-              <li>CV: <a href="assets/HAIXI_CV.pdf?v=20261003" target="_blank" rel="noreferrer">download PDF</a></li>
+              <li>CV: <a href="assets/HAIXI_CV.pdf?v=20261003" target="_blank" rel="noreferrer">View PDF</a></li>
             </ul>
           </article>
           <article class="subcard">
-            <h3>Current Focus</h3>
+            <h3>Research Interests</h3>
             <ul class="focus-list">
               <li>Generative protein design methods</li>
-              <li>Structure and molecular recognition</li>
+              <li>Protein structure and molecular recognition</li>
               <li>Protein engineering and biocatalysis</li>
             </ul>
           </article>
