@@ -1,6 +1,7 @@
 (function () {
   var reducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var cleanups = [];
+  var themeChangeHandlers = [];
   var pageActive = true;
 
   function canAnimate() {
@@ -54,6 +55,7 @@
           // Theme switching still works when browser storage is blocked.
         }
       }
+      themeChangeHandlers.forEach(function (handler) { handler(); });
     }
 
     function onClick() {
@@ -97,8 +99,38 @@
     var inView = false;
     var spinning = false;
     var viewportObserver = null;
-    var proteinRepresentations = { cartoon: [], surface: [] };
+    var proteinRepresentations = { cartoon: [], surface: [], ligand: [] };
     var activeMode = "cartoon";
+
+    function getProteinTheme() {
+      var root = document.documentElement;
+      var dark = root && root.dataset.theme === "dark";
+      var styles = root && window.getComputedStyle ? window.getComputedStyle(root) : null;
+      function color(token, fallback) {
+        return styles && styles.getPropertyValue ? styles.getPropertyValue(token).trim() || fallback : fallback;
+      }
+      return {
+        background: color("--protein-background", dark ? "#0b202f" : "#edf3ea"),
+        chainA: color("--protein-chain-a", dark ? "#56c2ff" : "#16749a"),
+        chainB: color("--protein-chain-b", dark ? "#7cf7d4" : "#25755e"),
+        ligand: color("--protein-ligand", dark ? "#f6c177" : "#95622e")
+      };
+    }
+
+    function syncProteinTheme() {
+      if (!stage || disposed || !stage.viewer || !stage.viewer.renderer) return;
+      var palette = getProteinTheme();
+      stage.setParameters({ backgroundColor: palette.background });
+      ["cartoon", "surface"].forEach(function (mode) {
+        proteinRepresentations[mode].forEach(function (representation, index) {
+          representation.setParameters({ colorValue: index === 0 ? palette.chainA : palette.chainB });
+        });
+      });
+      proteinRepresentations.ligand.forEach(function (representation) {
+        representation.setParameters({ colorValue: palette.ligand });
+      });
+    }
+    themeChangeHandlers.push(syncProteinTheme);
 
     function onFail(text, err) {
       if (disposed) return;
@@ -135,8 +167,9 @@
 
     function createSurfaceRepresentations() {
       if (!component || proteinRepresentations.surface.length) return;
+      var palette = getProteinTheme();
       try {
-        [[":A", 0x56c2ff], [":B", 0x7cf7d4]].forEach(function (chain) {
+        [[":A", palette.chainA], [":B", palette.chainB]].forEach(function (chain) {
           proteinRepresentations.surface.push(
             component.addRepresentation("surface", {
               sele: chain[0] + " and protein",
@@ -224,7 +257,7 @@
       }
       try {
         stage = new window.NGL.Stage("protein-stage", {
-          backgroundColor: "transparent",
+          backgroundColor: getProteinTheme().background,
           quality: "medium",
           sampleLevel: 1
         });
@@ -241,7 +274,8 @@
               return;
             }
             component = loadedComponent;
-            [[":A", 0x56c2ff], [":B", 0x7cf7d4]].forEach(function (chain) {
+            var palette = getProteinTheme();
+            [[":A", palette.chainA], [":B", palette.chainB]].forEach(function (chain) {
               proteinRepresentations.cartoon.push(
                 component.addRepresentation("cartoon", {
                   sele: chain[0] + " and protein",
@@ -253,16 +287,17 @@
                 })
               );
             });
-            component.addRepresentation("ball+stick", {
+            proteinRepresentations.ligand.push(component.addRepresentation("ball+stick", {
               sele: "hetero and not water",
               colorScheme: "uniform",
-              colorValue: 0xf6c177,
+              colorValue: palette.ligand,
               opacity: 0.96,
               scale: 2.2
-            });
+            }));
             setMode(activeMode);
             component.autoView();
             ready = true;
+            syncProteinTheme();
             syncSpin();
             mount.classList.add("ready");
           })
@@ -285,6 +320,7 @@
     });
     cleanups.push(function () {
       disposed = true;
+      themeChangeHandlers = themeChangeHandlers.filter(function (handler) { return handler !== syncProteinTheme; });
       if (viewportObserver) viewportObserver.disconnect();
       window.removeEventListener("resize", onResize);
       window.removeEventListener("scroll", checkViewport);

@@ -1,4 +1,4 @@
-@import url("./main.css?v=20261003g");
+@import url("./main.css?v=20261003h");
 
 body {
   font-size: 16px;
@@ -69,7 +69,7 @@ body::after,
 
 .project-header {
   margin-top: 20px;
-  border: 1px solid var(--hero-bg);
+  border: 1px solid var(--hero-line);
   border-radius: 14px;
   background: var(--hero-bg);
   color: var(--hero-text);
@@ -200,20 +200,37 @@ body::after,
   display: block;
   grid-column: 1 / -1;
   justify-self: start;
-  width: auto;
-  height: 78px;
+  width: 240px;
+  height: 72px;
   max-width: 100%;
   object-fit: contain;
+  object-position: left center;
   margin-bottom: 4px;
-  padding: 8px;
-  border-radius: 4px;
-  background: var(--mark-bg);
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
 }
 
-.institution-mark--wide {
-  width: 186px;
-  height: auto;
-  max-height: 78px;
+.project-academic-card .institution-name-lockup {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+
+.project-academic-card .institution-name-lockup .institution-seal {
+  flex: 0 0 52px;
+  width: 52px;
+  height: 52px;
+  max-height: none;
+}
+
+.project-academic-card .institution-name-copy strong {
+  font-size: 20px;
+}
+
+.project-academic-card .institution-name-copy small {
+  font-size: 13px;
 }
 
 .institution-parent {
@@ -226,16 +243,16 @@ body::after,
 .institution-name {
   display: block;
   color: inherit;
-  font-size: 18px;
-  line-height: 1.25;
+  font-size: 16px;
+  line-height: 1.45;
   font-weight: 700;
-  letter-spacing: 0.01em;
+  letter-spacing: 0;
   font-family: "Space Grotesk", "Noto Sans SC", sans-serif;
 }
 
 .mentor-name {
   color: var(--ink);
-  font-size: 19px;
+  font-size: 18px;
   font-weight: 700;
   line-height: 1.4;
 }

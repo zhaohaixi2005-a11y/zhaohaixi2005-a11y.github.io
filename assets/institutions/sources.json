@@ -134,6 +134,82 @@
         255
       ],
       "verification": "PNG alpha channel includes fully transparent pixels; image inspected without altering source bytes."
+    },
+    {
+      "file": "pku-lockup.png",
+      "institution": "Peking University",
+      "official_page": "https://english.pku.edu.cn/",
+      "source_asset": "https://english.pku.edu.cn/Uploads/Bden/Picture/2020/11/25/s5fbdbf048bc00.png",
+      "sha256": "6383b3d434d79b6a5cd3ec47ad753b1322540a486e5f025969f977d9ce4e5f96",
+      "bytes": 169852,
+      "transparent_background": true,
+      "dimensions_px": [
+        1702,
+        479
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "verification": "Official homepage source references this PNG in the logo element. Original PNG bytes copied unchanged and visually inspected; alpha includes fully transparent exterior pixels.",
+      "notes": "Official complete color lockup: red seal and Chinese calligraphy, black English university name. Header class r on the official English homepage."
+    },
+    {
+      "file": "pku-lockup-white.png",
+      "institution": "Peking University",
+      "official_page": "https://english.pku.edu.cn/",
+      "source_asset": "https://english.pku.edu.cn/Uploads/Bden/Picture/2021/04/27/s6087dd6901d02.png",
+      "sha256": "797b434052f37a3f937e04f5e3979db3374b55b8980578017248f6f96558f9d9",
+      "bytes": 29002,
+      "transparent_background": true,
+      "dimensions_px": [
+        852,
+        240
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "verification": "Official homepage source references this PNG in the logo element. Original PNG bytes copied unchanged and visually inspected; alpha includes fully transparent exterior pixels.",
+      "notes": "Official complete white lockup, header class w on the official English homepage; optional dark-surface variant."
+    },
+    {
+      "file": "westlake-white.png",
+      "institution": "Westlake University",
+      "official_page": "https://westlake.edu.cn/",
+      "source_asset": "https://westlake.edu.cn/images/header_icon_white.png",
+      "sha256": "bc0d03d20970ac6870a65acfaa2c87926c8c38ce20ae2488620eb66ed783410b",
+      "bytes": 18847,
+      "transparent_background": true,
+      "dimensions_px": [
+        886,
+        264
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "verification": "Official homepage/header-script image reference. Original PNG bytes copied unchanged; alpha includes fully transparent pixels.",
+      "notes": "Official white full university wordmark variant for dark surfaces. Preserve native image geometry."
+    },
+    {
+      "file": "csu-white.png",
+      "institution": "Central South University",
+      "official_page": "https://www.csu.edu.cn/",
+      "source_asset": "https://www.csu.edu.cn/images/logo2.png",
+      "sha256": "023d2de57f58d9db8f025895e04c2e99a5b9cf6b19555eeb53482a8e9c620482",
+      "bytes": 12344,
+      "transparent_background": true,
+      "dimensions_px": [
+        285,
+        85
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "verification": "Official homepage/header-script image reference. Original PNG bytes copied unchanged; alpha includes fully transparent pixels.",
+      "notes": "Official white full university wordmark variant for dark surfaces. Preserve native image geometry."
     }
   ]
 }
