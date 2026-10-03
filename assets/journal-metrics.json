@@ -20,11 +20,20 @@
       "jcr_source": "https://biotech.ecust.edu.cn/_s126/2016/1019/c7935a56670/page.psp",
       "cas_source": "https://www.iikx.com/sci/biology/15482.html",
       "corroborating_sources": [
-        "https://www.lzb.cas.cn/kyjz/202506/t20250603_7795268.html"
+        "https://www.lzb.cas.cn/kyjz/202506/t20250603_7795268.html",
+        "https://kjc.cdmc.edu.cn/art/2026/4/1/art_299_101218.html"
       ],
-      "verification_note": "JIF release-year 2026 corresponds to metric-year 2025. The explicit 2025 CAS edition gives Biology Zone 2 TOP; the older 2023 Zone 1 classification is not used.",
+      "verification_note": "JIF release-year 2026 corresponds to metric-year 2025. The explicit 2025 CAS edition gives Biology Zone 2 TOP; the older 2023 Zone 1 classification is not used. Displayed ranking now uses the 2026 XinRui Biology T1 TOP classification, verified from the official journal record; CAS fields are retained only as historical source information.",
       "jcr_metric_year": 2025,
-      "jcr_release_year": 2026
+      "jcr_release_year": 2026,
+      "xinrui_year": 2026,
+      "xinrui_research_area": "Biology",
+      "xinrui_tier": 1,
+      "xinrui_top": true,
+      "xinrui_source": "https://www.xr-scholar.com/Journals/j-04dr3qd2?culture=mn-MN",
+      "xinrui_subcategories": {
+        "Microbiology": 2
+      }
     },
     "cmbl": {
       "journal": "Cellular & Molecular Biology Letters",
@@ -47,13 +56,24 @@
       "cas_source": "https://www.iikx.com/sci/biology/11232.html",
       "corroborating_sources": [
         "https://www.jnmc.edu.cn/2025/1209/c4549a177202/page.htm",
-        "https://xysm.csu.edu.cn/info/1023/8944.htm"
+        "https://xysm.csu.edu.cn/info/1023/8944.htm",
+        "https://kjc.cdmc.edu.cn/art/2026/4/1/art_299_101218.html"
       ],
-      "verification_note": "2025 JIF 12.2 is shown by Springer. University of Wroclaw, the journal partner, reports Q1 in both JCR categories. CAS 2025 Biology Zone 1 TOP is corroborated by Jining Medical University.",
+      "verification_note": "2025 JIF 12.2 is shown by Springer. University of Wroclaw, the journal partner, reports Q1 in both JCR categories. CAS 2025 Biology Zone 1 TOP is corroborated by Jining Medical University. Displayed ranking now uses the 2026 XinRui Biology T1 TOP classification, verified from the official journal record; CAS fields are retained only as historical source information.",
       "jcr_metric_year": 2025,
-      "jcr_release_year": 2026
+      "jcr_release_year": 2026,
+      "xinrui_year": 2026,
+      "xinrui_research_area": "Biology",
+      "xinrui_tier": 1,
+      "xinrui_top": true,
+      "xinrui_source": "https://www.xr-scholar.com/Journals/j-7405oy02?culture=en",
+      "xinrui_subcategories": {
+        "Biochemistry & Molecular Biology": 1,
+        "Cell Biology": 2
+      }
     }
   },
   "cas_status_source": "https://las.cas.cn/news/tzgg/202603/t20260327_8178738.html",
-  "cas_status_note": "CAS Library ceased releasing the partition table from 2026; use the named 2025 edition. New rankings from other organizations must not be labeled CAS 2026."
+  "cas_status_note": "CAS Library ceased releasing the partition table from 2026; use the named 2025 edition. New rankings from other organizations must not be labeled CAS 2026.",
+  "displayed_ranking_system": "XinRui Journal Ranking, 2026 edition, Biology"
 }
