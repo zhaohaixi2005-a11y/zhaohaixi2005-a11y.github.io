@@ -322,3 +322,8 @@ a.award-card:is(:hover,:focus-visible) { background:var(--surface-hover); border
   .education-strip .education-institution { min-height:64px; }
   .project-meta { flex-direction:column; align-items:flex-start; gap:5px; }
 }
+
+/* Two viewports of the same unchanged source preserve the seal and native lettering. */
+.hust-day-lockup { display:block; width:280px; height:72px; max-width:100%; flex:0 1 auto; }
+.portal .institution-mark { max-width:100%; }
+.education-strip .hust-day-lockup { width:250px; height:60px; max-width:calc(100% - 24px); }

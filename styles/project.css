@@ -1,4 +1,4 @@
-@import url("./main.css?v=20261003i");
+@import url("./main.css?v=20261003j");
 
 body {
   font-size: 16px;
@@ -605,4 +605,15 @@ body::after,
   .project-next:is(:hover, :focus-visible, :active) {
     transform: none;
   }
+}
+
+/* Keep the original HUST lettering clear in the narrower context column. */
+.project-academic-card .hust-day-lockup {
+  display:block;
+  grid-column:1 / -1;
+  justify-self:start;
+  width:280px;
+  height:72px;
+  max-width:100%;
+  margin-bottom:4px;
 }
