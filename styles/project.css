@@ -1,4 +1,4 @@
-@import url("./main.css?v=20261003h");
+@import url("./main.css?v=20261003i");
 
 body {
   font-size: 16px;
@@ -210,27 +210,6 @@ body::after,
   border: 0;
   border-radius: 0;
   background: transparent;
-}
-
-.project-academic-card .institution-name-lockup {
-  display: flex;
-  gap: 10px;
-  width: 100%;
-}
-
-.project-academic-card .institution-name-lockup .institution-seal {
-  flex: 0 0 52px;
-  width: 52px;
-  height: 52px;
-  max-height: none;
-}
-
-.project-academic-card .institution-name-copy strong {
-  font-size: 20px;
-}
-
-.project-academic-card .institution-name-copy small {
-  font-size: 13px;
 }
 
 .institution-parent {

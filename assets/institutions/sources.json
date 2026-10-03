@@ -3,6 +3,24 @@
   "notice": "Institutional trademarks remain the property of their respective institutions. Assets are reproduced unchanged for factual education and research affiliation identification.",
   "assets": [
     {
+      "file": "hust-lockup.png",
+      "institution": "Huazhong University of Science and Technology",
+      "source_type": "user-provided",
+      "uploaded_name": "image(20261003-124950).png",
+      "sha256": "23c1ec3fd74e405c66aa05956ed59d8238413c996c9a6de03283a30a4acb845c",
+      "bytes": 233452,
+      "transparent_background": true,
+      "dimensions_px": [
+        1707,
+        539
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "verification": "User-supplied complete seal, Chinese calligraphic name and English wordmark copied byte-for-byte without cropping, resizing, recoloring or background edits. Alpha channel checked and original image visually inspected."
+    },
+    {
       "file": "hust.png",
       "institution": "Huazhong University of Science and Technology",
       "official_page": "https://alumni.hust.edu.cn/",

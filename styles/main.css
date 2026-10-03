@@ -145,12 +145,7 @@ html[data-theme="dark"] .protein-preview { filter:none; }
 .institution-mark img { width:auto; max-width:240px; max-height:64px; height:auto; object-fit:contain; object-position:left center; }
 .institution-mark img[src$="lmu.svg"] { height:60px; }
 .institution-mark img[src$="westlake.png"], .institution-mark img[src$="csu.png"] { width:220px; }
-.institution-mark img[src$="hust.png"], .institution-mark img[src$="pku.png"] { width:58px; height:58px; }
-.institution-mark img[src$="pku-lockup.png"], .institution-mark img[src$="pku-lockup-white.png"], .institution-mark img[src$="hust-white.png"] { width:240px; }
-.institution-name-lockup { display:flex; align-items:center; gap:12px; }
-.institution-name-copy { display:grid; gap:4px; color:var(--ink); }
-.institution-name-copy strong { font:500 20px/1.2 "Noto Sans SC",sans-serif; letter-spacing:.06em; }
-.institution-name-copy small { font:500 13px/1.3 "Manrope",sans-serif; }
+.institution-mark img[src$="pku-lockup.png"], .institution-mark img[src$="pku-lockup-white.png"], .institution-mark img[src$="hust-lockup.png"], .institution-mark img[src$="hust-white.png"] { width:240px; }
 .brand-dark { display:none !important; }
 html[data-theme="dark"] .brand-light { display:none !important; }
 html[data-theme="dark"] .brand-dark { display:block !important; }
@@ -261,7 +256,6 @@ a.award-card:is(:hover,:focus-visible) { background:var(--surface-hover); border
 .hero-evidence { gap:12px; }
 .education-strip a { flex-wrap:wrap; }
 .education-strip img { flex:0 0 auto; height:52px; }
-.education-strip img[src$="hust.png"] { width:52px; }
 .education-strip a span, .graduation, .graduation strong { font-size:14px; }
 .education-label, .education-label small { font-size:13px; }
 .route-intro, .route-intro strong, .research-routes a strong { font-size:14px; }
@@ -294,7 +288,6 @@ a.award-card:is(:hover,:focus-visible) { background:var(--surface-hover); border
   .education-strip { grid-template-columns:1fr auto 1fr; }
   .education-label, .graduation { grid-column:1 / -1; }
   .education-strip img { width:140px; height:48px; }
-  .education-strip img[src$="hust.png"] { width:48px; }
   .track-heading { grid-template-columns:1fr; }
   .research-routes a strong { width:100%; }
   .publication-card { grid-template-columns:1fr; }
@@ -314,11 +307,6 @@ a.award-card:is(:hover,:focus-visible) { background:var(--surface-hover); border
 .education-strip .education-institution img { width:210px; height:56px; max-width:calc(100% - 24px); object-position:left center; }
 .education-strip .education-institution--saclay img { width:160px; }
 .education-strip .education-institution span { flex:0 0 auto; }
-.education-strip .institution-name-lockup { flex:0 1 auto; gap:10px; }
-.education-strip .institution-name-copy { display:grid; gap:4px; }
-.education-strip .education-institution .institution-seal { width:52px; height:52px; max-width:none; }
-.education-strip .institution-name-copy strong { font-size:20px; }
-.education-strip .institution-name-copy small { font-size:13px; }
 @media (min-width:961px) {
   .portal-title { font-size:22px; }
   .project-meta { flex-direction:row; flex-wrap:nowrap; }
