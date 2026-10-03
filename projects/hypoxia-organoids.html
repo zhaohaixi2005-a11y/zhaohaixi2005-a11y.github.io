@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hypoxia Organoids | Haixi Zhao</title>
-    <link rel="stylesheet" href="../styles/project.css?v=20261003e" />
+    <link rel="stylesheet" href="../styles/project.css?v=20261003f" />
   </head>
   <body>
     <main class="project-shell">
@@ -27,17 +27,22 @@
             </div>
           </div>
           <aside class="project-academic-card">
-            <h2>Academic Guidance</h2>
+            <h2>Project Context</h2>
             <div class="academic-stack">
-              <div class="academic-item">
-                <span class="academic-label">Institution</span>
-                <strong class="institution-name">HUST</strong>
+              <div class="academic-item project-institution">
+                <span class="academic-label">Project institution</span>
+                <a class="institution-link" href="https://english.hust.edu.cn/" target="_blank" rel="noreferrer" aria-label="Huazhong University of Science and Technology official website">
+                  <img class="institution-mark institution-mark--inverse" src="../assets/institutions/hust-white.png" alt="" width="400" height="94" />
+                  <strong class="institution-name">HUST</strong>
+                  <span class="external-arrow" aria-hidden="true">↗</span>
+                </a>
               </div>
               <div class="academic-item">
                 <span class="academic-label">Supervisor</span>
                 <div class="mentor-name">
-                  <a href="https://www.yiweililab.com/" target="_blank" rel="noreferrer">Prof. Yiwei Li</a>
+                  <a href="https://faculty.hust.edu.cn/LIYIWEI/zh_CN/index.htm" target="_blank" rel="noreferrer">Prof. Yiwei Li<span class="external-arrow" aria-hidden="true">↗</span></a>
                 </div>
+                <p class="lab-link"><a href="https://www.yiweililab.com/" target="_blank" rel="noreferrer">Yiwei Lab<span class="external-arrow" aria-hidden="true">↗</span></a></p>
               </div>
             </div>
           </aside>
@@ -50,9 +55,18 @@
         </div>
       </section>
 
+      <nav class="project-toc" aria-label="Project sections">
+        <a href="#question"><span>01</span> Context</a>
+        <a href="#approach"><span>02</span> Approach</a>
+        <a href="#contributions"><span>03</span> My contributions</a>
+        <a href="#progress"><span>04</span> Progress &amp; outputs</a>
+        <a href="#tools"><span>05</span> Tools</a>
+        <a href="#project-links"><span>06</span> Project links</a>
+      </nav>
+
       <section class="project-layout">
-        <article class="block">
-          <h2>Project Overview</h2>
+        <article class="block" id="question">
+          <h2 data-step="01">Project Overview</h2>
           <p class="section-lead">
             Investigated how hypoxia and nutrient deprivation alter cell-state composition in colonic organoids using a microfluidic pathological-environment platform.
           </p>
@@ -62,8 +76,8 @@
           </p>
         </article>
 
-        <article class="block">
-          <h2>Methods / Pipeline</h2>
+        <article class="block" id="approach">
+          <h2 data-step="02">Methods / Pipeline</h2>
           <ul class="bullets">
             <li>Adjusted PCA/UMAP offset settings to improve cluster resolution.</li>
             <li>Modified mitochondrial-content QC threshold to 30% for hypoxia signal sensitivity.</li>
@@ -72,8 +86,8 @@
           </ul>
         </article>
 
-        <article class="block" style="grid-column: 1 / -1">
-          <h2>My Contributions</h2>
+        <article class="block block-contributions" id="contributions">
+          <h2 data-step="03">My Contributions</h2>
           <ul class="bullets">
             <li>Refined key dimensionality reduction and QC parameters to recover biologically relevant signals.</li>
             <li>Improved interpretability of downstream bubble-plot and annotation outputs.</li>
@@ -81,8 +95,8 @@
           </ul>
         </article>
 
-        <article class="block">
-          <h2>Key Outcomes</h2>
+        <article class="block" id="progress">
+          <h2 data-step="04">Key Outcomes</h2>
           <ul class="bullets">
             <li>Enhanced resolution of hypoxia-associated cellular subpopulations.</li>
             <li>Improved quality of integrated scRNA-seq interpretation pipeline.</li>
@@ -90,8 +104,8 @@
           </ul>
         </article>
 
-        <article class="block">
-          <h2>Related Tools / Skills</h2>
+        <article class="block" id="tools">
+          <h2 data-step="05">Related Tools / Skills</h2>
           <ul class="bullets">
             <li>Scanpy, single-cell QC/annotation, dimensionality reduction diagnostics</li>
             <li>Microfluidic experimental context integration</li>
@@ -100,8 +114,25 @@
         </article>
       </section>
 
+      <section class="project-resources block" id="project-links">
+        <h2 data-step="06">Project Links</h2>
+        <ul class="resource-list">
+          <li><span class="resource-type">Lab</span><a href="https://www.yiweililab.com/" target="_blank" rel="noreferrer">Yiwei Lab <span class="external-arrow" aria-hidden="true">↗</span></a></li>
+          <li><span class="resource-type">Faculty</span><a href="https://faculty.hust.edu.cn/LIYIWEI/zh_CN/index.htm" target="_blank" rel="noreferrer">Yiwei Li · HUST <span class="external-arrow" aria-hidden="true">↗</span></a></li>
+        </ul>
+      </section>
+
+      <nav class="project-navigation" aria-label="Continue exploring research">
+        <a class="project-nav-back" href="../index.html#research">← All research projects</a>
+        <a class="project-next" href="trna-cancer-translation.html">
+          <span class="next-label">Next project</span>
+          <strong>tRNA Modification-Mediated Translational Regulation in Cancer</strong>
+          <span class="next-arrow" aria-hidden="true">→</span>
+        </a>
+      </nav>
+
       <footer class="footer">© <span id="year"></span> Haixi Zhao</footer>
     </main>
-    <script src="../scripts/main.js?v=20261003e"></script>
+    <script src="../scripts/main.js?v=20261003f"></script>
   </body>
 </html>

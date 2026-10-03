@@ -1,0 +1,118 @@
+{
+  "retrieved_on": "2026-10-03",
+  "notice": "Institutional trademarks remain the property of their respective institutions. Assets are reproduced unchanged for factual education and research affiliation identification.",
+  "assets": [
+    {
+      "file": "hust-white.png",
+      "institution": "Huazhong University of Science and Technology",
+      "official_page": "https://hust.edu.cn/",
+      "source_asset": "https://hust.edu.cn/images/logo20240628.png",
+      "sha256": "b818d74ac39eef4a0cd24720f148406736342718edbb7e9b35160611b0bb4e0f",
+      "bytes": 18235,
+      "transparent_background": true,
+      "notes": "Official white university lockup; use on a dark surface. Public brand downloads require CAPTCHA, so this unchanged header asset is used.",
+      "dimensions_px": [
+        400,
+        94
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "verification": "PNG alpha channel includes fully transparent pixels; image inspected without altering source bytes."
+    },
+    {
+      "file": "paris-saclay.svg",
+      "institution": "Université Paris-Saclay",
+      "official_page": "https://www.universite-paris-saclay.fr/",
+      "source_asset": "https://www.universite-paris-saclay.fr/sites/default/files/media/2019-12/logo-ups.svg",
+      "sha256": "d1ab872d1c147b797dc3d9f58c9f1f922da86018f33a2c0f76819dc76f662238",
+      "bytes": 4994,
+      "transparent_background": true,
+      "notes": "Official plum wordmark; no background rectangle. Preserve aspect ratio, elements, and color.",
+      "viewBox": "0 0 190 66.7",
+      "verification": "SVG has no full-canvas background plate. Source geometry and colors preserved unchanged."
+    },
+    {
+      "file": "paris-saclay-white.svg",
+      "institution": "Université Paris-Saclay",
+      "official_page": "https://www.universite-paris-saclay.fr/",
+      "source_asset": "https://www.universite-paris-saclay.fr/sites/default/files/media/2019-12/logo-ups-white_1.svg",
+      "sha256": "adbf19669ebe2130417314c24e563ac976d0c086cfcd0011b7ccbb534f41e629",
+      "bytes": 5048,
+      "transparent_background": true,
+      "notes": "Official white wordmark variant for dark surfaces.",
+      "viewBox": "0 0 149.7 52.6",
+      "verification": "SVG has no full-canvas background plate. Source geometry and colors preserved unchanged."
+    },
+    {
+      "file": "lmu.svg",
+      "institution": "Ludwig-Maximilians-Universität München",
+      "official_page": "https://www.lmu.de/en/",
+      "source_asset": "https://cms-cdn.lmu.de/assets/img/Logo_LMU.svg",
+      "sha256": "2c20403faac7e6998d5f93408f6ddc881360085c46c57da3d87f7979a8c74e39",
+      "bytes": 19290,
+      "transparent_background": true,
+      "notes": "Official green university lockup; two green blocks are integral brand shapes, with a transparent gap/exterior. No added image background.",
+      "viewBox": "0 0 362 171",
+      "verification": "SVG has no full-canvas background plate. Source geometry and colors preserved unchanged."
+    },
+    {
+      "file": "pku.png",
+      "institution": "Peking University",
+      "official_page": "https://www.pku.edu.cn/",
+      "source_asset": "https://www.pku.edu.cn/pku_logo_red.png",
+      "sha256": "b328ed3c9e579ec8c2031ad8a5b6c244994fba5d1e93cc98901d1fcc3c306bdb",
+      "bytes": 25869,
+      "transparent_background": true,
+      "notes": "Official red seal from the university homepage.",
+      "dimensions_px": [
+        360,
+        360
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "verification": "PNG alpha channel includes fully transparent pixels; image inspected without altering source bytes."
+    },
+    {
+      "file": "westlake.png",
+      "institution": "Westlake University",
+      "official_page": "https://westlake.edu.cn/",
+      "source_asset": "https://westlake.edu.cn/images/header_icon_color.png",
+      "sha256": "c557c0a47b5538c23823de56f06bc6cc2c1e26eb94b9c0417b9782b2a4b83be1",
+      "bytes": 17479,
+      "transparent_background": true,
+      "notes": "Official color lockup referenced by the university frontend header script: https://westlake.edu.cn/images/header.js.",
+      "dimensions_px": [
+        749,
+        224
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "verification": "PNG alpha channel includes fully transparent pixels; image inspected without altering source bytes."
+    },
+    {
+      "file": "csu.png",
+      "institution": "Central South University",
+      "official_page": "https://www.csu.edu.cn/",
+      "source_asset": "https://www.csu.edu.cn/images/logo3.png",
+      "sha256": "9cd2fc1df82148f4e789a83095677ef9c62f70b91dacaa8d3e81aae780fefebd",
+      "bytes": 13044,
+      "transparent_background": true,
+      "notes": "Official blue university wordmark from the university homepage; used for Central South/Xiangya research affiliation. A separate accessible transparent Xiangya Hospital mark was not found.",
+      "dimensions_px": [
+        240,
+        70
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "verification": "PNG alpha channel includes fully transparent pixels; image inspected without altering source bytes."
+    }
+  ]
+}

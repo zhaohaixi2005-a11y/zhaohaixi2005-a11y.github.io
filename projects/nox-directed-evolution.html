@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>NOX Engineering | Haixi Zhao</title>
     <meta name="description" content="Structure-guided NOX engineering for NAD+ regeneration and H2O2 supply in lignin-degradation cascades, with related published and submitted research." />
-    <link rel="stylesheet" href="../styles/project.css?v=20261003e" />
+    <link rel="stylesheet" href="../styles/project.css?v=20261003f" />
   </head>
   <body>
     <main class="project-shell">
@@ -28,16 +28,20 @@
             </div>
           </div>
           <aside class="project-academic-card">
-            <h2>Academic Guidance</h2>
+            <h2>Project Context</h2>
             <div class="academic-stack">
-              <div class="academic-item">
-                <span class="academic-label">Institution</span>
-                <strong class="institution-name">HUST</strong>
+              <div class="academic-item project-institution">
+                <span class="academic-label">Project institution</span>
+                <a class="institution-link" href="https://english.hust.edu.cn/" target="_blank" rel="noreferrer" aria-label="Huazhong University of Science and Technology official website">
+                  <img class="institution-mark institution-mark--inverse" src="../assets/institutions/hust-white.png" alt="" width="400" height="94" />
+                  <strong class="institution-name">HUST</strong>
+                  <span class="external-arrow" aria-hidden="true">↗</span>
+                </a>
               </div>
               <div class="academic-item">
                 <span class="academic-label">Supervisor</span>
                 <div class="mentor-name">
-                  <span>Prof. Hongbo Yu</span>
+                  <a href="https://faculty.hust.edu.cn/yuhongbo1/zh_CN/index.htm" target="_blank" rel="noreferrer">Prof. Hongbo Yu<span class="external-arrow" aria-hidden="true">↗</span></a>
                 </div>
               </div>
             </div>
@@ -51,9 +55,18 @@
         </div>
       </section>
 
+      <nav class="project-toc" aria-label="Project sections">
+        <a href="#question"><span>01</span> Question</a>
+        <a href="#approach"><span>02</span> Approach</a>
+        <a href="#contributions"><span>03</span> My contributions</a>
+        <a href="#progress"><span>04</span> Progress &amp; outputs</a>
+        <a href="#tools"><span>05</span> Tools</a>
+        <a href="#project-links"><span>06</span> Project links</a>
+      </nav>
+
       <section class="project-layout">
-        <article class="block">
-          <h2>Research Question</h2>
+        <article class="block" id="question">
+          <h2 data-step="01">Research Question</h2>
           <p class="section-lead">
             Can engineering the NOX–FAD interface improve cofactor retention and catalytic performance, supporting NAD⁺ regeneration and H₂O₂ supply in a coupled lignin-degradation system?
           </p>
@@ -63,18 +76,18 @@
           </p>
         </article>
 
-        <article class="block">
-          <h2>Approach</h2>
+        <article class="block" id="approach">
+          <h2 data-step="02">Approach</h2>
           <ul class="bullets">
             <li>Screen NOX isoforms and reaction systems for NAD⁺ regeneration and H₂O₂ co-production.</li>
-            <li>Combine MEGA-X sequence alignment, docking, and thermodynamic interaction modeling to prioritize residues involved in NADH and FAD recognition.</li>
+            <li>Combine <a href="https://www.megasoftware.net/" target="_blank" rel="noreferrer">MEGA-X</a> sequence alignment, docking, and thermodynamic interaction modeling to prioritize residues involved in NADH and FAD recognition.</li>
             <li>Use molecular dynamics, saturation mutagenesis, and directed evolution to investigate and remodel the NOX–FAD interface.</li>
             <li>Evaluate candidate variants with the aim of improving catalytic efficiency and H₂O₂ output for lignin-degradation systems.</li>
           </ul>
         </article>
 
-        <article class="block" style="grid-column: 1 / -1">
-          <h2>My Contributions</h2>
+        <article class="block block-contributions" id="contributions">
+          <h2 data-step="03">My Contributions</h2>
           <ul class="bullets">
             <li>Screened NOX isoforms and reaction systems for a coupled NAD⁺-regeneration and peroxide-supply workflow.</li>
             <li>Integrated sequence, docking, and interaction-modeling evidence to prioritize substrate- and cofactor-recognition residues.</li>
@@ -82,8 +95,8 @@
           </ul>
         </article>
 
-        <article class="block">
-          <h2>Current Progress &amp; Related Publications</h2>
+        <article class="block" id="progress">
+          <h2 data-step="04">Current Progress &amp; Related Publications</h2>
           <ul class="bullets">
             <li>Computational residue prioritization and mutagenesis guide ongoing variant evaluation for lignin-degradation cascades.</li>
             <li><strong>Published first-author review (2026):</strong> “From oxygen detoxification to peroxide supply: Microbial NADH oxidases in redox physiology and H₂O₂-coupled biocatalysis.” <em>Microbiological Research</em>. <a href="https://doi.org/10.1016/j.micres.2026.128741" target="_blank" rel="noreferrer">DOI: 10.1016/j.micres.2026.128741</a>.</li>
@@ -91,18 +104,35 @@
           </ul>
         </article>
 
-        <article class="block">
-          <h2>Tools</h2>
+        <article class="block" id="tools">
+          <h2 data-step="05">Tools</h2>
           <ul class="bullets">
-            <li>MEGA-X, molecular docking, and molecular dynamics</li>
+            <li><a href="https://www.megasoftware.net/" target="_blank" rel="noreferrer">MEGA-X</a>, molecular docking, and molecular dynamics</li>
             <li>Substrate- and cofactor-interaction modeling</li>
             <li>Saturation mutagenesis and directed evolution</li>
           </ul>
         </article>
       </section>
 
+      <section class="project-resources block" id="project-links">
+        <h2 data-step="06">Project Links</h2>
+        <ul class="resource-list">
+          <li><span class="resource-type">Publication</span><a href="https://doi.org/10.1016/j.micres.2026.128741" target="_blank" rel="noreferrer">NADH oxidases review · Microbiological Research <span class="external-arrow" aria-hidden="true">↗</span></a></li>
+          <li><span class="resource-type">Faculty</span><a href="https://faculty.hust.edu.cn/yuhongbo1/zh_CN/index.htm" target="_blank" rel="noreferrer">Hongbo Yu · HUST <span class="external-arrow" aria-hidden="true">↗</span></a></li>
+        </ul>
+      </section>
+
+      <nav class="project-navigation" aria-label="Continue exploring research">
+        <a class="project-nav-back" href="../index.html#research">← All research projects</a>
+        <a class="project-next" href="hypoxia-organoids.html">
+          <span class="next-label">Next project</span>
+          <strong>Profiling Hypoxia Responses in Colonic Organoids</strong>
+          <span class="next-arrow" aria-hidden="true">→</span>
+        </a>
+      </nav>
+
       <footer class="footer">© <span id="year"></span> Haixi Zhao</footer>
     </main>
-    <script src="../scripts/main.js?v=20261003e"></script>
+    <script src="../scripts/main.js?v=20261003f"></script>
   </body>
 </html>

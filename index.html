@@ -8,27 +8,18 @@
       name="description"
       content="Haixi Zhao is a Bioscience undergraduate at HUST and Université Paris-Saclay working on computational protein design, structural biology, and protein engineering."
     />
-    <link rel="stylesheet" href="styles/main.css?v=20261003e" />
+    <link rel="stylesheet" href="styles/main.css?v=20261003f" />
     <noscript><style>.reveal { opacity: 1; transform: none; }</style></noscript>
   </head>
   <body>
+    <a class="skip-link" href="#research">Skip to research</a>
     <canvas id="site-bg-canvas" class="site-bg-canvas" aria-hidden="true"></canvas>
     <main class="shell">
-      <header class="topbar">
-        <div class="logo"><span class="dot"></span>Haixi Zhao · Protein Design</div>
-        <nav class="navlinks" aria-label="Main navigation">
-          <a href="#about">About</a>
-          <a href="#publications">Publications</a>
-          <a href="#research">Research</a>
-          <a href="#competitions">Competitions</a>
-          <a href="#contact">Contact</a>
-        </nav>
-      </header>
-
-      <section class="hero reveal is-visible">
-        <div class="hero-grid">
-          <div class="hero-copy">
-            <button class="profile-flip-card" type="button" aria-pressed="false" aria-label="Switch portrait of Haixi Zhao" title="Click to switch portrait">
+      <header class="topbar"><a class="logo" href="#home" aria-label="Haixi Zhao homepage"><span class="dot" aria-hidden="true"></span>Haixi Zhao<span class="logo-field"> / Protein Design</span></a><nav class="navlinks" aria-label="Main navigation"><a href="#research">Research</a><a href="#publications">Publications</a><a href="#about">About</a><a href="#competitions">Beyond research</a><a href="#contact">Contact ↗</a></nav></header>
+<section class="hero reveal is-visible" id="home">
+  <div class="hero-grid">
+    <div class="hero-copy">
+      <div class="hero-identity"><button class="profile-flip-card" type="button" aria-pressed="false" aria-label="Switch portrait of Haixi Zhao" title="Click to switch portrait">
               <span class="profile-flip-card__inner">
                 <span class="profile-flip-card__face profile-flip-card__face--front">
                   <img
@@ -46,91 +37,124 @@
                 </span>
               </span>
               <span class="profile-card-hint" aria-hidden="true">Flip portrait ↔</span>
-            </button>
-            <div class="hero-copy-body">
-              <p class="kicker">AI-guided Protein Design · Computational Biology</p>
-              <h1>Haixi Zhao</h1>
-              <p class="hero-affiliation">Bioscience undergraduate · HUST × Université Paris-Saclay</p>
-              <p class="tagline">I design computational-to-experimental research loops for protein engineering, from structure generation to biological validation.</p>
-              <div class="hero-actions">
-                <a class="btn primary" href="#research">Explore Research</a>
-                <a class="btn" href="assets/HAIXI_CV.pdf?v=20261003" target="_blank" rel="noreferrer">Download CV</a>
-                <a class="btn" href="https://github.com/zhaohaixi2005-a11y" target="_blank" rel="noreferrer">GitHub</a>
+            </button><div><p class="eyebrow">RESEARCH PORTFOLIO / 2026</p><h1>Haixi Zhao</h1><p class="hero-affiliation">Bioscience undergraduate<br />HUST × Université Paris-Saclay</p></div></div>
+      <p class="hero-statement">Designing proteins.<br />Connecting computation<br />to experiment.</p>
+      <p class="tagline">I develop computational-to-experimental research loops for protein engineering, from structure generation to biological validation.</p>
+      <div class="hero-actions"><a class="btn primary" href="#research">Explore my research <span aria-hidden="true">↘</span></a><a class="btn" href="assets/HAIXI_CV.pdf?v=20261003" target="_blank" rel="noreferrer">Read CV ↗</a><a class="hero-github" href="https://github.com/zhaohaixi2005-a11y" target="_blank" rel="noreferrer">GitHub ↗</a></div>
+    </div>
+    <div class="hero-side">
+      <div class="visual-heading"><span class="eyebrow">A WINDOW INTO MY WORK</span><span class="visual-index">[ NOX / NAD / FAD ]</span></div>
+      <div class="hero-visual">
+        <img class="protein-preview" src="assets/protein-preview.svg" width="800" height="600" alt="Alpha-carbon trace of the predicted NOX dimer, with NAD and FAD cofactors" fetchpriority="high" />
+        <div id="protein-stage" class="protein-stage" data-pdb-source="assets/pdb/dimer0057_nadh_fad.cif"></div>
+        <div id="protein-fallback" class="protein-fallback" role="status">Loading interactive view…</div>
+        <div class="protein-mode-toggle" role="group" aria-label="Protein display mode"><button type="button" class="protein-mode-button is-active" data-protein-mode="cartoon" aria-pressed="true">Cartoon</button><button type="button" class="protein-mode-button" data-protein-mode="surface" aria-pressed="false">Surface</button></div>
+      </div>
+      <div class="visual-caption"><div><strong>Structure → engineering hypothesis</strong><span>Predicted NOX dimer with NAD/FAD cofactors</span></div><a href="projects/nox-directed-evolution.html" aria-label="Read NADH oxidase engineering project">Explore the project ↗</a></div>
+      <div class="hero-evidence"><a href="#publications"><b>03</b><span>Published papers ↘</span></a><a href="#research"><b>06</b><span>Research projects ↘</span></a><a href="#competitions"><b>iGEM</b><span>Gold medal · 2025 ↘</span></a></div>
+    </div>
+  </div>
+  <div class="education-strip"><span class="education-label">EDUCATION<br /><small>Sino-French dual degree</small></span><a class="education-hust" href="https://english.hust.edu.cn/" target="_blank" rel="noreferrer"><img src="assets/institutions/hust-white.png" width="150" height="46" alt="Huazhong University of Science and Technology" /><span>HUST ↗</span></a><span class="education-cross" aria-hidden="true">×</span><a href="https://www.universite-paris-saclay.fr/en" target="_blank" rel="noreferrer"><img src="assets/institutions/paris-saclay.svg" width="156" height="46" alt="Université Paris-Saclay" /><span>Université Paris-Saclay ↗</span></a><span class="graduation">Expected graduation<br /><strong>June 2027</strong></span></div>
+</section>
+<nav class="research-routes" aria-label="Explore research by question"><span class="route-intro">START WITH<br /><strong>A research question</strong></span><a href="#protein-structure"><span>01</span><strong>Design a structure</strong><span aria-hidden="true">↘</span></a><a href="#molecular-recognition"><span>02</span><strong>Engineer a function</strong><span aria-hidden="true">↘</span></a><a href="#biological-response"><span>03</span><strong>Understand the biology</strong><span aria-hidden="true">↘</span></a></nav><section class="section reveal" id="research"><div class="section-heading"><div><p class="eyebrow">01 / SELECTED RESEARCH</p><h2>Follow the question.</h2></div><span class="section-aside">Six projects · three connected directions</span></div><p class="section-lead">Each project follows a concrete question, my contribution, and the evidence so far.</p><div class="research-track" id="protein-structure"><div class="track-heading"><p class="eyebrow">01 / STRUCTURE</p><div><h3>How can we build new protein structures?</h3><p>Generative methods, constrained interfaces, and state-specific design.</p></div></div><div class="research-grid"><article class="portal span-6"><a class="institution-mark" href="https://www.lmu.de/en/" target="_blank" rel="noreferrer" aria-label="LMU Munich official website"><img src="assets/institutions/lmu.svg" width="96" height="56" alt="LMU Munich" loading="lazy" /></a>
+            <div class="portal-top">
+              <h3 class="portal-title"><a href="projects/rfd3-symmetric-assemblies.html">Protein Assembly Design <span aria-hidden="true">↗</span></a></h3>
+              <div class="project-meta">
+                <span class="portal-time">Jul 2026 - Present</span>
+                <a class="project-affiliation" href="https://www.lmu.de/en/" target="_blank" rel="noreferrer">LMU Munich · Germany ↗</a>
               </div>
             </div>
-          </div>
-
-          <div class="hero-side">
-            <div class="metrics">
-              <article class="metric metric-publications">
-                <strong>Selected publications</strong>
-                <span class="publication-highlight">First-author review · Microbiological Research</span>
-                <div class="publication-list" aria-label="Selected publications">
-                  <a class="publication-link" href="https://doi.org/10.1016/j.micres.2026.128741" target="_blank" rel="noreferrer">
-                    <b>2026</b>
-                    <span>Microbial NADH oxidases in redox physiology and H₂O₂-coupled biocatalysis</span>
-                  </a>
-                  <a class="publication-link" href="https://doi.org/10.1186/s11658-026-00977-x" target="_blank" rel="noreferrer">
-                    <b>2026</b>
-                    <span>NAT10/c-Myc feedback loop in anaplastic thyroid carcinoma</span>
-                  </a>
-                  <a class="publication-link" href="https://doi.org/10.1186/s11658-025-00781-z" target="_blank" rel="noreferrer">
-                    <b>2025</b>
-                    <span>NSUN2-tRNAVal-CAC axis in triple-negative breast cancer</span>
-                  </a>
-                </div>
-              </article>
-              <a class="metric metric-link" href="#research">
-                <strong>Research projects</strong>
-                <span>Protein assemblies · recognition · enzyme engineering</span>
-                <em class="metric-jump">Explore six projects →</em>
-              </a>
-              <a class="metric metric-link" href="#about">
-                <strong>Design ↔ experiment</strong>
-                <span>Algorithms · structural modeling · biochemical validation</span>
-                <em class="metric-jump">My research approach →</em>
-              </a>
+            <div class="tags project-tags">
+              <span class="tag">RFdiffusion3</span>
+              <span class="tag">Protein Interfaces</span>
+              <span class="tag">Symmetry</span>
             </div>
-
-            <div class="hero-visual">
-              <div id="protein-stage" class="protein-stage" data-pdb-source="assets/pdb/dimer0057_nadh_fad.cif"></div>
-              <div id="protein-fallback" class="protein-fallback">Loading protein 3D model...</div>
-              <div class="protein-mode-toggle" role="group" aria-label="Protein display mode">
-                <button
-                  type="button"
-                  class="protein-mode-button is-active"
-                  data-protein-mode="cartoon"
-                  aria-pressed="true"
-                >
-                  cartoon
-                </button>
-                <button type="button" class="protein-mode-button" data-protein-mode="surface" aria-pressed="false">
-                  surface
-                </button>
+            <p class="portal-summary">Generative scaffold design for protein assemblies, with supplied interfaces and global symmetry preserved during sampling.</p>
+            <p class="portal-contribution"><strong>My contribution:</strong> Task compiler and constrained sampling workflow.</p>
+            <a class="portal-link" href="projects/rfd3-symmetric-assemblies.html">Read the project <span aria-hidden="true">→</span></a>
+          </article><article class="portal span-6"><a class="institution-mark" href="https://en.westlake.edu.cn/" target="_blank" rel="noreferrer" aria-label="Westlake University official website"><img src="assets/institutions/westlake.png" width="96" height="56" alt="Westlake University" loading="lazy" /></a>
+            <div class="portal-top">
+              <h3 class="portal-title"><a href="projects/membrane-protein-design.html">Functional Membrane Protein Design <span aria-hidden="true">↗</span></a></h3>
+              <div class="project-meta">
+                <span class="portal-time">Jun 2025 - Sep 2025</span>
+                <a class="project-affiliation" href="https://en.westlake.edu.cn/" target="_blank" rel="noreferrer">Westlake University · Hangzhou ↗</a>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section reveal" id="about">
-        <h2>About</h2>
-        <p class="section-lead">
-          I am a Bioscience undergraduate in the Sino-French dual-degree program between
-          Huazhong University of Science and Technology and Université Paris-Saclay,
-          with expected graduation in June 2027.
-        </p>
-        <p class="section-lead">
-          I am interested in how computational methods can guide the design of protein structure and function.
-          My projects span protein assemblies, molecular recognition, membrane proteins, and enzyme engineering,
-          with experience in algorithm development, structural modeling, protein expression and purification,
-          and cryo-EM sample preparation.
-        </p>
-        <p class="research-note">I enjoy the point where an abstract design idea becomes something concrete: a sampling method, a protein model, or a molecule we can test.</p>
-      </section>
-
-      <section class="section reveal" id="publications">
-        <h2>Publications</h2>
+            <div class="tags project-tags">
+              <span class="tag">De Novo Design</span>
+              <span class="tag">RFdiffusion</span>
+              <span class="tag">AlphaFold3</span>
+              <span class="tag">Cryo-EM</span>
+            </div>
+            <p class="portal-summary">State-specific structural seeding and bridge design for membrane proteins, supported by protein production and cryo-EM sample preparation.</p>
+            <p class="portal-contribution"><strong>My contribution:</strong> State-specific modeling and cryo-EM sample preparation.</p>
+            <a class="portal-link" href="projects/membrane-protein-design.html">Read the project <span aria-hidden="true">→</span></a>
+          </article></div></div><div class="research-track" id="molecular-recognition"><div class="track-heading"><p class="eyebrow">02 / FUNCTION</p><div><h3>How can proteins recognize specific chemistry?</h3><p>From selective molecular capture to cofactor-guided enzyme engineering.</p></div></div><div class="research-grid"><article class="portal span-6"><a class="institution-mark" href="https://english.pku.edu.cn/" target="_blank" rel="noreferrer" aria-label="Peking University official website"><img src="assets/institutions/pku.png" width="96" height="56" alt="Peking University" loading="lazy" /></a>
+            <div class="portal-top">
+              <h3 class="portal-title"><a href="projects/ptm-capture-binders.html">PTM Capture Binders <span aria-hidden="true">↗</span></a></h3>
+              <div class="project-meta">
+                <span class="portal-time">Dec 2025 - Present</span>
+                <a class="project-affiliation" href="https://english.pku.edu.cn/" target="_blank" rel="noreferrer">Peking University · Beijing ↗</a>
+              </div>
+            </div>
+            <div class="tags project-tags">
+              <span class="tag">Pseudocyclic Binders</span>
+              <span class="tag">BoltzGen / RFdiffusion</span>
+              <span class="tag">LigandMPNN</span>
+            </div>
+            <p class="portal-summary">Pseudocyclic protein binders for lysine-linked LCA modifications, combining backbone generation and sequence design for selective recognition.</p>
+            <p class="portal-contribution"><strong>My contribution:</strong> Binder architecture and computational design pipeline.</p>
+            <a class="portal-link" href="projects/ptm-capture-binders.html">Read the project <span aria-hidden="true">→</span></a>
+          </article><article class="portal span-6"><a class="institution-mark is-dark" href="https://english.hust.edu.cn/" target="_blank" rel="noreferrer" aria-label="HUST official website"><img src="assets/institutions/hust-white.png" width="96" height="56" alt="HUST" loading="lazy" /></a>
+            <div class="portal-top">
+              <h3 class="portal-title"><a href="projects/nox-directed-evolution.html">NADH Oxidase Engineering <span aria-hidden="true">↗</span></a></h3>
+              <div class="project-meta">
+                <span class="portal-time">Mar 2024 - Present</span>
+                <a class="project-affiliation" href="https://english.hust.edu.cn/" target="_blank" rel="noreferrer">Huazhong University of Science and Technology · Wuhan ↗</a>
+              </div>
+            </div>
+            <div class="tags">
+              <span class="tag">NAD⁺ Regeneration</span>
+              <span class="tag">Docking + MD</span>
+              <span class="tag">Mutagenesis</span>
+            </div>
+            <p class="portal-summary">Structure-guided enzyme engineering for NAD⁺ regeneration and H₂O₂ production, focusing on cofactor recognition and retention.</p>
+            <p class="portal-contribution"><strong>My contribution:</strong> Cofactor modeling and mutation prioritization.</p>
+            <a class="portal-link" href="projects/nox-directed-evolution.html">Read the project <span aria-hidden="true">→</span></a>
+          </article></div></div><div class="research-track" id="biological-response"><div class="track-heading"><p class="eyebrow">03 / BIOLOGY</p><div><h3>How do molecular changes shape cell behavior?</h3><p>Structural interpretation and single-cell analysis connect models to biology.</p></div></div><div class="research-grid"><article class="portal span-6"><a class="institution-mark" href="https://en.csu.edu.cn/" target="_blank" rel="noreferrer" aria-label="Central South University official website"><img src="assets/institutions/csu.png" width="96" height="56" alt="Central South University" loading="lazy" /></a>
+            <div class="portal-top">
+              <h3 class="portal-title"><a href="projects/trna-cancer-translation.html">tRNA Modification in Cancer <span aria-hidden="true">↗</span></a></h3>
+              <div class="project-meta">
+                <span class="portal-time">Jun 2024 - Feb 2026</span>
+                <a class="project-affiliation" href="https://en.csu.edu.cn/" target="_blank" rel="noreferrer">Xiangya Hospital, CSU · Changsha ↗</a>
+              </div>
+            </div>
+            <div class="tags">
+              <span class="tag">tRNA Modification</span>
+              <span class="tag">AlphaFold3</span>
+              <span class="tag">Cancer Translation</span>
+            </div>
+            <p class="portal-summary">Structure-informed analysis of NSUN2 and NAT10 mediated translational regulation in TNBC and ATC.</p>
+            <p class="portal-contribution"><strong>My contribution:</strong> Structural modeling and interface interpretation.</p>
+            <a class="portal-link" href="projects/trna-cancer-translation.html">Read the project <span aria-hidden="true">→</span></a>
+          </article><article class="portal span-6"><a class="institution-mark is-dark" href="https://english.hust.edu.cn/" target="_blank" rel="noreferrer" aria-label="HUST official website"><img src="assets/institutions/hust-white.png" width="96" height="56" alt="HUST" loading="lazy" /></a>
+            <div class="portal-top">
+              <h3 class="portal-title"><a href="projects/hypoxia-organoids.html">Hypoxia Organoid Profiling <span aria-hidden="true">↗</span></a></h3>
+              <div class="project-meta">
+                <span class="portal-time">Oct 2024 - Mar 2025</span>
+                <a class="project-affiliation" href="https://english.hust.edu.cn/" target="_blank" rel="noreferrer">Huazhong University of Science and Technology · Wuhan ↗</a>
+              </div>
+            </div>
+            <div class="tags">
+              <span class="tag">scRNA-seq</span>
+              <span class="tag">Microfluidics</span>
+              <span class="tag">PCA/UMAP</span>
+            </div>
+            <p class="portal-summary">Single-cell analysis workflow optimization for hypoxia and nutrient-deprivation response mapping.</p>
+            <p class="portal-contribution"><strong>My contribution:</strong> QC refinement and transcriptomic interpretation.</p>
+            <a class="portal-link" href="projects/hypoxia-organoids.html">Read the project <span aria-hidden="true">→</span></a>
+          </article></div></div></section><section class="section reveal" id="publications">
+        <div class="section-heading"><div><p class="eyebrow">02 / PUBLICATIONS</p><h2>Work in print.</h2></div><span class="section-aside">Three published papers · one submitted manuscript</span></div>
         <p class="section-lead">Published research, with links to the full papers.</p>
 
         <div class="publication-grid">
@@ -170,125 +194,22 @@
           <p>Ruijian Shao, Zhenxiong Zhang, Liduo Lu, Yixue Zhou, Yilin Huang, <strong>Haixi Zhao</strong>, Fuying Ma, Shangxian Xie, Hongbo Yu.</p>
           <p><em>An enzyme cascade of pre-oxidation and in situ H₂O₂ generation enables LiP-driven lignin dimer depolymerization.</em> Submitted to <em>Journal of Agricultural and Food Chemistry</em>.</p>
         </div>
-      </section>
-
-      <section class="section reveal" id="research">
-        <h2>Research Projects</h2>
-
-        <div class="research-grid">
-          <a class="portal span-6" href="projects/rfd3-symmetric-assemblies.html">
-            <div class="portal-top">
-              <h3 class="portal-title">Protein Assembly Design</h3>
-              <div class="project-meta">
-                <span class="portal-time">Jul 2026 - Present</span>
-                <p class="project-affiliation">LMU Munich · Germany</p>
-              </div>
-            </div>
-            <div class="tags project-tags">
-              <span class="tag">RFdiffusion3</span>
-              <span class="tag">Protein Interfaces</span>
-              <span class="tag">Symmetry</span>
-            </div>
-            <p class="portal-summary">Generative scaffold design for protein assemblies, with supplied interfaces and global symmetry preserved during sampling.</p>
-            <p class="portal-contribution"><strong>My contribution:</strong> Task compiler and constrained sampling workflow.</p>
-            <span class="portal-link">View project →</span>
-          </a>
-
-          <a class="portal span-6" href="projects/ptm-capture-binders.html">
-            <div class="portal-top">
-              <h3 class="portal-title">PTM Capture Binders</h3>
-              <div class="project-meta">
-                <span class="portal-time">Dec 2025 - Present</span>
-                <p class="project-affiliation">Peking University · Beijing</p>
-              </div>
-            </div>
-            <div class="tags project-tags">
-              <span class="tag">Pseudocyclic Binders</span>
-              <span class="tag">BoltzGen / RFdiffusion</span>
-              <span class="tag">LigandMPNN</span>
-            </div>
-            <p class="portal-summary">Pseudocyclic protein binders for lysine-linked LCA modifications, combining backbone generation and sequence design for selective recognition.</p>
-            <p class="portal-contribution"><strong>My contribution:</strong> Binder architecture and computational design pipeline.</p>
-            <span class="portal-link">View project →</span>
-          </a>
-
-          <a class="portal span-6" href="projects/membrane-protein-design.html">
-            <div class="portal-top">
-              <h3 class="portal-title">Functional Membrane Protein Design</h3>
-              <div class="project-meta">
-                <span class="portal-time">Jun 2025 - Sep 2025</span>
-                <p class="project-affiliation">Westlake University · Hangzhou</p>
-              </div>
-            </div>
-            <div class="tags project-tags">
-              <span class="tag">De Novo Design</span>
-              <span class="tag">RFdiffusion</span>
-              <span class="tag">AlphaFold3</span>
-              <span class="tag">Cryo-EM</span>
-            </div>
-            <p class="portal-summary">State-specific structural seeding and bridge design for membrane proteins, supported by protein production and cryo-EM sample preparation.</p>
-            <p class="portal-contribution"><strong>My contribution:</strong> State-specific modeling and cryo-EM sample preparation.</p>
-            <span class="portal-link">View project →</span>
-          </a>
-
-          <a class="portal span-6" href="projects/nox-directed-evolution.html">
-            <div class="portal-top">
-              <h3 class="portal-title">NADH Oxidase Engineering</h3>
-              <div class="project-meta">
-                <span class="portal-time">Mar 2024 - Present</span>
-                <p class="project-affiliation">Huazhong University of Science and Technology · Wuhan</p>
-              </div>
-            </div>
-            <div class="tags">
-              <span class="tag">NAD⁺ Regeneration</span>
-              <span class="tag">Docking + MD</span>
-              <span class="tag">Mutagenesis</span>
-            </div>
-            <p class="portal-summary">Structure-guided enzyme engineering for NAD⁺ regeneration and H₂O₂ production, focusing on cofactor recognition and retention.</p>
-            <p class="portal-contribution"><strong>My contribution:</strong> Cofactor modeling and mutation prioritization.</p>
-            <span class="portal-link">View project →</span>
-          </a>
-
-          <a class="portal span-6" href="projects/hypoxia-organoids.html">
-            <div class="portal-top">
-              <h3 class="portal-title">Hypoxia Organoid Profiling</h3>
-              <div class="project-meta">
-                <span class="portal-time">Oct 2024 - Mar 2025</span>
-                <p class="project-affiliation">Huazhong University of Science and Technology · Wuhan</p>
-              </div>
-            </div>
-            <div class="tags">
-              <span class="tag">scRNA-seq</span>
-              <span class="tag">Microfluidics</span>
-              <span class="tag">PCA/UMAP</span>
-            </div>
-            <p class="portal-summary">Single-cell analysis workflow optimization for hypoxia and nutrient-deprivation response mapping.</p>
-            <p class="portal-contribution"><strong>My contribution:</strong> QC refinement and transcriptomic interpretation.</p>
-            <span class="portal-link">View project →</span>
-          </a>
-
-          <a class="portal span-6" href="projects/trna-cancer-translation.html">
-            <div class="portal-top">
-              <h3 class="portal-title">tRNA Modification in Cancer</h3>
-              <div class="project-meta">
-                <span class="portal-time">Jun 2024 - Feb 2026</span>
-                <p class="project-affiliation">Xiangya Hospital, CSU · Changsha</p>
-              </div>
-            </div>
-            <div class="tags">
-              <span class="tag">tRNA Modification</span>
-              <span class="tag">AlphaFold3</span>
-              <span class="tag">Cancer Translation</span>
-            </div>
-            <p class="portal-summary">Structure-informed analysis of NSUN2 and NAT10 mediated translational regulation in TNBC and ATC.</p>
-            <p class="portal-contribution"><strong>My contribution:</strong> Structural modeling and interface interpretation.</p>
-            <span class="portal-link">View project →</span>
-          </a>
-        </div>
-      </section>
-
-      <section class="section reveal" id="competitions">
-        <h2>Competitions · Honors · Awards</h2>
+      </section><section class="section reveal" id="about">
+        <div class="section-heading"><div><p class="eyebrow">03 / ABOUT</p><h2>Between a model and a molecule.</h2></div></div>
+        <p class="section-lead">
+          I am a Bioscience undergraduate in the Sino-French dual-degree program between
+          Huazhong University of Science and Technology and Université Paris-Saclay,
+          with expected graduation in June 2027.
+        </p>
+        <p class="section-lead">
+          I am interested in how computational methods can guide the design of protein structure and function.
+          My projects span protein assemblies, molecular recognition, membrane proteins, and enzyme engineering,
+          with experience in algorithm development, structural modeling, protein expression and purification,
+          and cryo-EM sample preparation.
+        </p>
+        <p class="research-note">I enjoy the point where an abstract design idea becomes something concrete: a sampling method, a protein model, or a molecule we can test.</p>
+      </section><section class="section reveal" id="competitions">
+        <div class="section-heading"><div><p class="eyebrow">04 / BEYOND THE BENCH</p><h2>Building with others.</h2></div><span class="section-aside">Competitions · leadership · recognition</span></div>
 
         <div class="awards-grid">
           <a class="award-card span-6" href="projects/igem-triscale.html">
@@ -312,10 +233,8 @@
             </ul>
           </article>
         </div>
-      </section>
-
-      <section class="section reveal" id="contact">
-        <h2>Contact</h2>
+      </section><section class="section reveal" id="contact">
+        <div class="section-heading"><div><p class="eyebrow">05 / CONTACT</p><h2>Let’s compare ideas.</h2></div></div>
         <div class="cols">
           <article class="subcard">
             <h3>Links</h3>
@@ -335,10 +254,8 @@
           </article>
         </div>
       </section>
-
-      <footer class="footer">© <span id="year"></span> Haixi Zhao · Personal Research Homepage</footer>
+      <footer class="footer"><span>© <span id="year"></span> Haixi Zhao</span><a href="#home">Back to top ↑</a><span>Protein design · Computational biology</span></footer>
     </main>
-
-    <script src="scripts/main.js?v=20261003e"></script>
+    <script src="scripts/main.js?v=20261003f"></script>
   </body>
 </html>

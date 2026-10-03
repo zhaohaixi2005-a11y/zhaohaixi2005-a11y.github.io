@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PTM Capture Binders | Haixi Zhao</title>
     <meta name="description" content="Computational design of all-helical pseudocyclic binders for lysine-linked LCA capture, with topology control and geometry-aware candidate filtering." />
-    <link rel="stylesheet" href="../styles/project.css?v=20261003e" />
+    <link rel="stylesheet" href="../styles/project.css?v=20261003f" />
   </head>
   <body>
     <main class="project-shell">
@@ -28,32 +28,46 @@
             </div>
           </div>
           <aside class="project-academic-card">
-            <h2>Academic Guidance</h2>
+            <h2>Project Context</h2>
             <div class="academic-stack">
-              <div class="academic-item">
-                <span class="academic-label">Institution</span>
-                <strong class="institution-name">PEKING UNIVERSITY</strong>
+              <div class="academic-item project-institution">
+                <span class="academic-label">Project institution</span>
+                <a class="institution-link" href="https://www.pku.edu.cn/" target="_blank" rel="noreferrer" aria-label="Peking University official website">
+                  <img class="institution-mark" src="../assets/institutions/pku.png" alt="" width="360" height="360" />
+                  <strong class="institution-name">PEKING UNIVERSITY</strong>
+                  <span class="external-arrow" aria-hidden="true">↗</span>
+                </a>
               </div>
               <div class="academic-item">
                 <span class="academic-label">Supervisor</span>
                 <div class="mentor-name">
-                  <a href="https://www.chem.pku.edu.cn/wangchulab/index.htm" target="_blank" rel="noreferrer">Prof. Chu Wang</a>
+                  <a href="https://www.chem.pku.edu.cn/en/People/AcademicStaff/8310542166dd4e9c813de9d48f766e13.htm" target="_blank" rel="noreferrer">Prof. Chu Wang<span class="external-arrow" aria-hidden="true">↗</span></a>
                 </div>
+                <p class="lab-link"><a href="https://www.chem.pku.edu.cn/wangchulab/" target="_blank" rel="noreferrer">Wang Lab<span class="external-arrow" aria-hidden="true">↗</span></a></p>
               </div>
             </div>
           </aside>
         </div>
         <div class="tags">
           <span class="tag">Lys-LCA PTM</span>
-          <span class="tag">BoltzGen</span>
-          <span class="tag">RFdiffusion</span>
-          <span class="tag">LigandMPNN</span>
+          <a class="tag" href="https://github.com/HannesStark/boltzgen" target="_blank" rel="noreferrer">BoltzGen</a>
+          <a class="tag" href="https://github.com/RosettaCommons/RFdiffusion" target="_blank" rel="noreferrer">RFdiffusion</a>
+          <a class="tag" href="https://github.com/dauparas/LigandMPNN" target="_blank" rel="noreferrer">LigandMPNN</a>
         </div>
       </section>
 
+      <nav class="project-toc" aria-label="Project sections">
+        <a href="#question"><span>01</span> Question</a>
+        <a href="#approach"><span>02</span> Approach</a>
+        <a href="#contributions"><span>03</span> My contributions</a>
+        <a href="#progress"><span>04</span> Progress &amp; outputs</a>
+        <a href="#tools"><span>05</span> Tools</a>
+        <a href="#project-links"><span>06</span> Project links</a>
+      </nav>
+
       <section class="project-layout">
-        <article class="block">
-          <h2>Research Question</h2>
+        <article class="block" id="question">
+          <h2 data-step="01">Research Question</h2>
           <p class="section-lead">
             Can a de novo binder pocket recognize Lys-LCA through shape complementarity and support selective enrichment of modified species for subsequent site characterization?
           </p>
@@ -63,18 +77,18 @@
           </p>
         </article>
 
-        <article class="block">
-          <h2>Approach</h2>
+        <article class="block" id="approach">
+          <h2 data-step="02">Approach</h2>
           <ul class="bullets">
             <li>Design all-helical pseudocyclic backbones with topological closure and pockets shaped around the Lys-LCA target.</li>
-            <li>Integrate BoltzGen, RFdiffusion, and LigandMPNN for backbone generation, topology control, and sequence optimization.</li>
+            <li>Integrate <a href="https://github.com/HannesStark/boltzgen" target="_blank" rel="noreferrer">BoltzGen</a>, <a href="https://github.com/RosettaCommons/RFdiffusion" target="_blank" rel="noreferrer">RFdiffusion</a>, and <a href="https://github.com/dauparas/LigandMPNN" target="_blank" rel="noreferrer">LigandMPNN</a> for backbone generation, topology control, and sequence optimization.</li>
             <li>Filter computational candidates for structural quality, helix packing, and binding pocket formation.</li>
             <li>Screen and rank candidates in silico for downstream experimental evaluation.</li>
           </ul>
         </article>
 
-        <article class="block" style="grid-column: 1 / -1">
-          <h2>My Contributions</h2>
+        <article class="block block-contributions" id="contributions">
+          <h2 data-step="03">My Contributions</h2>
           <ul class="bullets">
             <li>Designed the all-helical pseudocyclic binder architecture and built the computational generation pipeline.</li>
             <li>Implemented geometry-aware filters linking scaffold quality, helix packing, and pocket formation.</li>
@@ -82,8 +96,8 @@
           </ul>
         </article>
 
-        <article class="block">
-          <h2>Current Progress</h2>
+        <article class="block" id="progress">
+          <h2 data-step="04">Current Progress</h2>
           <ul class="bullets">
             <li>A computational pipeline is in place for generating and prioritizing Lys-LCA capture-binder candidates.</li>
             <li>Current outputs are designed structures and ranked computational candidates.</li>
@@ -91,18 +105,35 @@
           </ul>
         </article>
 
-        <article class="block">
-          <h2>Tools</h2>
+        <article class="block" id="tools">
+          <h2 data-step="05">Tools</h2>
           <ul class="bullets">
-            <li>BoltzGen, RFdiffusion, and LigandMPNN</li>
+            <li><a href="https://github.com/HannesStark/boltzgen" target="_blank" rel="noreferrer">BoltzGen</a>, <a href="https://github.com/RosettaCommons/RFdiffusion" target="_blank" rel="noreferrer">RFdiffusion</a>, and <a href="https://github.com/dauparas/LigandMPNN" target="_blank" rel="noreferrer">LigandMPNN</a></li>
             <li>Pseudocyclic topology control and protein geometry analysis</li>
             <li>Helix-packing and pocket-quality filtering</li>
           </ul>
         </article>
       </section>
 
+      <section class="project-resources block" id="project-links">
+        <h2 data-step="06">Project Links</h2>
+        <ul class="resource-list">
+          <li><span class="resource-type">Lab</span><a href="https://www.chem.pku.edu.cn/wangchulab/" target="_blank" rel="noreferrer">Wang Lab <span class="external-arrow" aria-hidden="true">↗</span></a></li>
+          <li><span class="resource-type">Faculty</span><a href="https://www.chem.pku.edu.cn/en/People/AcademicStaff/8310542166dd4e9c813de9d48f766e13.htm" target="_blank" rel="noreferrer">Chu Wang · Peking University <span class="external-arrow" aria-hidden="true">↗</span></a></li>
+        </ul>
+      </section>
+
+      <nav class="project-navigation" aria-label="Continue exploring research">
+        <a class="project-nav-back" href="../index.html#research">← All research projects</a>
+        <a class="project-next" href="membrane-protein-design.html">
+          <span class="next-label">Next project</span>
+          <strong>De Novo Design of Functional Membrane Proteins</strong>
+          <span class="next-arrow" aria-hidden="true">→</span>
+        </a>
+      </nav>
+
       <footer class="footer">© <span id="year"></span> Haixi Zhao</footer>
     </main>
-    <script src="../scripts/main.js?v=20261003e"></script>
+    <script src="../scripts/main.js?v=20261003f"></script>
   </body>
 </html>

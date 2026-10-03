@@ -163,7 +163,7 @@
     function bootNgl() {
       if (disposed) return;
       if (!window.NGL || !window.NGL.Stage) {
-        onFail("3D engine unavailable");
+        onFail("Interactive view unavailable · showing structure preview");
         return;
       }
       try {
@@ -212,11 +212,11 @@
           })
           .catch(function (err) {
             releaseStage();
-            onFail("3D model failed to load", err);
+            onFail("Interactive view unavailable · showing structure preview", err);
           });
       } catch (err) {
         releaseStage();
-        onFail("3D engine unavailable", err);
+        onFail("Interactive view unavailable · showing structure preview", err);
       }
     }
 
@@ -248,7 +248,7 @@
           return loadScript("https://unpkg.com/ngl@2.0.0-dev.37/dist/ngl.js");
         })
         .then(bootNgl)
-        .catch(function (err) { onFail("3D engine unavailable", err); });
+        .catch(function (err) { onFail("Interactive view unavailable · showing structure preview", err); });
     }
   }
 
@@ -262,216 +262,6 @@
     };
     portrait.addEventListener("click", onClick);
     cleanups.push(function () { portrait.removeEventListener("click", onClick); });
-  }
-
-  var projectWaveState = {
-    canvas: null,
-    ctx: null,
-    dpr: 1,
-    width: 0,
-    height: 0,
-    rafId: 0,
-    lastTs: null,
-    resizeRaf: 0,
-    layers: [
-      {
-        base: 0.36,
-        ampA: 26,
-        ampB: 12,
-        ampC: 7,
-        freqA: 0.0074,
-        freqB: 0.013,
-        freqC: 0.020,
-        speedA: 0.00016,
-        speedB: -0.0001,
-        speedC: 0.00022,
-        phase: 0.2,
-        depth: 168,
-        strokeAlpha: 0.22,
-        topAlpha: 0.18,
-        bottomAlpha: 0.02,
-        lineWidth: 1.6
-      },
-      {
-        base: 0.52,
-        ampA: 32,
-        ampB: 16,
-        ampC: 10,
-        freqA: 0.0061,
-        freqB: 0.0106,
-        freqC: 0.017,
-        speedA: 0.00011,
-        speedB: -0.00014,
-        speedC: 0.00019,
-        phase: 1.7,
-        depth: 210,
-        strokeAlpha: 0.18,
-        topAlpha: 0.14,
-        bottomAlpha: 0.015,
-        lineWidth: 1.8
-      },
-      {
-        base: 0.68,
-        ampA: 28,
-        ampB: 15,
-        ampC: 8,
-        freqA: 0.0052,
-        freqB: 0.0094,
-        freqC: 0.016,
-        speedA: 0.00008,
-        speedB: -0.0001,
-        speedC: 0.00015,
-        phase: 3.2,
-        depth: 240,
-        strokeAlpha: 0.14,
-        topAlpha: 0.11,
-        bottomAlpha: 0.012,
-        lineWidth: 1.4
-      }
-    ]
-  };
-
-  function resizeProjectWaveCanvas() {
-    var s = projectWaveState;
-    if (!s.canvas || !s.ctx) return;
-
-    s.dpr = Math.min(window.devicePixelRatio || 1, 1.25);
-    s.width = Math.max(window.innerWidth || 0, 1);
-    s.height = Math.max(window.innerHeight || 0, 1);
-    s.canvas.width = Math.floor(s.width * s.dpr);
-    s.canvas.height = Math.floor(s.height * s.dpr);
-    s.ctx.setTransform(s.dpr, 0, 0, s.dpr, 0, 0);
-  }
-
-  function sampleProjectWaveY(layer, x, timestamp, height) {
-    var drift = Math.sin(timestamp * 0.00009 + layer.phase * 1.3) * height * 0.012;
-    return (
-      height * layer.base +
-      drift +
-      Math.sin(x * layer.freqA + timestamp * layer.speedA + layer.phase) * layer.ampA +
-      Math.sin(x * layer.freqB + timestamp * layer.speedB + layer.phase * 1.9) * layer.ampB +
-      Math.sin(x * layer.freqC + timestamp * layer.speedC + layer.phase * 2.7) * layer.ampC
-    );
-  }
-
-  function drawProjectWaveFrame(timestamp) {
-    var s = projectWaveState;
-    var ctx = s.ctx;
-    if (!ctx) return;
-
-    ctx.clearRect(0, 0, s.width, s.height);
-
-    for (var i = 0; i < s.layers.length; i += 1) {
-      var layer = s.layers[i];
-      var points = [];
-      var gradient = ctx.createLinearGradient(0, s.height * layer.base - 40, 0, s.height * layer.base + layer.depth);
-      gradient.addColorStop(0, "rgba(146, 224, 255," + layer.topAlpha.toFixed(3) + ")");
-      gradient.addColorStop(0.45, "rgba(98, 194, 255," + (layer.topAlpha * 0.72).toFixed(3) + ")");
-      gradient.addColorStop(1, "rgba(36, 88, 148," + layer.bottomAlpha.toFixed(3) + ")");
-
-      ctx.beginPath();
-      for (var x = -40; x <= s.width + 40; x += 10) {
-        var y = sampleProjectWaveY(layer, x, timestamp, s.height);
-        points.push({ x: x, y: y });
-        if (x === -40) {
-          ctx.moveTo(x, y);
-        } else {
-          ctx.lineTo(x, y);
-        }
-      }
-
-      ctx.lineTo(s.width + 40, s.height + layer.depth);
-      ctx.lineTo(-40, s.height + layer.depth);
-      ctx.closePath();
-      ctx.fillStyle = gradient;
-      ctx.fill();
-
-      ctx.beginPath();
-      for (var j = 0; j < points.length; j += 1) {
-        if (j === 0) {
-          ctx.moveTo(points[j].x, points[j].y);
-        } else {
-          ctx.lineTo(points[j].x, points[j].y);
-        }
-      }
-      ctx.strokeStyle = "rgba(168, 232, 255," + layer.strokeAlpha.toFixed(3) + ")";
-      ctx.lineWidth = layer.lineWidth;
-      ctx.stroke();
-    }
-
-    var gradient = ctx.createLinearGradient(0, s.height * 0.2, 0, s.height);
-    gradient.addColorStop(0, "rgba(110, 198, 255, 0.00)");
-    gradient.addColorStop(0.5, "rgba(110, 198, 255, 0.04)");
-    gradient.addColorStop(1, "rgba(86, 247, 212, 0.08)");
-    ctx.fillStyle = gradient;
-    ctx.fillRect(0, 0, s.width, s.height);
-  }
-
-  function animateProjectWave(timestamp) {
-    var s = projectWaveState;
-    s.rafId = 0;
-    if (!canAnimate()) return;
-    var interval = 1000 / 24;
-    var elapsed = s.lastTs === null ? interval : timestamp - s.lastTs;
-    if (elapsed >= interval) {
-      drawProjectWaveFrame(timestamp);
-      s.lastTs = timestamp - elapsed % interval;
-    }
-    startProjectWaveAnimation();
-  }
-
-  function startProjectWaveAnimation() {
-    if (reducedMotion || !canAnimate() || projectWaveState.rafId || !projectWaveState.ctx) return;
-    projectWaveState.rafId = window.requestAnimationFrame(animateProjectWave);
-  }
-
-  function stopProjectWaveAnimation() {
-    if (projectWaveState.rafId) window.cancelAnimationFrame(projectWaveState.rafId);
-    projectWaveState.rafId = 0;
-    projectWaveState.lastTs = null;
-    if (projectWaveState.resizeRaf) window.cancelAnimationFrame(projectWaveState.resizeRaf);
-    projectWaveState.resizeRaf = 0;
-  }
-
-  function initProjectWaveCanvas() {
-    var shell = document.querySelector(".project-shell");
-    if (!shell) return;
-
-    var canvas = document.createElement("canvas");
-    canvas.className = "project-wave-canvas";
-    canvas.setAttribute("aria-hidden", "true");
-    document.body.insertBefore(canvas, document.body.firstChild);
-
-    projectWaveState.canvas = canvas;
-    projectWaveState.ctx = get2dContext(canvas);
-    if (!projectWaveState.ctx) return;
-
-    resizeProjectWaveCanvas();
-    drawProjectWaveFrame(0);
-    startProjectWaveAnimation();
-
-    var onResize = function () {
-      if (!canAnimate() || projectWaveState.resizeRaf) return;
-      projectWaveState.resizeRaf = window.requestAnimationFrame(function () {
-        projectWaveState.resizeRaf = 0;
-        if (!canAnimate()) return;
-        resizeProjectWaveCanvas();
-        drawProjectWaveFrame(performance.now ? performance.now() : 0);
-        startProjectWaveAnimation();
-      });
-    };
-    window.addEventListener("resize", onResize);
-    cleanups.push(function () {
-      window.removeEventListener("resize", onResize);
-      stopProjectWaveAnimation();
-      if (projectWaveState.resizeRaf) {
-        window.cancelAnimationFrame(projectWaveState.resizeRaf);
-        projectWaveState.resizeRaf = 0;
-      }
-      if (projectWaveState.canvas && projectWaveState.canvas.parentNode) {
-        projectWaveState.canvas.parentNode.removeChild(projectWaveState.canvas);
-      }
-    });
   }
 
   var backgroundState = {
@@ -605,16 +395,99 @@
     });
   }
 
+  function initSectionNavigation() {
+    if (!("IntersectionObserver" in window)) return;
+    var sectionIds = ["research", "publications", "about", "competitions", "contact"];
+    var navigation = Array.prototype.slice.call(document.querySelectorAll('.navlinks a[href^="#"]'))
+      .map(function (link) {
+        var id = link.getAttribute("href").slice(1);
+        return { link: link, section: sectionIds.indexOf(id) === -1 ? null : document.getElementById(id) };
+      })
+      .filter(function (item) { return item.section; });
+    if (!navigation.length) return;
+
+    var header = document.querySelector(".topbar");
+    var footer = document.querySelector(".footer");
+    var sectionObserver = null;
+    var footerObserver = null;
+    var readingTop = 0;
+    var footerVisible = false;
+
+    function syncCurrentSection() {
+      var current = null;
+      var closestTop = -Infinity;
+      navigation.forEach(function (item) {
+        var top = item.section.getBoundingClientRect().top;
+        if ((footerVisible || top <= readingTop + 1) && top > closestTop) {
+          current = item;
+          closestTop = top;
+        }
+      });
+      navigation.forEach(function (item) {
+        var selected = item === current;
+        item.link.classList.toggle("is-current", selected);
+        if (selected) item.link.setAttribute("aria-current", "location");
+        else item.link.removeAttribute("aria-current");
+      });
+    }
+
+    function observeReadingBand() {
+      if (sectionObserver) sectionObserver.disconnect();
+      var height = Math.max(window.innerHeight || 0, 1);
+      var headerBottom = header ? header.getBoundingClientRect().bottom : 0;
+      var anchorOffset = 0;
+      if (window.getComputedStyle) {
+        navigation.forEach(function (item) {
+          anchorOffset = Math.max(anchorOffset, parseFloat(window.getComputedStyle(item.section).scrollMarginTop) || 0);
+        });
+      }
+      readingTop = Math.min(Math.max(Math.ceil(headerBottom) + 16, anchorOffset + 2), Math.max(height - 2, 0));
+      // A thin band keeps long sections current without work on every scroll event.
+      var bottomInset = Math.max(height - readingTop - 2, 0);
+      sectionObserver = new IntersectionObserver(syncCurrentSection, {
+        rootMargin: "-" + readingTop + "px 0px -" + bottomInset + "px 0px",
+        threshold: 0
+      });
+      navigation.forEach(function (item) { sectionObserver.observe(item.section); });
+      syncCurrentSection();
+    }
+
+    observeReadingBand();
+    if (footer) {
+      // The last short section may never reach the band at the end of the page.
+      footerObserver = new IntersectionObserver(function (entries) {
+        footerVisible = entries[0].isIntersecting && entries[0].intersectionRatio >= 0.99;
+        syncCurrentSection();
+      }, { threshold: 1 });
+      footerObserver.observe(footer);
+    }
+    window.addEventListener("resize", observeReadingBand);
+    window.addEventListener("pageshow", syncCurrentSection);
+    cleanups.push(function () {
+      if (sectionObserver) sectionObserver.disconnect();
+      if (footerObserver) footerObserver.disconnect();
+      window.removeEventListener("resize", observeReadingBand);
+      window.removeEventListener("pageshow", syncCurrentSection);
+    });
+  }
+
   function initRevealObserver() {
     var items = document.querySelectorAll(".reveal");
-    if (!items.length || !("IntersectionObserver" in window)) return;
+    if (!items.length) return;
+    if (!("IntersectionObserver" in window)) {
+      items.forEach(function (item) { item.classList.add("is-visible"); });
+      return;
+    }
     var io = new IntersectionObserver(
       function (entries) {
         entries.forEach(function (entry) {
-          if (entry.isIntersecting) entry.target.classList.add("is-visible");
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            io.unobserve(entry.target);
+          }
         });
       },
-      { threshold: 0.15 }
+      { threshold: 0, rootMargin: "0px 0px -24px 0px" }
     );
     items.forEach(function (el) {
       io.observe(el);
@@ -623,9 +496,9 @@
   }
 
   initSiteParticles();
-  initProjectWaveCanvas();
   initProteinViewer();
   initPortraitToggle();
+  initSectionNavigation();
   initRevealObserver();
 
   var refreshRafA = 0;
@@ -649,17 +522,11 @@
       drawParticleFrame();
       startBackgroundAnimation();
     }
-
-    if (projectWaveState.ctx) {
-      resizeProjectWaveCanvas();
-      drawProjectWaveFrame(performance.now ? performance.now() : 0);
-      startProjectWaveAnimation();
-    }
   }
 
   function scheduleInteractiveRefresh() {
     cancelRefreshFrames();
-    if (!canAnimate()) return;
+    if (!canAnimate() || !backgroundState.ctx) return;
     refreshRafA = window.requestAnimationFrame(function () {
       refreshRafA = 0;
       refreshRafB = window.requestAnimationFrame(function () {
@@ -672,7 +539,6 @@
   document.addEventListener("visibilitychange", function () {
     if (document.visibilityState === "hidden") {
       stopBackgroundAnimation();
-      stopProjectWaveAnimation();
       cancelRefreshFrames();
       return;
     }
@@ -682,7 +548,6 @@
   window.addEventListener("pagehide", function (event) {
     pageActive = false;
     stopBackgroundAnimation();
-    stopProjectWaveAnimation();
     cancelRefreshFrames();
     // A cached page must keep its viewer and listeners for pageshow.
     if (!event.persisted) {

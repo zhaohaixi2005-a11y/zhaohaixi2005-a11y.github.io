@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Protein Assembly Design | Haixi Zhao</title>
     <meta name="description" content="Research on constrained protein assembly design using RFdiffusion3, preserving supplied interfaces and symmetry while generating new scaffolds." />
-    <link rel="stylesheet" href="../styles/project.css?v=20261003e" />
+    <link rel="stylesheet" href="../styles/project.css?v=20261003f" />
   </head>
   <body>
     <main class="project-shell">
@@ -20,7 +20,7 @@
             <p class="kicker">Research Project 01</p>
             <h1 class="project-title">Constrained Design of Protein Assemblies</h1>
             <p class="project-summary">
-              I am developing RFD3-Mosaic, an RFdiffusion3-based workflow for designing protein assemblies with specified interfaces, connectivity, and symmetry.
+              I am developing RFD3-Mosaic, an <a href="https://github.com/RosettaCommons/foundry/blob/production/models/rfd3/README.md" target="_blank" rel="noreferrer">RFdiffusion3</a>-based workflow for designing protein assemblies with specified interfaces, connectivity, and symmetry.
             </p>
             <div class="project-meta-row">
               <span class="project-pill">Jul 2026 - Present</span>
@@ -28,32 +28,46 @@
             </div>
           </div>
           <aside class="project-academic-card">
-            <h2>Academic Guidance</h2>
+            <h2>Project Context</h2>
             <div class="academic-stack">
-              <div class="academic-item">
-                <span class="academic-label">Institution</span>
-                <strong class="institution-name">LMU MUNICH</strong>
+              <div class="academic-item project-institution">
+                <span class="academic-label">Project institution</span>
+                <a class="institution-link" href="https://www.lmu.de/en/" target="_blank" rel="noreferrer" aria-label="LMU Munich official website">
+                  <img class="institution-mark" src="../assets/institutions/lmu.svg" alt="" width="362" height="171" />
+                  <strong class="institution-name">LMU MUNICH</strong>
+                  <span class="external-arrow" aria-hidden="true">↗</span>
+                </a>
               </div>
               <div class="academic-item">
                 <span class="academic-label">Supervisor</span>
                 <div class="mentor-name">
-                  <span>Prof. Alena Khmelinskaia</span>
+                  <a href="https://khmelinskaia.cup.uni-muenchen.de/ourteam/khmelinskaia/" target="_blank" rel="noreferrer">Prof. Alena Khmelinskaia<span class="external-arrow" aria-hidden="true">↗</span></a>
                 </div>
+                <p class="lab-link"><a href="https://khmelinskaia.cup.uni-muenchen.de/" target="_blank" rel="noreferrer">Khmelinskaia Lab<span class="external-arrow" aria-hidden="true">↗</span></a></p>
               </div>
             </div>
           </aside>
         </div>
         <div class="tags">
-          <span class="tag">RFdiffusion3</span>
+          <a class="tag" href="https://github.com/RosettaCommons/foundry/blob/production/models/rfd3/README.md" target="_blank" rel="noreferrer">RFdiffusion3</a>
           <span class="tag">Assembly Constraints</span>
           <span class="tag">Symmetry-Coupled Sampling</span>
           <span class="tag">SE(3) Mobility</span>
         </div>
       </section>
 
+      <nav class="project-toc" aria-label="Project sections">
+        <a href="#question"><span>01</span> Question</a>
+        <a href="#approach"><span>02</span> Approach</a>
+        <a href="#contributions"><span>03</span> My contributions</a>
+        <a href="#progress"><span>04</span> Progress &amp; outputs</a>
+        <a href="#tools"><span>05</span> Tools</a>
+        <a href="#project-links"><span>06</span> Project links</a>
+      </nav>
+
       <section class="project-layout">
-        <article class="block">
-          <h2>Research Question</h2>
+        <article class="block" id="question">
+          <h2 data-step="01">Research Question</h2>
           <p class="section-lead">
             How can a generative model build a coherent protein assembly while preserving supplied motifs and interfaces, creating new contacts, and respecting connectivity and global symmetry?
           </p>
@@ -63,8 +77,8 @@
           </p>
         </article>
 
-        <article class="block">
-          <h2>Approach</h2>
+        <article class="block" id="approach">
+          <h2 data-step="02">Approach</h2>
           <ul class="bullets">
             <li>Compile declarative components, motifs, interface roles, connectivity, symmetry, and topology into executable RFD3 conditioning programs.</li>
             <li>Represent residues and geometric constraints through symmetry-coupled orbits and constraint groups, maintaining their relationships throughout sampling.</li>
@@ -73,8 +87,8 @@
           </ul>
         </article>
 
-        <article class="block" style="grid-column: 1 / -1">
-          <h2>My Contributions</h2>
+        <article class="block block-contributions" id="contributions">
+          <h2 data-step="03">My Contributions</h2>
           <ul class="bullets">
             <li>Developed the assembly task specification, compiler, and constrained sampling workflow.</li>
             <li>Implemented propagation of motifs, interfaces, symmetry, and higher-order geometric relationships through residue orbits and constraint groups.</li>
@@ -82,8 +96,8 @@
           </ul>
         </article>
 
-        <article class="block">
-          <h2>Current Progress</h2>
+        <article class="block" id="progress">
+          <h2 data-step="04">Current Progress</h2>
           <ul class="bullets">
             <li>The framework covers de novo oligomer generation, motif- and interface-conditioned scaffolding, and multi-interface tasks.</li>
             <li>Its supported symmetry scope includes cyclic, dihedral, polyhedral, and helical architectures for rings, cages, and higher-order assemblies.</li>
@@ -92,18 +106,35 @@
           </ul>
         </article>
 
-        <article class="block">
-          <h2>Tools</h2>
+        <article class="block" id="tools">
+          <h2 data-step="05">Tools</h2>
           <ul class="bullets">
-            <li>RFdiffusion3 and programmable conditioning</li>
+            <li><a href="https://github.com/RosettaCommons/foundry/blob/production/models/rfd3/README.md" target="_blank" rel="noreferrer">RFdiffusion3</a> and programmable conditioning</li>
             <li>Symmetry-coupled diffusion and group-constrained SE(3) transformations</li>
             <li>Interface geometry, connectivity, and constraint-preservation analysis</li>
           </ul>
         </article>
       </section>
 
+      <section class="project-resources block" id="project-links">
+        <h2 data-step="06">Project Links</h2>
+        <ul class="resource-list">
+          <li><span class="resource-type">Code</span><a href="https://github.com/zhaohaixi2005-a11y/rfd3-mosaic" target="_blank" rel="noreferrer">RFD3-Mosaic repository <span class="external-arrow" aria-hidden="true">↗</span></a></li>
+          <li><span class="resource-type">Lab</span><a href="https://khmelinskaia.cup.uni-muenchen.de/" target="_blank" rel="noreferrer">Khmelinskaia Lab <span class="external-arrow" aria-hidden="true">↗</span></a></li>
+        </ul>
+      </section>
+
+      <nav class="project-navigation" aria-label="Continue exploring research">
+        <a class="project-nav-back" href="../index.html#research">← All research projects</a>
+        <a class="project-next" href="ptm-capture-binders.html">
+          <span class="next-label">Next project</span>
+          <strong>De Novo Design of PTM Capture Binders</strong>
+          <span class="next-arrow" aria-hidden="true">→</span>
+        </a>
+      </nav>
+
       <footer class="footer">© <span id="year"></span> Haixi Zhao</footer>
     </main>
-    <script src="../scripts/main.js?v=20261003e"></script>
+    <script src="../scripts/main.js?v=20261003f"></script>
   </body>
 </html>

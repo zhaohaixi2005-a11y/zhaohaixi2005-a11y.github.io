@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>iGEM TriScale | Haixi Zhao</title>
-    <link rel="stylesheet" href="../styles/project.css?v=20261003e" />
+    <link rel="stylesheet" href="../styles/project.css?v=20261003f" />
   </head>
   <body>
     <main class="project-shell">
@@ -16,7 +16,7 @@
       <section class="project-header">
         <div class="project-header-grid">
           <div>
-            <p class="kicker">Competition Gateway 01</p>
+            <p class="kicker">Competition Project 01</p>
             <h1 class="project-title">iGEM 2025 TriScale Digital-Twin Modeling</h1>
             <p class="project-meta">HUST-China · Sep 2024 - Nov 2025 · Modeling Leader</p>
             <div class="tags">
@@ -27,8 +27,16 @@
             </div>
           </div>
           <aside class="project-academic-card">
-            <h2>Project Link</h2>
+            <h2>Project Context</h2>
             <div class="academic-stack">
+              <div class="academic-item project-institution">
+                <span class="academic-label">Project institution</span>
+                <a class="institution-link" href="https://english.hust.edu.cn/" target="_blank" rel="noreferrer" aria-label="Huazhong University of Science and Technology official website">
+                  <img class="institution-mark institution-mark--inverse" src="../assets/institutions/hust-white.png" alt="" width="400" height="94" />
+                  <strong class="institution-name">HUST</strong>
+                  <span class="external-arrow" aria-hidden="true">↗</span>
+                </a>
+              </div>
               <a
                 class="academic-item project-external-link"
                 href="https://2025.igem.wiki/hust-china/model"
@@ -37,16 +45,25 @@
               >
                 <span class="academic-label">External Page</span>
                 <strong class="institution-name">iGEM Model</strong>
-                <span class="project-link-jump">Open ↗</span>
+                <span class="project-link-jump">Explore competition wiki ↗</span>
               </a>
             </div>
           </aside>
         </div>
       </section>
 
+      <nav class="project-toc" aria-label="Project sections">
+        <a href="#question"><span>01</span> Context</a>
+        <a href="#approach"><span>02</span> Approach</a>
+        <a href="#contributions"><span>03</span> My contributions</a>
+        <a href="#progress"><span>04</span> Progress &amp; outputs</a>
+        <a href="#tools"><span>05</span> Tools</a>
+        <a href="#project-links"><span>06</span> Project links</a>
+      </nav>
+
       <section class="project-layout">
-        <article class="block">
-          <h2>Project Overview</h2>
+        <article class="block" id="question">
+          <h2 data-step="01">Project Overview</h2>
           <p class="section-lead">
             Built a TriScale digital-twin workflow to support synthetic biology design through multiscale modeling from molecular interaction to growth dynamics.
           </p>
@@ -56,8 +73,8 @@
           </p>
         </article>
 
-        <article class="block">
-          <h2>Methods / Pipeline</h2>
+        <article class="block" id="approach">
+          <h2 data-step="02">Methods / Pipeline</h2>
           <ul class="bullets">
             <li>Integrated molecular docking, AI-guided enzyme redesign, and growth-curve ML models.</li>
             <li>Predicted PEX5-PTS1 affinities to guide signal peptide selection.</li>
@@ -66,8 +83,8 @@
           </ul>
         </article>
 
-        <article class="block" style="grid-column: 1 / -1">
-          <h2>My Contributions</h2>
+        <article class="block block-contributions" id="contributions">
+          <h2 data-step="03">My Contributions</h2>
           <ul class="bullets">
             <li>Led modeling architecture and integration strategy across submodules.</li>
             <li>Connected molecular-level predictions with system-level process optimization.</li>
@@ -75,8 +92,8 @@
           </ul>
         </article>
 
-        <article class="block">
-          <h2>Key Outcomes</h2>
+        <article class="block" id="progress">
+          <h2 data-step="04">Key Outcomes</h2>
           <ul class="bullets">
             <li>Reduced trial-and-error burden in pathway and condition optimization.</li>
             <li>Delivered a coherent model-backed design narrative for competition outputs.</li>
@@ -84,8 +101,8 @@
           </ul>
         </article>
 
-        <article class="block">
-          <h2>Related Tools / Skills</h2>
+        <article class="block" id="tools">
+          <h2 data-step="05">Related Tools / Skills</h2>
           <ul class="bullets">
             <li>Docking pipelines, ML modeling, growth-curve fitting</li>
             <li>Cross-team technical leadership and model interpretation</li>
@@ -94,8 +111,25 @@
         </article>
       </section>
 
+      <section class="project-resources block" id="project-links">
+        <h2 data-step="06">Project Links</h2>
+        <ul class="resource-list">
+          <li><span class="resource-type">Competition wiki</span><a href="https://2025.igem.wiki/hust-china/model/" target="_blank" rel="noreferrer">HUST-China 2025 · Model <span class="external-arrow" aria-hidden="true">↗</span></a></li>
+          <li><span class="resource-type">Institution</span><a href="https://english.hust.edu.cn/" target="_blank" rel="noreferrer">Huazhong University of Science and Technology <span class="external-arrow" aria-hidden="true">↗</span></a></li>
+        </ul>
+      </section>
+
+      <nav class="project-navigation" aria-label="Continue exploring research">
+        <a class="project-nav-back" href="../index.html#research">← All research projects</a>
+        <a class="project-next" href="culsc-nox-team.html">
+          <span class="next-label">Next project</span>
+          <strong>CULSC Directed-Evolution Project (NOX System)</strong>
+          <span class="next-arrow" aria-hidden="true">→</span>
+        </a>
+      </nav>
+
       <footer class="footer">© <span id="year"></span> Haixi Zhao</footer>
     </main>
-    <script src="../scripts/main.js?v=20261003e"></script>
+    <script src="../scripts/main.js?v=20261003f"></script>
   </body>
 </html>

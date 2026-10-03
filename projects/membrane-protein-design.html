@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Membrane Protein Design | Haixi Zhao</title>
     <meta name="description" content="De novo membrane protein design using template-guided conformational seeds, RFdiffusion bridge architectures, and preparation for structural validation." />
-    <link rel="stylesheet" href="../styles/project.css?v=20261003e" />
+    <link rel="stylesheet" href="../styles/project.css?v=20261003f" />
   </head>
   <body>
     <main class="project-shell">
@@ -28,17 +28,22 @@
             </div>
           </div>
           <aside class="project-academic-card">
-            <h2>Academic Guidance</h2>
+            <h2>Project Context</h2>
             <div class="academic-stack">
-              <div class="academic-item">
-                <span class="academic-label">Institution</span>
-                <strong class="institution-name">WESTLAKE UNIVERSITY</strong>
+              <div class="academic-item project-institution">
+                <span class="academic-label">Project institution</span>
+                <a class="institution-link" href="https://en.westlake.edu.cn/" target="_blank" rel="noreferrer" aria-label="Westlake University official website">
+                  <img class="institution-mark institution-mark--wide" src="../assets/institutions/westlake.png" alt="" width="749" height="224" />
+                  <strong class="institution-name">WESTLAKE UNIVERSITY</strong>
+                  <span class="external-arrow" aria-hidden="true">↗</span>
+                </a>
               </div>
               <div class="academic-item">
                 <span class="academic-label">Supervisor</span>
                 <div class="mentor-name">
-                  <a href="https://protein-design.lab.westlake.edu.cn/Alumni.html" target="_blank" rel="noreferrer">Prof. Peilong Lu</a>
+                  <a href="https://en.westlake.edu.cn/faculty/peilong-lu.html" target="_blank" rel="noreferrer">Prof. Peilong Lu<span class="external-arrow" aria-hidden="true">↗</span></a>
                 </div>
+                <p class="lab-link"><a href="https://protein-design.lab.westlake.edu.cn/" target="_blank" rel="noreferrer">Peilong Lu Lab<span class="external-arrow" aria-hidden="true">↗</span></a></p>
               </div>
             </div>
           </aside>
@@ -46,14 +51,23 @@
         <div class="tags">
           <span class="tag">AlphaFold2/3</span>
           <span class="tag">Boltz2</span>
-          <span class="tag">Chai-1</span>
+          <a class="tag" href="https://github.com/chaidiscovery/chai-lab" target="_blank" rel="noreferrer">Chai-1</a>
           <span class="tag">Cryo-EM</span>
         </div>
       </section>
 
+      <nav class="project-toc" aria-label="Project sections">
+        <a href="#question"><span>01</span> Question</a>
+        <a href="#approach"><span>02</span> Approach</a>
+        <a href="#contributions"><span>03</span> My contributions</a>
+        <a href="#progress"><span>04</span> Progress &amp; outputs</a>
+        <a href="#tools"><span>05</span> Tools</a>
+        <a href="#project-links"><span>06</span> Project links</a>
+      </nav>
+
       <section class="project-layout">
-        <article class="block">
-          <h2>Research Question</h2>
+        <article class="block" id="question">
+          <h2 data-step="01">Research Question</h2>
           <p class="section-lead">
             How can bridge architectures support distinct conformational states in de novo membrane proteins while balancing the flexibility needed for motion with structural stability?
           </p>
@@ -63,45 +77,62 @@
           </p>
         </article>
 
-        <article class="block">
-          <h2>Approach</h2>
+        <article class="block" id="approach">
+          <h2 data-step="02">Approach</h2>
           <ul class="bullets">
-            <li>Benchmark AlphaFold2.3, AlphaFold3, Boltz-2, and Chai-1 in template-free and template-guided settings.</li>
-            <li>Use template-guided AlphaFold3 to recover distinct computational open and closed conformations as state-specific design seeds.</li>
-            <li>Apply RFdiffusion to transmembrane helices, soluble domains, and bridge architectures, tuning guiding potentials and filtering for predicted stability and lipid compatibility.</li>
+            <li>Benchmark <a href="https://github.com/google-deepmind/alphafold/blob/main/docs/technical_note_v2.3.0.md" target="_blank" rel="noreferrer">AlphaFold2.3</a>, <a href="https://github.com/google-deepmind/alphafold3" target="_blank" rel="noreferrer">AlphaFold3</a>, <a href="https://github.com/jwohlwend/boltz" target="_blank" rel="noreferrer">Boltz-2</a>, and <a href="https://github.com/chaidiscovery/chai-lab" target="_blank" rel="noreferrer">Chai-1</a> in template-free and template-guided settings.</li>
+            <li>Use template-guided <a href="https://github.com/google-deepmind/alphafold3" target="_blank" rel="noreferrer">AlphaFold3</a> to recover distinct computational open and closed conformations as state-specific design seeds.</li>
+            <li>Apply <a href="https://github.com/RosettaCommons/RFdiffusion" target="_blank" rel="noreferrer">RFdiffusion</a> to transmembrane helices, soluble domains, and bridge architectures, tuning guiding potentials and filtering for predicted stability and lipid compatibility.</li>
             <li>Perform cloning, protein expression and purification, and cryo-EM sample preparation toward structural validation of selected designs.</li>
           </ul>
         </article>
 
-        <article class="block" style="grid-column: 1 / -1">
-          <h2>My Contributions</h2>
+        <article class="block block-contributions" id="contributions">
+          <h2 data-step="03">My Contributions</h2>
           <ul class="bullets">
             <li>Benchmarked prediction methods and template settings to establish state-specific structural starting points.</li>
-            <li>Applied RFdiffusion to helix, domain, and bridge design, with guiding-potential tuning and candidate filtering.</li>
+            <li>Applied <a href="https://github.com/RosettaCommons/RFdiffusion" target="_blank" rel="noreferrer">RFdiffusion</a> to helix, domain, and bridge design, with guiding-potential tuning and candidate filtering.</li>
             <li>Performed molecular cloning, expression, purification, and cryo-EM sample preparation.</li>
           </ul>
         </article>
 
-        <article class="block">
-          <h2>Current Progress</h2>
+        <article class="block" id="progress">
+          <h2 data-step="04">Current Progress</h2>
           <ul class="bullets">
-            <li>Template-guided AlphaFold3 produced distinct computational open and closed seeds for subsequent bridge design.</li>
+            <li>Template-guided <a href="https://github.com/google-deepmind/alphafold3" target="_blank" rel="noreferrer">AlphaFold3</a> produced distinct computational open and closed seeds for subsequent bridge design.</li>
             <li>Selected designs advanced through cloning, expression, purification, and cryo-EM preparation.</li>
           </ul>
         </article>
 
-        <article class="block">
-          <h2>Tools</h2>
+        <article class="block" id="tools">
+          <h2 data-step="05">Tools</h2>
           <ul class="bullets">
-            <li>AlphaFold2.3, AlphaFold3, Boltz-2, Chai-1, and RFdiffusion</li>
+            <li><a href="https://github.com/google-deepmind/alphafold/blob/main/docs/technical_note_v2.3.0.md" target="_blank" rel="noreferrer">AlphaFold2.3</a>, <a href="https://github.com/google-deepmind/alphafold3" target="_blank" rel="noreferrer">AlphaFold3</a>, <a href="https://github.com/jwohlwend/boltz" target="_blank" rel="noreferrer">Boltz-2</a>, <a href="https://github.com/chaidiscovery/chai-lab" target="_blank" rel="noreferrer">Chai-1</a>, and <a href="https://github.com/RosettaCommons/RFdiffusion" target="_blank" rel="noreferrer">RFdiffusion</a></li>
             <li>Template-guided prediction and lipid-compatibility analysis</li>
             <li>Molecular cloning, protein purification, and cryo-EM sample preparation</li>
           </ul>
         </article>
       </section>
 
+      <section class="project-resources block" id="project-links">
+        <h2 data-step="06">Project Links</h2>
+        <ul class="resource-list">
+          <li><span class="resource-type">Lab</span><a href="https://protein-design.lab.westlake.edu.cn/" target="_blank" rel="noreferrer">Peilong Lu Lab <span class="external-arrow" aria-hidden="true">↗</span></a></li>
+          <li><span class="resource-type">Faculty</span><a href="https://en.westlake.edu.cn/faculty/peilong-lu.html" target="_blank" rel="noreferrer">Peilong Lu · Westlake University <span class="external-arrow" aria-hidden="true">↗</span></a></li>
+        </ul>
+      </section>
+
+      <nav class="project-navigation" aria-label="Continue exploring research">
+        <a class="project-nav-back" href="../index.html#research">← All research projects</a>
+        <a class="project-next" href="nox-directed-evolution.html">
+          <span class="next-label">Next project</span>
+          <strong>NOX Engineering for NAD⁺ Regeneration and H₂O₂ Supply</strong>
+          <span class="next-arrow" aria-hidden="true">→</span>
+        </a>
+      </nav>
+
       <footer class="footer">© <span id="year"></span> Haixi Zhao</footer>
     </main>
-    <script src="../scripts/main.js?v=20261003e"></script>
+    <script src="../scripts/main.js?v=20261003f"></script>
   </body>
 </html>

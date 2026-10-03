@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CULSC NOX Project | Haixi Zhao</title>
-    <link rel="stylesheet" href="../styles/project.css?v=20261003e" />
+    <link rel="stylesheet" href="../styles/project.css?v=20261003f" />
   </head>
   <body>
     <main class="project-shell">
@@ -14,20 +14,46 @@
       </header>
 
       <section class="project-header">
-        <p class="kicker">Competition Gateway 02</p>
-        <h1 class="project-title">CULSC Directed-Evolution Project (NOX System)</h1>
-        <p class="project-meta">10th China Undergraduate Life Sciences Competition · Apr 2024 - Jun 2025 · Team Leader</p>
-        <div class="tags">
-          <span class="tag">2nd Prize</span>
-          <span class="tag">Project Leadership</span>
-          <span class="tag">Workflow Integration</span>
-          <span class="tag">Reproducibility</span>
+        <div class="project-header-grid">
+          <div>
+            <p class="kicker">Competition Project 02</p>
+            <h1 class="project-title">CULSC Directed-Evolution Project (NOX System)</h1>
+            <p class="project-meta">10th China Undergraduate Life Sciences Competition · Apr 2024 - Jun 2025 · Team Leader</p>
+            <div class="tags">
+              <span class="tag">2nd Prize</span>
+              <span class="tag">Project Leadership</span>
+              <span class="tag">Workflow Integration</span>
+              <span class="tag">Reproducibility</span>
+            </div>
+          </div>
+          <aside class="project-academic-card">
+            <h2>Project Context</h2>
+            <div class="academic-stack">
+              <div class="academic-item project-institution">
+                <span class="academic-label">Project institution</span>
+                <a class="institution-link" href="https://english.hust.edu.cn/" target="_blank" rel="noreferrer" aria-label="Huazhong University of Science and Technology official website">
+                  <img class="institution-mark institution-mark--inverse" src="../assets/institutions/hust-white.png" alt="" width="400" height="94" />
+                  <strong class="institution-name">HUST</strong>
+                  <span class="external-arrow" aria-hidden="true">↗</span>
+                </a>
+              </div>
+            </div>
+          </aside>
         </div>
       </section>
 
+      <nav class="project-toc" aria-label="Project sections">
+        <a href="#question"><span>01</span> Context</a>
+        <a href="#approach"><span>02</span> Approach</a>
+        <a href="#contributions"><span>03</span> My contributions</a>
+        <a href="#progress"><span>04</span> Progress &amp; outputs</a>
+        <a href="#tools"><span>05</span> Tools</a>
+        <a href="#project-links"><span>06</span> Project links</a>
+      </nav>
+
       <section class="project-layout">
-        <article class="block">
-          <h2>Project Overview</h2>
+        <article class="block" id="question">
+          <h2 data-step="01">Project Overview</h2>
           <p class="section-lead">
             Led a competition-driven directed-evolution project around the NOX system, balancing research quality with strict timeline and output constraints.
           </p>
@@ -37,8 +63,8 @@
           </p>
         </article>
 
-        <article class="block">
-          <h2>Methods / Pipeline</h2>
+        <article class="block" id="approach">
+          <h2 data-step="02">Methods / Pipeline</h2>
           <ul class="bullets">
             <li>Coordinated project planning across experiment design, analysis, and narrative integration.</li>
             <li>Diagnosed workflow bottlenecks and prioritized fixes for construct and protocol reliability.</li>
@@ -46,8 +72,8 @@
           </ul>
         </article>
 
-        <article class="block" style="grid-column: 1 / -1">
-          <h2>My Contributions</h2>
+        <article class="block block-contributions" id="contributions">
+          <h2 data-step="03">My Contributions</h2>
           <ul class="bullets">
             <li>Served as team leader for decision-making and resource coordination.</li>
             <li>Aligned technical execution with competition scoring logic and communication goals.</li>
@@ -55,8 +81,8 @@
           </ul>
         </article>
 
-        <article class="block">
-          <h2>Key Outcomes</h2>
+        <article class="block" id="progress">
+          <h2 data-step="04">Key Outcomes</h2>
           <ul class="bullets">
             <li>Delivered integrated directed-evolution project outputs within competition constraints.</li>
             <li>Improved team workflow robustness and experimental reproducibility awareness.</li>
@@ -64,8 +90,8 @@
           </ul>
         </article>
 
-        <article class="block">
-          <h2>Related Tools / Skills</h2>
+        <article class="block" id="tools">
+          <h2 data-step="05">Related Tools / Skills</h2>
           <ul class="bullets">
             <li>Project leadership in interdisciplinary research teams</li>
             <li>Experimental workflow debugging and quality-risk control</li>
@@ -74,8 +100,25 @@
         </article>
       </section>
 
+      <section class="project-resources block" id="project-links">
+        <h2 data-step="06">Project Links</h2>
+        <ul class="resource-list">
+          <li><span class="resource-type">Related project</span><a href="nox-directed-evolution.html">NOX Engineering for NAD⁺ Regeneration and H₂O₂ Supply <span class="external-arrow" aria-hidden="true">→</span></a></li>
+          <li><span class="resource-type">Institution</span><a href="https://english.hust.edu.cn/" target="_blank" rel="noreferrer">Huazhong University of Science and Technology <span class="external-arrow" aria-hidden="true">↗</span></a></li>
+        </ul>
+      </section>
+
+      <nav class="project-navigation" aria-label="Continue exploring research">
+        <a class="project-nav-back" href="../index.html#research">← All research projects</a>
+        <a class="project-next" href="rfd3-symmetric-assemblies.html">
+          <span class="next-label">Next project</span>
+          <strong>Constrained Design of Protein Assemblies</strong>
+          <span class="next-arrow" aria-hidden="true">→</span>
+        </a>
+      </nav>
+
       <footer class="footer">© <span id="year"></span> Haixi Zhao</footer>
     </main>
-    <script src="../scripts/main.js?v=20261003e"></script>
+    <script src="../scripts/main.js?v=20261003f"></script>
   </body>
 </html>
