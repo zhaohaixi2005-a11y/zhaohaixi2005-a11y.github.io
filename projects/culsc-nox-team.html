@@ -1,16 +1,17 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CULSC NOX Project | Haixi Zhao</title>
-    <link rel="stylesheet" href="../styles/project.css?v=20261003f" />
+    <script>(function(){var theme="light";try{var saved=localStorage.getItem("haixi-theme");if(saved==="dark")theme="dark";}catch(e){}document.documentElement.dataset.theme=theme;})();</script>
+    <link rel="stylesheet" href="../styles/project.css?v=20261003g" />
   </head>
   <body>
     <main class="project-shell">
       <header class="topbar">
         <div class="logo"><span class="dot"></span>Research Projects</div>
-        <a class="backlink" href="../index.html#research">← Back to Research</a>
+        <div class="header-controls"><a class="backlink" href="../index.html#research">← Back to Research</a><button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark theme" aria-pressed="false" title="Switch to dark theme"><svg data-theme-icon="day" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg><svg data-theme-icon="night" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.4A8.5 8.5 0 0 1 9.6 3.5a8.5 8.5 0 1 0 10.9 10.9Z"/></svg></button></div>
       </header>
 
       <section class="project-header">
@@ -32,7 +33,7 @@
               <div class="academic-item project-institution">
                 <span class="academic-label">Project institution</span>
                 <a class="institution-link" href="https://english.hust.edu.cn/" target="_blank" rel="noreferrer" aria-label="Huazhong University of Science and Technology official website">
-                  <img class="institution-mark institution-mark--inverse" src="../assets/institutions/hust-white.png" alt="" width="400" height="94" />
+                  <img class="institution-mark" src="../assets/institutions/hust.png" alt="" width="256" height="256" />
                   <strong class="institution-name">HUST</strong>
                   <span class="external-arrow" aria-hidden="true">↗</span>
                 </a>
@@ -119,6 +120,6 @@
 
       <footer class="footer">© <span id="year"></span> Haixi Zhao</footer>
     </main>
-    <script src="../scripts/main.js?v=20261003f"></script>
+    <script src="../scripts/main.js?v=20261003g"></script>
   </body>
 </html>

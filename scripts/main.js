@@ -26,6 +26,62 @@
     return canvas.getContext("2d", { alpha: true, desynchronized: true }) || canvas.getContext("2d");
   }
 
+  function initThemeToggle() {
+    var root = document.documentElement;
+    if (!root) return;
+    var buttons = Array.prototype.slice.call(document.querySelectorAll("[data-theme-toggle]"));
+    var storageKey = "haixi-theme";
+    var initialTheme = root.dataset.theme === "dark" ? "dark" : "light";
+    try {
+      initialTheme = window.localStorage.getItem(storageKey) === "dark" ? "dark" : "light";
+    } catch (err) {
+      // The head bootstrap remains authoritative if storage is unavailable.
+    }
+
+    function setTheme(theme, persist) {
+      var dark = theme === "dark";
+      root.dataset.theme = dark ? "dark" : "light";
+      var action = dark ? "Switch to light theme" : "Switch to dark theme";
+      buttons.forEach(function (button) {
+        button.setAttribute("aria-label", action);
+        button.setAttribute("title", action);
+        button.setAttribute("aria-pressed", dark ? "true" : "false");
+      });
+      if (persist) {
+        try {
+          window.localStorage.setItem(storageKey, root.dataset.theme);
+        } catch (err) {
+          // Theme switching still works when browser storage is blocked.
+        }
+      }
+    }
+
+    function onClick() {
+      setTheme(root.dataset.theme === "dark" ? "light" : "dark", true);
+    }
+
+    function onStorage(event) {
+      if (event.key !== storageKey && event.key !== null) return;
+      if (event.newValue !== null && event.newValue !== "light" && event.newValue !== "dark") return;
+      if (event.storageArea) {
+        try {
+          if (event.storageArea !== window.localStorage) return;
+        } catch (err) {
+          return;
+        }
+      }
+      setTheme(event.newValue === "dark" ? "dark" : "light", false);
+    }
+
+    setTheme(initialTheme, false);
+    buttons.forEach(function (button) { button.addEventListener("click", onClick); });
+    window.addEventListener("storage", onStorage);
+    cleanups.push(function () {
+      buttons.forEach(function (button) { button.removeEventListener("click", onClick); });
+      window.removeEventListener("storage", onStorage);
+    });
+  }
+
   function initProteinViewer() {
     var mount = document.getElementById("protein-stage");
     if (!mount) return;
@@ -495,6 +551,7 @@
     cleanups.push(function () { io.disconnect(); });
   }
 
+  initThemeToggle();
   initSiteParticles();
   initProteinViewer();
   initPortraitToggle();

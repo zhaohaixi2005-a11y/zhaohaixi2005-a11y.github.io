@@ -1,21 +1,22 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Haixi Zhao | Computational Protein Design</title>
     <meta
       name="description"
-      content="Haixi Zhao is a Bioscience undergraduate at HUST and Université Paris-Saclay working on computational protein design, structural biology, and protein engineering."
+      content="Haixi Zhao works on computational protein design, structural biology, and protein engineering."
     />
-    <link rel="stylesheet" href="styles/main.css?v=20261003f" />
+    <script>(function(){var theme="light";try{var saved=localStorage.getItem("haixi-theme");if(saved==="dark")theme="dark";}catch(e){}document.documentElement.dataset.theme=theme;})();</script>
+    <link rel="stylesheet" href="styles/main.css?v=20261003g" />
     <noscript><style>.reveal { opacity: 1; transform: none; }</style></noscript>
   </head>
   <body>
     <a class="skip-link" href="#research">Skip to research</a>
     <canvas id="site-bg-canvas" class="site-bg-canvas" aria-hidden="true"></canvas>
     <main class="shell">
-      <header class="topbar"><a class="logo" href="#home" aria-label="Haixi Zhao homepage"><span class="dot" aria-hidden="true"></span>Haixi Zhao<span class="logo-field"> / Protein Design</span></a><nav class="navlinks" aria-label="Main navigation"><a href="#research">Research</a><a href="#publications">Publications</a><a href="#about">About</a><a href="#competitions">Beyond research</a><a href="#contact">Contact ↗</a></nav></header>
+      <header class="topbar"><a class="logo" href="#home" aria-label="Haixi Zhao homepage"><span class="dot" aria-hidden="true"></span>Haixi Zhao<span class="logo-field"> / Protein Design</span></a><div class="header-controls"><nav class="navlinks" aria-label="Main navigation"><a href="#research">Research</a><a href="#publications">Publications</a><a href="#about">About</a><a href="#competitions">Beyond research</a><a href="#contact">Contact ↗</a></nav><button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark theme" aria-pressed="false" title="Switch to dark theme"><svg data-theme-icon="day" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg><svg data-theme-icon="night" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.4A8.5 8.5 0 0 1 9.6 3.5a8.5 8.5 0 1 0 10.9 10.9Z"/></svg></button></div></header>
 <section class="hero reveal is-visible" id="home">
   <div class="hero-grid">
     <div class="hero-copy">
@@ -36,8 +37,8 @@
                   />
                 </span>
               </span>
-              <span class="profile-card-hint" aria-hidden="true">Flip portrait ↔</span>
-            </button><div><p class="eyebrow">RESEARCH PORTFOLIO / 2026</p><h1>Haixi Zhao</h1><p class="hero-affiliation">Bioscience undergraduate<br />HUST × Université Paris-Saclay</p></div></div>
+              <span class="profile-card-hint" aria-hidden="true">Flip ↔</span>
+            </button><div><p class="eyebrow">RESEARCH PORTFOLIO / 2026</p><h1>Haixi Zhao</h1><p class="hero-affiliation">HUST × Université Paris-Saclay</p></div></div>
       <p class="hero-statement">Designing proteins.<br />Connecting computation<br />to experiment.</p>
       <p class="tagline">I develop computational-to-experimental research loops for protein engineering, from structure generation to biological validation.</p>
       <div class="hero-actions"><a class="btn primary" href="#research">Explore my research <span aria-hidden="true">↘</span></a><a class="btn" href="assets/HAIXI_CV.pdf?v=20261003" target="_blank" rel="noreferrer">Read CV ↗</a><a class="hero-github" href="https://github.com/zhaohaixi2005-a11y" target="_blank" rel="noreferrer">GitHub ↗</a></div>
@@ -54,7 +55,7 @@
       <div class="hero-evidence"><a href="#publications"><b>03</b><span>Published papers ↘</span></a><a href="#research"><b>06</b><span>Research projects ↘</span></a><a href="#competitions"><b>iGEM</b><span>Gold medal · 2025 ↘</span></a></div>
     </div>
   </div>
-  <div class="education-strip"><span class="education-label">EDUCATION<br /><small>Sino-French dual degree</small></span><a class="education-hust" href="https://english.hust.edu.cn/" target="_blank" rel="noreferrer"><img src="assets/institutions/hust-white.png" width="150" height="46" alt="Huazhong University of Science and Technology" /><span>HUST ↗</span></a><span class="education-cross" aria-hidden="true">×</span><a href="https://www.universite-paris-saclay.fr/en" target="_blank" rel="noreferrer"><img src="assets/institutions/paris-saclay.svg" width="156" height="46" alt="Université Paris-Saclay" /><span>Université Paris-Saclay ↗</span></a><span class="graduation">Expected graduation<br /><strong>June 2027</strong></span></div>
+  <div class="education-strip"><span class="education-label">EDUCATION<br /><small>Sino-French dual degree</small></span><a class="education-institution" href="https://english.hust.edu.cn/" target="_blank" rel="noreferrer"><img src="assets/institutions/hust.png" width="256" height="256" alt="Huazhong University of Science and Technology" /><span>HUST ↗</span></a><span class="education-cross" aria-hidden="true">×</span><a href="https://www.universite-paris-saclay.fr/en" target="_blank" rel="noreferrer"><img src="assets/institutions/paris-saclay.svg" width="156" height="46" alt="Université Paris-Saclay" /><span>Université Paris-Saclay ↗</span></a><span class="graduation">Expected graduation<br /><strong>June 2027</strong></span></div>
 </section>
 <nav class="research-routes" aria-label="Explore research by question"><span class="route-intro">START WITH<br /><strong>A research question</strong></span><a href="#protein-structure"><span>01</span><strong>Design a structure</strong><span aria-hidden="true">↘</span></a><a href="#molecular-recognition"><span>02</span><strong>Engineer a function</strong><span aria-hidden="true">↘</span></a><a href="#biological-response"><span>03</span><strong>Understand the biology</strong><span aria-hidden="true">↘</span></a></nav><section class="section reveal" id="research"><div class="section-heading"><div><p class="eyebrow">01 / SELECTED RESEARCH</p><h2>Follow the question.</h2></div><span class="section-aside">Six projects · three connected directions</span></div><p class="section-lead">Each project follows a concrete question, my contribution, and the evidence so far.</p><div class="research-track" id="protein-structure"><div class="track-heading"><p class="eyebrow">01 / STRUCTURE</p><div><h3>How can we build new protein structures?</h3><p>Generative methods, constrained interfaces, and state-specific design.</p></div></div><div class="research-grid"><article class="portal span-6"><a class="institution-mark" href="https://www.lmu.de/en/" target="_blank" rel="noreferrer" aria-label="LMU Munich official website"><img src="assets/institutions/lmu.svg" width="96" height="56" alt="LMU Munich" loading="lazy" /></a>
             <div class="portal-top">
@@ -105,7 +106,7 @@
             <p class="portal-summary">Pseudocyclic protein binders for lysine-linked LCA modifications, combining backbone generation and sequence design for selective recognition.</p>
             <p class="portal-contribution"><strong>My contribution:</strong> Binder architecture and computational design pipeline.</p>
             <a class="portal-link" href="projects/ptm-capture-binders.html">Read the project <span aria-hidden="true">→</span></a>
-          </article><article class="portal span-6"><a class="institution-mark is-dark" href="https://english.hust.edu.cn/" target="_blank" rel="noreferrer" aria-label="HUST official website"><img src="assets/institutions/hust-white.png" width="96" height="56" alt="HUST" loading="lazy" /></a>
+          </article><article class="portal span-6"><a class="institution-mark" href="https://english.hust.edu.cn/" target="_blank" rel="noreferrer" aria-label="HUST official website"><img src="assets/institutions/hust.png" width="256" height="256" alt="HUST" loading="lazy" /></a>
             <div class="portal-top">
               <h3 class="portal-title"><a href="projects/nox-directed-evolution.html">NADH Oxidase Engineering <span aria-hidden="true">↗</span></a></h3>
               <div class="project-meta">
@@ -137,7 +138,7 @@
             <p class="portal-summary">Structure-informed analysis of NSUN2 and NAT10 mediated translational regulation in TNBC and ATC.</p>
             <p class="portal-contribution"><strong>My contribution:</strong> Structural modeling and interface interpretation.</p>
             <a class="portal-link" href="projects/trna-cancer-translation.html">Read the project <span aria-hidden="true">→</span></a>
-          </article><article class="portal span-6"><a class="institution-mark is-dark" href="https://english.hust.edu.cn/" target="_blank" rel="noreferrer" aria-label="HUST official website"><img src="assets/institutions/hust-white.png" width="96" height="56" alt="HUST" loading="lazy" /></a>
+          </article><article class="portal span-6"><a class="institution-mark" href="https://english.hust.edu.cn/" target="_blank" rel="noreferrer" aria-label="HUST official website"><img src="assets/institutions/hust.png" width="256" height="256" alt="HUST" loading="lazy" /></a>
             <div class="portal-top">
               <h3 class="portal-title"><a href="projects/hypoxia-organoids.html">Hypoxia Organoid Profiling <span aria-hidden="true">↗</span></a></h3>
               <div class="project-meta">
@@ -162,7 +163,7 @@
             <div class="publication-meta">
               <span>2026</span>
               <span>Microbiological Research · 128741</span>
-              <span class="publication-role">First author · Review</span>
+
             </div>
             <h3><a href="https://doi.org/10.1016/j.micres.2026.128741" target="_blank" rel="noreferrer">From oxygen detoxification to peroxide supply: Microbial NADH oxidases in redox physiology and H₂O₂-coupled biocatalysis</a></h3>
             <p><strong>Haixi Zhao</strong>, Jiarong Li, Yilin Huang, Nan Xiang, Chen Jin, Ruijian Shao, Su Sun</p>
@@ -197,7 +198,7 @@
       </section><section class="section reveal" id="about">
         <div class="section-heading"><div><p class="eyebrow">03 / ABOUT</p><h2>Between a model and a molecule.</h2></div></div>
         <p class="section-lead">
-          I am a Bioscience undergraduate in the Sino-French dual-degree program between
+          I am in the Sino-French dual-degree program between
           Huazhong University of Science and Technology and Université Paris-Saclay,
           with expected graduation in June 2027.
         </p>
@@ -256,6 +257,6 @@
       </section>
       <footer class="footer"><span>© <span id="year"></span> Haixi Zhao</span><a href="#home">Back to top ↑</a><span>Protein design · Computational biology</span></footer>
     </main>
-    <script src="scripts/main.js?v=20261003f"></script>
+    <script src="scripts/main.js?v=20261003g"></script>
   </body>
 </html>

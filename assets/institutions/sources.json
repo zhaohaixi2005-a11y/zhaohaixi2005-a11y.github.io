@@ -3,6 +3,27 @@
   "notice": "Institutional trademarks remain the property of their respective institutions. Assets are reproduced unchanged for factual education and research affiliation identification.",
   "assets": [
     {
+      "file": "hust.png",
+      "institution": "Huazhong University of Science and Technology",
+      "official_page": "https://alumni.hust.edu.cn/",
+      "source_asset": "https://alumni.hust.edu.cn/ui/default/favicon.ico",
+      "source_asset_retrieved": "https://alumni.hust.edu.cn/ui/default/favicon.ico?v=1791029324727",
+      "sha256": "5653750df32e474b7d367dd6ecf4f5532344d2130384c0cd41da58da6fe8bfbf",
+      "source_container_sha256": "3e70fe5360df6cd05a1efeed2497b70601b311a1eaf22a55c83b0c5e6857503b",
+      "bytes": 60017,
+      "transparent_background": true,
+      "dimensions_px": [
+        256,
+        256
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "verification": "The official ICO contains one native 256×256 PNG entry at byte offset 22, length 60017. These PNG bytes were extracted exactly; no image decoding/re-encoding, recoloring, resizing, cropping, or background editing was performed. The source seal was visually inspected.",
+      "notes": "Official full-color HUST seal with a transparent exterior. Red Chinese lettering, blue central mark, and gray English lettering preserved unchanged. The pale circular field is part of the official seal design."
+    },
+    {
       "file": "hust-white.png",
       "institution": "Huazhong University of Science and Technology",
       "official_page": "https://hust.edu.cn/",
@@ -10,7 +31,7 @@
       "sha256": "b818d74ac39eef4a0cd24720f148406736342718edbb7e9b35160611b0bb4e0f",
       "bytes": 18235,
       "transparent_background": true,
-      "notes": "Official white university lockup; use on a dark surface. Public brand downloads require CAPTCHA, so this unchanged header asset is used.",
+      "notes": "Official white university lockup; retained as an optional dark-surface variant. The full-color hust.png is preferred for light surfaces.",
       "dimensions_px": [
         400,
         94
