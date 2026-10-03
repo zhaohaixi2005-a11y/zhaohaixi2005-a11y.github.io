@@ -3,8 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>RFD3 Symmetric Assemblies | Haixi Zhao</title>
-    <link rel="stylesheet" href="../styles/project.css" />
+    <title>RFD3-Mosaic | Haixi Zhao</title>
+    <meta name="description" content="RFD3-Mosaic: a programmable framework for protein assembly design with declarative constraints maintained during backbone sampling." />
+    <link rel="stylesheet" href="../styles/project.css?v=20261003" />
   </head>
   <body>
     <main class="project-shell">
@@ -17,9 +18,9 @@
         <div class="project-header-grid">
           <div>
             <p class="kicker">Project Gateway 01</p>
-            <h1 class="project-title">Interface-Seeded De Novo Design of Symmetric Protein Assemblies</h1>
+            <h1 class="project-title">RFD3-Mosaic: Programmable Protein Assembly Design</h1>
             <p class="project-summary">
-              An RFdiffusion3-based framework for generating de novo scaffolds around predefined protein-protein interfaces under symmetric assembly constraints.
+              A constrained generative framework that translates protein assembly specifications into RFD3 conditioning programs and maintains geometric relationships throughout sampling.
             </p>
             <div class="project-meta-row">
               <span class="project-pill">Jul 2026 - Present</span>
@@ -44,58 +45,59 @@
         </div>
         <div class="tags">
           <span class="tag">RFdiffusion3</span>
-          <span class="tag">Interface Seeding</span>
-          <span class="tag">Symmetric Assemblies</span>
-          <span class="tag">Designability</span>
+          <span class="tag">Assembly Constraints</span>
+          <span class="tag">Symmetry-Coupled Sampling</span>
+          <span class="tag">SE(3) Mobility</span>
         </div>
       </section>
 
       <section class="project-layout">
         <article class="block">
-          <h2>Project Overview</h2>
+          <h2>Research Question</h2>
           <p class="section-lead">
-            This project develops an RFD3 conditioning workflow that jointly preserves protein-protein interface geometry and target symmetric architecture during de novo backbone generation.
+            How can a generative model build a coherent protein assembly while preserving supplied motifs and interfaces, creating new contacts, and respecting connectivity and global symmetry?
           </p>
-          <h2>Research Motivation</h2>
+          <h2>Motivation</h2>
           <p class="section-lead">
-            Existing RFdiffusion-based interface-seeded design workflows can be limited by backbone generation and architecture constraints, especially for larger and higher-order assemblies.
+            Assembly design requires local structural requirements to remain compatible with the overall architecture. Mosaic makes these requirements explicit in a programmable specification and carries them into the diffusion trajectory.
           </p>
         </article>
 
         <article class="block">
-          <h2>Methods / Pipeline</h2>
+          <h2>Approach</h2>
           <ul class="bullets">
-            <li>Reproduced the original interface-seeded oligomer workflow using cyclic LHD101 assemblies as benchmarks.</li>
-            <li>Characterized seed preparation, symmetry placement, backbone generation, and downstream validation steps.</li>
-            <li>Built an RFD3-based conditioning strategy for predefined interface geometry and target symmetry.</li>
-            <li>Benchmarked interface-seed fidelity, scaffold diversity, designability, assembly formation, and competing oligomeric states.</li>
+            <li>Compile declarative components, motifs, interface roles, connectivity, symmetry, and topology into executable RFD3 conditioning programs.</li>
+            <li>Represent residues and geometric constraints through symmetry-coupled orbits and constraint groups, maintaining their relationships throughout sampling.</li>
+            <li>Use group-constrained SE(3) mobility to let fixed, mobile, or partially constrained components adapt while preserving internal geometry.</li>
+            <li>Combine local-neighborhood denoising with constraints for motif scaffolding and assemblies containing both preserved and newly generated interfaces.</li>
           </ul>
         </article>
 
         <article class="block" style="grid-column: 1 / -1">
           <h2>My Contributions</h2>
           <ul class="bullets">
-            <li>Dissected the baseline RFdiffusion interface-seeded workflow to identify controllable design stages.</li>
-            <li>Implemented RFD3 conditioning logic for symmetry-aware scaffold generation around fixed interface seeds.</li>
-            <li>Defined comparative evaluation metrics for fidelity, diversity, and target assembly quality.</li>
+            <li>Conceived and developed RFD3-Mosaic, from the declarative specification and compiler to constrained sampling.</li>
+            <li>Implemented propagation of motifs, interfaces, symmetry, and higher-order geometric relationships through residue orbits and constraint groups.</li>
+            <li>Introduced group-constrained mobility and local-neighborhood denoising to couple scaffold generation with component placement.</li>
           </ul>
         </article>
 
         <article class="block">
-          <h2>Key Outcomes</h2>
+          <h2>Current Progress</h2>
           <ul class="bullets">
-            <li>Established benchmark cases for interface-seeded symmetric assembly design.</li>
-            <li>Created a path to test whether RFD3 expands the accessible design space for higher-order assemblies.</li>
-            <li>Connected generative scaffold quality with assembly-level validation criteria.</li>
+            <li>The framework covers de novo oligomer generation, motif- and interface-conditioned scaffolding, and multi-interface tasks.</li>
+            <li>Its supported symmetry scope includes cyclic, dihedral, polyhedral, and helical architectures for rings, cages, and higher-order assemblies.</li>
+            <li>Ongoing computational evaluation focuses on preserving geometry and symmetry while generating new scaffolds and interfaces.</li>
+            <li><a href="https://github.com/zhaohaixi2005-a11y/rfd3-mosaic" target="_blank" rel="noreferrer">Explore the RFD3-Mosaic repository →</a></li>
           </ul>
         </article>
 
         <article class="block">
-          <h2>Related Tools / Skills</h2>
+          <h2>Tools</h2>
           <ul class="bullets">
-            <li>RFdiffusion3, RFdiffusion workflow reproduction, symmetry-constrained design</li>
-            <li>Interface geometry analysis and scaffold quality benchmarking</li>
-            <li>Protein assembly design and computational validation</li>
+            <li>RFdiffusion3 and programmable conditioning</li>
+            <li>Symmetry-coupled diffusion and group-constrained SE(3) transformations</li>
+            <li>Interface geometry, connectivity, and constraint-preservation analysis</li>
           </ul>
         </article>
       </section>

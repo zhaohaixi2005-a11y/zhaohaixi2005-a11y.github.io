@@ -4,7 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Membrane Protein Design | Haixi Zhao</title>
-    <link rel="stylesheet" href="../styles/project.css" />
+    <meta name="description" content="De novo membrane protein design using template-guided conformational seeds, RFdiffusion bridge architectures, and preparation for structural validation." />
+    <link rel="stylesheet" href="../styles/project.css?v=20261003" />
   </head>
   <body>
     <main class="project-shell">
@@ -19,11 +20,11 @@
             <p class="kicker">Project Gateway 03</p>
             <h1 class="project-title">De Novo Design of Functional Membrane Proteins</h1>
             <p class="project-summary">
-              A membrane protein design effort focused on state-specific conformational control, bridge construction, and computational-to-structural validation.
+              A membrane protein design project exploring state-specific structural seeds and bridge architectures, with computational design followed by preparation for structural validation.
             </p>
             <div class="project-meta-row">
               <span class="project-pill">Jun 2025 - Sep 2025</span>
-              <span class="project-pill">Research Assistant</span>
+              <span class="project-pill">Research Intern</span>
             </div>
           </div>
           <aside class="project-academic-card">
@@ -52,50 +53,49 @@
 
       <section class="project-layout">
         <article class="block">
-          <h2>Project Overview</h2>
+          <h2>Research Question</h2>
           <p class="section-lead">
-            Explored a de novo membrane protein design pathway that couples conformational transitions with multifunctional activity through bridge design.
+            How can bridge architectures support distinct conformational states in de novo membrane proteins while balancing the flexibility needed for motion with structural stability?
           </p>
-          <h2>Research Motivation</h2>
+          <h2>Motivation</h2>
           <p class="section-lead">
-            A central challenge is balancing flexibility and stability while preserving state-specific function in membrane systems.
+            State-specific design first requires distinct structural starting points. When de novo predictions collapse into a similar conformation, template-guided prediction can provide alternative seeds for designing connecting helices, domains, and bridges.
           </p>
         </article>
 
         <article class="block">
-          <h2>Methods / Pipeline</h2>
+          <h2>Approach</h2>
           <ul class="bullets">
-            <li>Compared template-free and template-guided predictions using AF2.3/3, Boltz2, and Chai-1.</li>
-            <li>Used template-based AF3 to stabilize open/closed conformations and generate state seeds.</li>
-            <li>Applied RFdiffusion for helix-domain-bridge assembly and clash-aware candidate filtering.</li>
-            <li>Validated selected candidates through cloning, expression/purification, and cryo-EM preparation.</li>
+            <li>Benchmark AlphaFold2.3, AlphaFold3, Boltz-2, and Chai-1 in template-free and template-guided settings.</li>
+            <li>Use template-guided AlphaFold3 to recover distinct computational open and closed conformations as state-specific design seeds.</li>
+            <li>Apply RFdiffusion to transmembrane helices, soluble domains, and bridge architectures, tuning guiding potentials and filtering for predicted stability and lipid compatibility.</li>
+            <li>Perform cloning, protein expression and purification, and cryo-EM sample preparation toward structural validation of selected designs.</li>
           </ul>
         </article>
 
         <article class="block" style="grid-column: 1 / -1">
           <h2>My Contributions</h2>
           <ul class="bullets">
-            <li>Systematically benchmarked conformation prediction pathways for design-state control.</li>
-            <li>Participated in computational construction of transition-coupled bridge elements.</li>
-            <li>Contributed to wet-lab handoff and structural validation preparation.</li>
+            <li>Benchmarked prediction methods and template settings to establish state-specific structural starting points.</li>
+            <li>Applied RFdiffusion to helix, domain, and bridge design, with guiding-potential tuning and candidate filtering.</li>
+            <li>Performed molecular cloning, expression, purification, and cryo-EM sample preparation.</li>
           </ul>
         </article>
 
         <article class="block">
-          <h2>Key Outcomes</h2>
+          <h2>Current Progress</h2>
           <ul class="bullets">
-            <li>Improved state-specific structural seeds for downstream membrane design.</li>
-            <li>Defined filtering logic to remove lipid-clash and instability-prone candidates.</li>
-            <li>Connected computational proposals to structural validation workflow.</li>
+            <li>Template-guided AlphaFold3 produced distinct computational open and closed seeds for subsequent bridge design.</li>
+            <li>Selected designs advanced through cloning, expression, purification, and cryo-EM preparation.</li>
           </ul>
         </article>
 
         <article class="block">
-          <h2>Related Tools / Skills</h2>
+          <h2>Tools</h2>
           <ul class="bullets">
-            <li>AF2/AF3, Boltz2, Chai-1, RFdiffusion</li>
-            <li>Transmembrane structural reasoning and conformational-state design</li>
-            <li>Cryo-EM sample preparation and structure-focused validation</li>
+            <li>AlphaFold2.3, AlphaFold3, Boltz-2, Chai-1, and RFdiffusion</li>
+            <li>Template-guided prediction and lipid-compatibility analysis</li>
+            <li>Molecular cloning, protein purification, and cryo-EM sample preparation</li>
           </ul>
         </article>
       </section>

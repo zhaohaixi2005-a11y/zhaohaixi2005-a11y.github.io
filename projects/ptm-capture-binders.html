@@ -4,7 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PTM Capture Binders | Haixi Zhao</title>
-    <link rel="stylesheet" href="../styles/project.css" />
+    <meta name="description" content="Computational design of all-helical pseudocyclic binders for lysine-linked LCA capture, with topology control and geometry-aware candidate filtering." />
+    <link rel="stylesheet" href="../styles/project.css?v=20261003" />
   </head>
   <body>
     <main class="project-shell">
@@ -19,7 +20,7 @@
             <p class="kicker">Project Gateway 02</p>
             <h1 class="project-title">De Novo Design of PTM Capture Binders</h1>
             <p class="project-summary">
-              A de novo binder-design program for Lys-LCA PTM recognition, combining topology-constrained backbone generation with geometry-aware prioritization for selective molecular capture.
+              Computational design of all-helical pseudocyclic binders for lysine-linked LCA (Lys-LCA), using shape complementarity and geometry-aware filtering to prioritize capture candidates.
             </p>
             <div class="project-meta-row">
               <span class="project-pill">Dec 2025 - Present</span>
@@ -52,50 +53,50 @@
 
       <section class="project-layout">
         <article class="block">
-          <h2>Project Overview</h2>
+          <h2>Research Question</h2>
           <p class="section-lead">
-            This project aims to localize and characterize lysine-linked PTM states by designing de novo binders that enrich modified species with structural specificity.
+            Can a de novo binder pocket recognize Lys-LCA through shape complementarity and support selective enrichment of modified species for subsequent site characterization?
           </p>
-          <h2>Research Motivation</h2>
+          <h2>Motivation</h2>
           <p class="section-lead">
-            Existing PTM capture approaches often struggle with selectivity and spatial precision. A topology-constrained binder architecture can improve recognition fidelity.
+            Capturing a specific modification requires a pocket with an appropriate geometry and a stable supporting scaffold. All-helical pseudocyclic architectures provide a way to constrain pocket shape while designing the surrounding protein.
           </p>
         </article>
 
         <article class="block">
-          <h2>Methods / Pipeline</h2>
+          <h2>Approach</h2>
           <ul class="bullets">
-            <li>Designed pure-helical pseudocycle backbones to enforce geometric constraints.</li>
-            <li>Integrated BoltzGen + RFdiffusion + LigandMPNN for generation and sequence design.</li>
-            <li>Applied geometry-aware filtering for helix packing, stability, and binding pocket quality.</li>
-            <li>Prioritized candidates using a fully computational PTM-specific screening workflow.</li>
+            <li>Design all-helical pseudocyclic backbones with topological closure and pockets shaped around the Lys-LCA target.</li>
+            <li>Integrate BoltzGen, RFdiffusion, and LigandMPNN for backbone generation, topology control, and sequence optimization.</li>
+            <li>Filter computational candidates for structural quality, helix packing, and binding pocket formation.</li>
+            <li>Screen and rank candidates in silico for downstream experimental evaluation.</li>
           </ul>
         </article>
 
         <article class="block" style="grid-column: 1 / -1">
           <h2>My Contributions</h2>
           <ul class="bullets">
-            <li>Constructed end-to-end computational workflow for PTM-focused binder generation and triage.</li>
-            <li>Defined structure-quality heuristics and thresholds for candidate ranking.</li>
-            <li>Built an iterative analysis loop linking topology design and docking-aware refinement.</li>
+            <li>Designed the all-helical pseudocyclic binder architecture and built the computational generation pipeline.</li>
+            <li>Implemented geometry-aware filters linking scaffold quality, helix packing, and pocket formation.</li>
+            <li>Established the in silico screening and ranking workflow for candidate prioritization.</li>
           </ul>
         </article>
 
         <article class="block">
-          <h2>Key Outcomes</h2>
+          <h2>Current Progress</h2>
           <ul class="bullets">
-            <li>Generated constrained binder families with improved structural coherence.</li>
-            <li>Reduced downstream search space through geometry-first candidate filtering.</li>
-            <li>Established reusable design protocol for future PTM classes.</li>
+            <li>A computational pipeline is in place for generating and prioritizing Lys-LCA capture-binder candidates.</li>
+            <li>Current outputs are designed structures and ranked computational candidates.</li>
+            <li>Candidates are prioritized for downstream evaluation of binding, selectivity, and capture performance.</li>
           </ul>
         </article>
 
         <article class="block">
-          <h2>Related Tools / Skills</h2>
+          <h2>Tools</h2>
           <ul class="bullets">
-            <li>BoltzGen, RFdiffusion, LigandMPNN, structural scoring scripts</li>
-            <li>Protein geometry evaluation and quality control workflow design</li>
-            <li>Computational prioritization for experimental handoff</li>
+            <li>BoltzGen, RFdiffusion, and LigandMPNN</li>
+            <li>Pseudocyclic topology control and protein geometry analysis</li>
+            <li>Helix-packing and pocket-quality filtering</li>
           </ul>
         </article>
       </section>
