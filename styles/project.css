@@ -1,4 +1,4 @@
-@import url("./main.css");
+@import url("./main.css?v=20261003d");
 
 body {
   position: relative;
@@ -41,7 +41,7 @@ body::after {
   height: 100%;
   pointer-events: none;
   z-index: 0;
-  opacity: 0.92;
+  opacity: 0.42;
   mix-blend-mode: screen;
 }
 
@@ -53,9 +53,23 @@ body::after {
 }
 
 .backlink {
-  color: var(--teal);
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  color: var(--link-color);
   font-family: "JetBrains Mono", monospace;
   font-size: 12px;
+  transition: color 160ms ease, transform 160ms ease;
+}
+
+.backlink:is(:hover, :focus-visible) {
+  color: var(--link-hover);
+  transform: translateX(-2px);
+}
+
+.backlink:active {
+  color: var(--link-active);
+  transform: translate(-1px, 1px);
 }
 
 .project-header {
@@ -90,7 +104,7 @@ body::after {
   background:
     radial-gradient(118% 100% at 50% 50%, rgba(99, 201, 255, 0.18), rgba(99, 201, 255, 0) 64%);
   filter: blur(22px);
-  opacity: 0.68;
+  opacity: 0.44;
   transform: rotate(-4deg) translate3d(0, 0, 0);
   animation: project-wave-drift-a 13s ease-in-out infinite alternate;
 }
@@ -120,7 +134,7 @@ body::after {
   background-size: 100% 100%, 280px 100%;
   background-position: center center, 0 0;
   filter: blur(10px);
-  opacity: 0.5;
+  opacity: 0.32;
   transform: translate3d(0, 0, 0);
   animation: project-wave-lines 14s linear infinite;
 }
@@ -146,15 +160,15 @@ body::after {
 @keyframes project-wave-lines {
   0% {
     background-position: center center, 0 0;
-    opacity: 0.42;
+    opacity: 0.26;
   }
   50% {
     background-position: center center, 160px -6px;
-    opacity: 0.56;
+    opacity: 0.34;
   }
   100% {
     background-position: center center, 320px 0;
-    opacity: 0.42;
+    opacity: 0.26;
   }
 }
 
@@ -185,7 +199,8 @@ body::after {
 .project-title {
   margin: 10px 0 4px;
   font-size: clamp(25px, 3.15vw, 33px);
-  line-height: 1.08;
+  line-height: 1.16;
+  letter-spacing: -0.02em;
   max-width: 26ch;
   text-wrap: balance;
   font-family: "Space Grotesk", "Noto Sans SC", sans-serif;
@@ -195,6 +210,12 @@ body::after {
   color: var(--muted);
   font-family: "JetBrains Mono", monospace;
   font-size: 12px;
+}
+
+.project-header p.project-meta {
+  display: block;
+  width: auto;
+  margin: 12px 0 0;
 }
 
 .project-pill {
@@ -275,12 +296,15 @@ body::after {
 }
 
 .mentor-name a {
-  color: inherit;
-  text-decoration: none;
+  color: var(--link-color);
 }
 
-.mentor-name a:hover {
-  color: var(--teal);
+.mentor-name a:is(:hover, :focus-visible) {
+  color: var(--link-hover);
+}
+
+.mentor-name a:active {
+  color: var(--link-active);
 }
 
 .project-external-link {
@@ -288,19 +312,36 @@ body::after {
   gap: 10px;
   text-decoration: none;
   color: inherit;
-  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 160ms ease, border-color 160ms ease, background 160ms ease, box-shadow 160ms ease;
 }
 
-.project-external-link:hover {
+.project-external-link:is(:hover, :focus-visible) {
   transform: translateY(-2px);
   border-color: rgba(123, 251, 213, 0.42);
   background: rgba(6, 18, 34, 0.72);
-  box-shadow: 0 14px 30px rgba(19, 88, 156, 0.2);
+  box-shadow: 0 10px 24px rgba(2, 10, 22, 0.24);
 }
 
 .project-external-link:focus-visible {
-  outline: 2px solid rgba(123, 251, 213, 0.82);
-  outline-offset: 2px;
+  outline: 2px solid var(--focus-color);
+  outline-offset: 4px;
+}
+
+.project-external-link:active {
+  transform: translateY(0) scale(0.995);
+}
+
+.project-external-link .institution-name {
+  color: var(--link-color);
+  transition: color 160ms ease;
+}
+
+.project-external-link:is(:hover, :focus-visible) :is(.institution-name, .project-link-jump) {
+  color: var(--link-hover);
+}
+
+.project-external-link:active :is(.institution-name, .project-link-jump) {
+  color: var(--link-active);
 }
 
 .project-link-copy {
@@ -313,10 +354,11 @@ body::after {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  color: var(--teal);
+  color: var(--link-color);
   font-family: "JetBrains Mono", monospace;
   font-size: 12px;
   letter-spacing: 0.02em;
+  transition: color 160ms ease;
 }
 
 .project-header .tags {
@@ -367,6 +409,18 @@ body::after {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .backlink,
+  .project-external-link,
+  .project-external-link .institution-name,
+  .project-link-jump {
+    transition: none;
+  }
+
+  .backlink:is(:hover, :focus-visible, :active),
+  .project-external-link:is(:hover, :focus-visible, :active) {
+    transform: none;
+  }
+
   body {
     animation: none;
   }
