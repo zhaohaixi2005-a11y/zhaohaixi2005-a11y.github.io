@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Protein Assembly Design | Haixi Zhao</title>
-    <meta name="description" content="Research on designing protein assemblies with RFdiffusion3 while preserving specified interfaces and symmetry and generating new scaffolds." />
+    <title>Protein Assembly Design Algorithms | Haixi Zhao</title>
+    <meta name="description" content="Algorithm development for programmable protein assembly design: task representation, compilation, and constraint-preserving diffusion sampling with RFdiffusion3." />
     <script>(function(){var theme="light";try{var saved=localStorage.getItem("haixi-theme");if(saved==="dark")theme="dark";}catch(e){}document.documentElement.dataset.theme=theme;})();</script>
     <link rel="stylesheet" href="../styles/project.css?v=20261003k" />
   </head>
@@ -19,9 +19,9 @@
         <div class="project-header-grid">
           <div>
             <p class="kicker">Research Project 01</p>
-            <h1 class="project-title">Constrained Design of Protein Assemblies</h1>
+            <h1 class="project-title">Algorithms for Protein Assembly Design</h1>
             <p class="project-summary">
-              I am developing an <a href="https://github.com/RosettaCommons/foundry/blob/production/models/rfd3/README.md" target="_blank" rel="noreferrer">RFdiffusion3</a>-based workflow, RFD3-Mosaic, for designing protein assemblies with specified interfaces, connectivity, and symmetry.
+              I am developing methods for programmable protein assembly design. My <a href="https://github.com/RosettaCommons/foundry/blob/production/models/rfd3/README.md" target="_blank" rel="noreferrer">RFdiffusion3</a>-based framework, RFD3-Mosaic, combines a task compiler with diffusion sampling algorithms that preserve structural constraints.
             </p>
             <div class="project-meta-row">
               <span class="project-pill">Jul 2026 - Present</span>
@@ -52,7 +52,7 @@
         </div>
         <div class="tags">
           <a class="tag" href="https://github.com/RosettaCommons/foundry/blob/production/models/rfd3/README.md" target="_blank" rel="noreferrer">RFdiffusion3</a>
-          <span class="tag">Assembly Constraints</span>
+          <span class="tag">Programmable Constraints</span>
           <span class="tag">Symmetry-Coupled Sampling</span>
           <span class="tag">SE(3) Mobility</span>
         </div>
@@ -71,11 +71,11 @@
         <article class="block" id="question">
           <h2 data-step="01">Research Question</h2>
           <p class="section-lead">
-            How can a generative model build a coherent protein assembly while preserving specified motifs and interfaces, creating new contacts, and maintaining connectivity and global symmetry?
+            How can protein assembly specifications be compiled into diffusion sampling algorithms that preserve structural constraints while generating new scaffolds and interfaces?
           </p>
           <h2>Motivation</h2>
           <p class="section-lead">
-            In assembly design, local structural constraints must be compatible with the overall architecture. This workflow encodes those constraints in a programmable specification and enforces them throughout diffusion sampling.
+            Protein assembly tasks combine requirements at several scales: motifs and interface geometry, component connectivity, symmetry, and topology. The methodological challenge is to represent these requirements together and translate them into sampling rules that maintain the specified relationships as new structures are generated.
           </p>
         </article>
 
@@ -83,7 +83,7 @@
           <h2 data-step="02">Approach</h2>
           <ul class="bullets">
             <li>Compile declarative specifications of components, motifs, interface roles, connectivity, symmetry, and topology into executable RFD3 conditioning programs.</li>
-            <li>Represent residues and geometric constraints through symmetry-coupled orbits and constraint groups, maintaining their relationships throughout sampling.</li>
+            <li>Formulate backbone diffusion in terms of symmetry-coupled residue orbits and constraint groups, propagating geometric relationships throughout sampling.</li>
             <li>Use group-constrained SE(3) transformations to reposition mobile or partially constrained components while keeping fixed components in place and preserving internal geometry.</li>
             <li>Combine denoising of local neighborhoods with geometric constraints to scaffold motifs and build assemblies containing both preserved and newly generated interfaces.</li>
           </ul>
@@ -92,9 +92,9 @@
         <article class="block block-contributions" id="contributions">
           <h2 data-step="03">My Contributions</h2>
           <ul class="bullets">
-            <li>Developed the assembly task specification, compiler, and constrained sampling workflow.</li>
-            <li>Implemented methods to propagate constraints on motifs, interfaces, symmetry, and higher-order geometry through residue orbits and constraint groups.</li>
-            <li>Introduced group-constrained mobility and denoising of local neighborhoods to couple scaffold generation with component placement.</li>
+            <li>Developed a declarative representation of protein assembly tasks and a compiler that turns structural requirements into executable RFD3 conditioning programs.</li>
+            <li>Reformulated diffusion sampling using symmetry-coupled residue orbits and constraint groups to propagate motifs, interfaces, and higher-order geometric constraints.</li>
+            <li>Introduced group-constrained SE(3) mobility and local-neighborhood denoising to couple component placement with scaffold generation.</li>
           </ul>
         </article>
 
