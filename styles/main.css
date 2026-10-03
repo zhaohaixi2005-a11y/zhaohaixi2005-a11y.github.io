@@ -167,8 +167,8 @@ a:hover {
 
 .hero-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.25fr) minmax(360px, 1fr);
-  gap: 32px;
+  grid-template-columns: minmax(0, 1.45fr) minmax(420px, 1fr);
+  gap: 2px;
   align-items: start;
   position: relative;
   z-index: 2;
@@ -180,7 +180,8 @@ a:hover {
   align-content: start;
   width: min(100%, 700px);
   margin: 0;
-  justify-self: start;
+  justify-self: end;
+  transform: translateX(88px);
 }
 
 .profile-flip-card {
@@ -190,7 +191,7 @@ a:hover {
   border-radius: 26px;
   perspective: 1400px;
   outline: none;
-  margin-left: 0;
+  margin-left: clamp(18px, 2.8vw, 42px);
 }
 
 .profile-flip-card::before {
@@ -474,13 +475,6 @@ a:hover {
   max-width: 46ch;
   font-size: clamp(14px, 1.08vw, 17px);
   line-height: 1.62;
-}
-
-.hero-affiliation {
-  margin: 0 0 14px;
-  color: var(--muted);
-  font-size: 13px;
-  line-height: 1.6;
 }
 
 .hero-actions {
@@ -1021,10 +1015,6 @@ a:hover {
   .hero-side {
     width: 100%;
     justify-self: stretch;
-  }
-
-  .hero-grid {
-    gap: 24px;
   }
 
   .award-list {
